@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		990B16986FC6FEC1EA92974D /* Pods_HomePactTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */; };
 		A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378A1E8966030046ABAA /* AppDelegate.swift */; };
-		A204378D1E8966030046ABAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378C1E8966030046ABAA /* ViewController.swift */; };
 		A20437901E8966030046ABAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A204378E1E8966030046ABAA /* Main.storyboard */; };
 		A20437921E8966030046ABAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20437911E8966030046ABAA /* Assets.xcassets */; };
 		A20437951E8966030046ABAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20437931E8966030046ABAA /* LaunchScreen.storyboard */; };
@@ -18,6 +17,13 @@
 		A20437B21E8966B90046ABAA /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437B11E8966B90046ABAA /* Group.swift */; };
 		A20437B41E8966CC0046ABAA /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437B31E8966CC0046ABAA /* Task.swift */; };
 		A20437B61E8966E70046ABAA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437B51E8966E70046ABAA /* Message.swift */; };
+		A20437B81E89D2ED0046ABAA /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20437B71E89D2ED0046ABAA /* Register.storyboard */; };
+		A20437BA1E89D30F0046ABAA /* JoinHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20437B91E89D30F0046ABAA /* JoinHome.storyboard */; };
+		A20437BC1E89D31B0046ABAA /* MakeHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20437BB1E89D31B0046ABAA /* MakeHome.storyboard */; };
+		A20437BE1E89D4C70046ABAA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437BD1E89D4C70046ABAA /* LoginViewController.swift */; };
+		A20437C01E89D53B0046ABAA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437BF1E89D53B0046ABAA /* RegisterViewController.swift */; };
+		A20437C21E89D54F0046ABAA /* JoinHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437C11E89D54F0046ABAA /* JoinHomeViewController.swift */; };
+		A20437C41E89D55B0046ABAA /* MakeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437C31E89D55B0046ABAA /* MakeHomeViewController.swift */; };
 		A28DE24675E5BBC0B34198BA /* Pods_HomePact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58F5F72CC5E910F03FF3EC7 /* Pods_HomePact.framework */; };
 		E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -36,7 +42,6 @@
 		20A8B61287B2EE17D50D4146 /* Pods-HomePact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.release.xcconfig"; sourceTree = "<group>"; };
 		A20437871E8966030046ABAA /* HomePact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A204378A1E8966030046ABAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A204378C1E8966030046ABAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A204378F1E8966030046ABAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A20437911E8966030046ABAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20437941E8966030046ABAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +53,13 @@
 		A20437B11E8966B90046ABAA /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A20437B31E8966CC0046ABAA /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A20437B51E8966E70046ABAA /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A20437B71E89D2ED0046ABAA /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		A20437B91E89D30F0046ABAA /* JoinHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JoinHome.storyboard; sourceTree = "<group>"; };
+		A20437BB1E89D31B0046ABAA /* MakeHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MakeHome.storyboard; sourceTree = "<group>"; };
+		A20437BD1E89D4C70046ABAA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A20437BF1E89D53B0046ABAA /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		A20437C11E89D54F0046ABAA /* JoinHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinHomeViewController.swift; sourceTree = "<group>"; };
+		A20437C31E89D55B0046ABAA /* MakeHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeHomeViewController.swift; sourceTree = "<group>"; };
 		B5123F6F3FFD054BA86F6DC3 /* Pods-HomePactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePactTests/Pods-HomePactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E73C040F628252F674DBB9FB /* Pods-HomePact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,7 +152,10 @@
 		A20437AC1E89661B0046ABAA /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				A204378C1E8966030046ABAA /* ViewController.swift */,
+				A20437BD1E89D4C70046ABAA /* LoginViewController.swift */,
+				A20437BF1E89D53B0046ABAA /* RegisterViewController.swift */,
+				A20437C11E89D54F0046ABAA /* JoinHomeViewController.swift */,
+				A20437C31E89D55B0046ABAA /* MakeHomeViewController.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -150,6 +165,9 @@
 			children = (
 				A20437931E8966030046ABAA /* LaunchScreen.storyboard */,
 				A204378E1E8966030046ABAA /* Main.storyboard */,
+				A20437B71E89D2ED0046ABAA /* Register.storyboard */,
+				A20437B91E89D30F0046ABAA /* JoinHome.storyboard */,
+				A20437BB1E89D31B0046ABAA /* MakeHome.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -275,9 +293,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20437951E8966030046ABAA /* LaunchScreen.storyboard in Resources */,
+				A20437BA1E89D30F0046ABAA /* JoinHome.storyboard in Resources */,
 				E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */,
 				A20437921E8966030046ABAA /* Assets.xcassets in Resources */,
 				A20437901E8966030046ABAA /* Main.storyboard in Resources */,
+				A20437B81E89D2ED0046ABAA /* Register.storyboard in Resources */,
+				A20437BC1E89D31B0046ABAA /* MakeHome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,12 +409,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A204378D1E8966030046ABAA /* ViewController.swift in Sources */,
+				A20437C41E89D55B0046ABAA /* MakeHomeViewController.swift in Sources */,
+				A20437BE1E89D4C70046ABAA /* LoginViewController.swift in Sources */,
 				A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */,
+				A20437C01E89D53B0046ABAA /* RegisterViewController.swift in Sources */,
 				A20437B41E8966CC0046ABAA /* Task.swift in Sources */,
 				A20437B61E8966E70046ABAA /* Message.swift in Sources */,
 				A20437B01E8966A10046ABAA /* User.swift in Sources */,
 				A20437B21E8966B90046ABAA /* Group.swift in Sources */,
+				A20437C21E89D54F0046ABAA /* JoinHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
