@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QOi-Nx-1FV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Page Controller-->
+        <!--Page View Controller-->
         <scene sceneID="4Ut-ts-hiy">
             <objects>
-                <viewController storyboardIdentifier="tabPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QOi-Nx-1FV" customClass="TabPageController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tabPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QOi-Nx-1FV" customClass="PageViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NzC-4T-qKz"/>
                         <viewControllerLayoutGuide type="bottom" id="D33-Uh-Gwr"/>
@@ -28,14 +28,25 @@
                                     <constraint firstAttribute="height" constant="20" id="Fbu-TV-3AC"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TD7-7h-aSV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YTn-0G-XCd" secondAttribute="trailing" id="9Kc-UC-1xi"/>
                             <constraint firstItem="YTn-0G-XCd" firstAttribute="top" secondItem="oLL-7p-uQe" secondAttribute="top" id="K5y-2t-XVE"/>
+                            <constraint firstAttribute="trailing" secondItem="TD7-7h-aSV" secondAttribute="trailing" id="P0D-sQ-fUd"/>
+                            <constraint firstItem="D33-Uh-Gwr" firstAttribute="top" secondItem="TD7-7h-aSV" secondAttribute="bottom" id="P8e-tO-VL2"/>
                             <constraint firstItem="YTn-0G-XCd" firstAttribute="leading" secondItem="oLL-7p-uQe" secondAttribute="leading" id="YPe-Xo-LQP"/>
+                            <constraint firstItem="TD7-7h-aSV" firstAttribute="leading" secondItem="oLL-7p-uQe" secondAttribute="leading" id="YkZ-kp-koh"/>
+                            <constraint firstItem="TD7-7h-aSV" firstAttribute="top" secondItem="NzC-4T-qKz" secondAttribute="bottom" id="g7X-Pi-gYY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="statusBarView" destination="YTn-0G-XCd" id="7od-G7-GA3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhT-fP-yac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
