@@ -10,6 +10,7 @@ import UIKit
 
 class UpcomingTVCell: UITableViewCell {
 
+    @IBOutlet weak var taskImageContainerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
