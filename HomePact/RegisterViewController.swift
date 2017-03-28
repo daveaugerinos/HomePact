@@ -15,7 +15,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // registerButton.layer.borderColor = UIColor.white.cgColor
+        registerButton.layer.borderColor = UIColor.white.cgColor
     }
     
     // MARK: - Action Methods -

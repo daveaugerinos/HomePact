@@ -12,7 +12,7 @@
         <!--Join Home View Controller-->
         <scene sceneID="NmX-4C-jaB">
             <objects>
-                <viewController id="wh8-jm-2FH" customClass="JoinHomeViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinHome" id="wh8-jm-2FH" customClass="JoinHomeViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MJy-4c-VzI"/>
                         <viewControllerLayoutGuide type="bottom" id="kjq-iV-zwO"/>
@@ -76,6 +76,17 @@
                                 <state key="normal" title="Join">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="joinButtonTouched:" destination="wh8-jm-2FH" eventType="touchUpInside" id="KcK-2M-SOb"/>
                                 </connections>
@@ -155,6 +166,10 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="joinButton" destination="Zm8-7D-gHc" id="jiy-b7-w1q"/>
+                        <outlet property="makeAHomeButton" destination="Ijm-de-DTw" id="HUZ-8j-CZm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CWH-9I-G5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

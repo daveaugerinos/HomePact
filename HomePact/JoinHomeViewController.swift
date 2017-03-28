@@ -10,15 +10,21 @@ import UIKit
 
 class JoinHomeViewController: UIViewController {
 
+    
+    @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var makeAHomeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        joinButton.layer.borderColor = UIColor.white.cgColor
+        makeAHomeButton.layer.borderColor = UIColor.white.cgColor
     }
     
     // MARK: - Action Methods -
     
     @IBAction func loginButtonTouched(_ sender: UIButton) {
+        ViewControllerRouter(self).popToRootVC()
     }
     
     @IBAction func joinButtonTouched(_ sender: UIButton) {

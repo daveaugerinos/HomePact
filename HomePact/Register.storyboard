@@ -12,7 +12,7 @@
         <!--Register View Controller-->
         <scene sceneID="gSQ-Xx-dtl">
             <objects>
-                <viewController id="Bjz-fs-zdh" customClass="RegisterViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" id="Bjz-fs-zdh" customClass="RegisterViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O9A-5M-6dN"/>
                         <viewControllerLayoutGuide type="bottom" id="VDJ-qq-UHu"/>

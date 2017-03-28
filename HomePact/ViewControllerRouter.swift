@@ -49,19 +49,31 @@ class ViewControllerRouter: NSObject {
     // MARK: - View Controller initializers -
     
     fileprivate func loginVC() -> LoginViewController {
-        return LoginViewController()
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        
+        return controller
     }
     
     fileprivate func registerVC() -> RegisterViewController {
-        return RegisterViewController()
+        let storyboard = UIStoryboard(name: "Register", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "Register") as! RegisterViewController
+        
+        return controller
     }
     
     fileprivate func joinHomeVC() -> JoinHomeViewController {
-        return JoinHomeViewController()
+        let storyboard = UIStoryboard(name: "JoinHome", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "JoinHome") as! JoinHomeViewController
+        
+        return controller
     }
     
     fileprivate func makeHomeVC() -> MakeHomeViewController {
-        return MakeHomeViewController()
+        let storyboard = UIStoryboard(name: "MakeHome", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MakeHome") as! MakeHomeViewController
+        
+        return controller
     }
     
     

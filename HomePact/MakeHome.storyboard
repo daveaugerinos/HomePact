@@ -12,7 +12,7 @@
         <!--Make Home View Controller-->
         <scene sceneID="7O6-oj-xX5">
             <objects>
-                <viewController id="ZhH-rW-iJp" customClass="MakeHomeViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MakeHome" id="ZhH-rW-iJp" customClass="MakeHomeViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yuP-xl-YIb"/>
                         <viewControllerLayoutGuide type="bottom" id="pLk-xh-GDK"/>
