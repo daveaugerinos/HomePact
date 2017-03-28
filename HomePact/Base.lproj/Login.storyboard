@@ -114,11 +114,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Person" translatesAutoresizingMaskIntoConstraints="NO" id="Cxh-4W-XUk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Person_Dark" translatesAutoresizingMaskIntoConstraints="NO" id="Cxh-4W-XUk">
                                 <rect key="frame" x="46" y="210" width="20" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="a9B-wM-8NR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lock_Dark" translatesAutoresizingMaskIntoConstraints="NO" id="a9B-wM-8NR">
                                 <rect key="frame" x="46" y="258" width="20" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -176,8 +176,8 @@
         <image name="Background" width="388" height="681"/>
         <image name="Facebook" width="37" height="36"/>
         <image name="Google" width="36" height="36"/>
-        <image name="Lock" width="18" height="24"/>
-        <image name="Person" width="24" height="24"/>
+        <image name="Lock_Dark" width="36" height="48"/>
+        <image name="Person_Dark" width="48" height="48"/>
         <image name="Twitter" width="37" height="36"/>
     </resources>
 </document>

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		990B16986FC6FEC1EA92974D /* Pods_HomePactTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */; };
 		A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378A1E8966030046ABAA /* AppDelegate.swift */; };
-		A20437901E8966030046ABAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A204378E1E8966030046ABAA /* Main.storyboard */; };
+		A20437901E8966030046ABAA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A204378E1E8966030046ABAA /* Login.storyboard */; };
 		A20437921E8966030046ABAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20437911E8966030046ABAA /* Assets.xcassets */; };
 		A20437951E8966030046ABAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20437931E8966030046ABAA /* LaunchScreen.storyboard */; };
 		A20437A01E8966030046ABAA /* HomePactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204379F1E8966030046ABAA /* HomePactTests.swift */; };
@@ -42,7 +42,7 @@
 		20A8B61287B2EE17D50D4146 /* Pods-HomePact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.release.xcconfig"; sourceTree = "<group>"; };
 		A20437871E8966030046ABAA /* HomePact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A204378A1E8966030046ABAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A204378F1E8966030046ABAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A204378F1E8966030046ABAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		A20437911E8966030046ABAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20437941E8966030046ABAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A20437961E8966030046ABAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				A20437931E8966030046ABAA /* LaunchScreen.storyboard */,
-				A204378E1E8966030046ABAA /* Main.storyboard */,
+				A204378E1E8966030046ABAA /* Login.storyboard */,
 				A20437B71E89D2ED0046ABAA /* Register.storyboard */,
 				A20437B91E89D30F0046ABAA /* JoinHome.storyboard */,
 				A20437BB1E89D31B0046ABAA /* MakeHome.storyboard */,
@@ -296,7 +296,7 @@
 				A20437BA1E89D30F0046ABAA /* JoinHome.storyboard in Resources */,
 				E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */,
 				A20437921E8966030046ABAA /* Assets.xcassets in Resources */,
-				A20437901E8966030046ABAA /* Main.storyboard in Resources */,
+				A20437901E8966030046ABAA /* Login.storyboard in Resources */,
 				A20437B81E89D2ED0046ABAA /* Register.storyboard in Resources */,
 				A20437BC1E89D31B0046ABAA /* MakeHome.storyboard in Resources */,
 			);
@@ -440,12 +440,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A204378E1E8966030046ABAA /* Main.storyboard */ = {
+		A204378E1E8966030046ABAA /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A204378F1E8966030046ABAA /* Base */,
 			);
-			name = Main.storyboard;
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 		A20437931E8966030046ABAA /* LaunchScreen.storyboard */ = {
