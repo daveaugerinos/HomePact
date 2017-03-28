@@ -10,26 +10,27 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var registerButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        registerButton.layer.borderColor = UIColor.white.cgColor
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Action Methods -
+    
+    @IBAction func loginVCButtonTouched(_ sender: UIButton) {
+        ViewControllerRouter(self).popToRootVC()
     }
-    */
 
+    @IBAction func pickYourImageButtonTouched(_ sender: UIButton) {
+    }
+
+    @IBAction func clearTextPasswordButtonTouched(_ sender: UIButton) {
+    }
+    
+    @IBAction func registerButtonTouched(_ sender: UIButton) {
+        ViewControllerRouter(self).showJoinHome()
+    }
 }
