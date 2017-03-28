@@ -190,7 +190,6 @@
 				E1D4762C1E8A05600049E3DE /* UpcomingTaskTVC.swift */,
 				E1D4762E1E8A05770049E3DE /* CompletedTaskTVC.swift */,
 				E1D476281E89FD470049E3DE /* PageViewController.swift */,
-				A204378C1E8966030046ABAA /* ViewController.swift */,
 				3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */,
 				3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */,
 				3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */,
@@ -209,7 +208,6 @@
 				E1D476241E89DFE90049E3DE /* TabPageView.storyboard */,
 				A20437931E8966030046ABAA /* LaunchScreen.storyboard */,
 				E1D4762A1E8A03BD0049E3DE /* Tasks.storyboard */,
-				A204378E1E8966030046ABAA /* Main.storyboard */,
 				3F586BD41E89D7DA004AFA62 /* ProfilesPersonal.storyboard */,
 				3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */,
 				3F586BD61E8A0A3A004AFA62 /* AddOrModify.storyboard */,
@@ -351,7 +349,7 @@
 				3F586BD51E89D7DA004AFA62 /* ProfilesPersonal.storyboard in Resources */,
 				E1D4762B1E8A03BD0049E3DE /* Tasks.storyboard in Resources */,
 				E1D476251E89DFE90049E3DE /* TabPageView.storyboard in Resources */,
-				A20437901E8966030046ABAA /* Main.storyboard in Resources */,
+				A20437901E8966030046ABAA /* Login.storyboard in Resources */,
 				A20437BA1E89D30F0046ABAA /* JoinHome.storyboard in Resources */,
 				E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */,
 				A20437921E8966030046ABAA /* Assets.xcassets in Resources */,
@@ -469,7 +467,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1D476331E8A06530049E3DE /* CompletedTVCell.swift in Sources */,
-				A204378D1E8966030046ABAA /* ViewController.swift in Sources */,
 				E1D476291E89FD470049E3DE /* PageViewController.swift in Sources */,
 				E1D4762D1E8A05600049E3DE /* UpcomingTaskTVC.swift in Sources */,
 				A20437C41E89D55B0046ABAA /* MakeHomeViewController.swift in Sources */,
