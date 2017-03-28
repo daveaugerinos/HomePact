@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profiles Personal View Controller-->
+        <scene sceneID="ccz-7c-kqH">
+            <objects>
+                <viewController id="mqf-Jk-6kf" customClass="ProfilesPersonalViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bsE-jF-JXQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="BPJ-JL-yRc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Niu-EM-Hkw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A0h-SP-JUJ">
+                                <rect key="frame" x="87" y="120" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1Yj-US-HpG"/>
+                                    <constraint firstAttribute="height" constant="200" id="U5o-RA-VbC"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SH-6N-azG">
+                                <rect key="frame" x="88" y="328" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoneNumberLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQE-MW-007">
+                                <rect key="frame" x="87" y="357" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailAddressLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlF-Ij-47r">
+                                <rect key="frame" x="24" y="386" width="327" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-gI-SZ5">
+                                <rect key="frame" x="323" y="324" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="T8x-I9-eFK"/>
+                                    <constraint firstAttribute="width" constant="25" id="VtZ-P9-NCR"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jlF-Ij-47r" firstAttribute="top" secondItem="dOk-gI-SZ5" secondAttribute="bottom" constant="37" id="BPs-xK-9DC"/>
+                            <constraint firstItem="A0h-SP-JUJ" firstAttribute="top" secondItem="bsE-jF-JXQ" secondAttribute="bottom" constant="100" id="ECo-SX-pZX"/>
+                            <constraint firstItem="A0h-SP-JUJ" firstAttribute="centerX" secondItem="Niu-EM-Hkw" secondAttribute="centerX" id="F8C-zA-VKT"/>
+                            <constraint firstItem="3SH-6N-azG" firstAttribute="width" secondItem="A0h-SP-JUJ" secondAttribute="width" id="HTJ-MU-LtA"/>
+                            <constraint firstItem="oQE-MW-007" firstAttribute="centerX" secondItem="Niu-EM-Hkw" secondAttribute="centerX" id="JOD-AD-AgN"/>
+                            <constraint firstItem="oQE-MW-007" firstAttribute="top" secondItem="3SH-6N-azG" secondAttribute="bottom" constant="8" id="Kke-sH-ADA"/>
+                            <constraint firstItem="dOk-gI-SZ5" firstAttribute="leading" secondItem="3SH-6N-azG" secondAttribute="trailing" constant="35.5" id="MKx-6e-h2u"/>
+                            <constraint firstItem="jlF-Ij-47r" firstAttribute="top" secondItem="oQE-MW-007" secondAttribute="bottom" constant="8" id="S46-rh-TYg"/>
+                            <constraint firstItem="jlF-Ij-47r" firstAttribute="leading" secondItem="Niu-EM-Hkw" secondAttribute="leadingMargin" constant="8" id="bll-L0-0AP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jlF-Ij-47r" secondAttribute="trailing" constant="8" id="ex6-qd-5v2"/>
+                            <constraint firstItem="3SH-6N-azG" firstAttribute="centerX" secondItem="Niu-EM-Hkw" secondAttribute="centerX" id="ocR-rS-6Nk"/>
+                            <constraint firstItem="oQE-MW-007" firstAttribute="width" secondItem="A0h-SP-JUJ" secondAttribute="width" id="yZa-Se-gH9"/>
+                            <constraint firstItem="3SH-6N-azG" firstAttribute="top" secondItem="A0h-SP-JUJ" secondAttribute="bottom" constant="8" id="zwb-RM-dpc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="userEmailLabel" destination="jlF-Ij-47r" id="np7-T7-eob"/>
+                        <outlet property="userImageView" destination="A0h-SP-JUJ" id="LoM-lZ-FZa"/>
+                        <outlet property="userNameLabel" destination="3SH-6N-azG" id="29r-au-QVp"/>
+                        <outlet property="userPhoneNumberLabel" destination="oQE-MW-007" id="Fdq-4R-eie"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lJr-vR-WDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-82.400000000000006" y="119.1904047976012"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Edit" width="100" height="100"/>
+    </resources>
+</document>

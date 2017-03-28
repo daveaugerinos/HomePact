@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F586BCF1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */; };
+		3F586BD11E89D6BF004AFA62 /* ProfilesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */; };
+		3F586BD31E89D7CC004AFA62 /* ProfilesGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */; };
+		3F586BD51E89D7DA004AFA62 /* ProfilesPersonal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD41E89D7DA004AFA62 /* ProfilesPersonal.storyboard */; };
 		990B16986FC6FEC1EA92974D /* Pods_HomePactTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */; };
 		A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378A1E8966030046ABAA /* AppDelegate.swift */; };
 		A204378D1E8966030046ABAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378C1E8966030046ABAA /* ViewController.swift */; };
@@ -34,6 +38,10 @@
 
 /* Begin PBXFileReference section */
 		20A8B61287B2EE17D50D4146 /* Pods-HomePact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.release.xcconfig"; sourceTree = "<group>"; };
+		3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesPersonalViewController.swift; sourceTree = "<group>"; };
+		3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesGroupViewController.swift; sourceTree = "<group>"; };
+		3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilesGroup.storyboard; sourceTree = "<group>"; };
+		3F586BD41E89D7DA004AFA62 /* ProfilesPersonal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilesPersonal.storyboard; sourceTree = "<group>"; };
 		A20437871E8966030046ABAA /* HomePact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A204378A1E8966030046ABAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A204378C1E8966030046ABAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				A204378C1E8966030046ABAA /* ViewController.swift */,
+				3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */,
+				3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -150,6 +160,8 @@
 			children = (
 				A20437931E8966030046ABAA /* LaunchScreen.storyboard */,
 				A204378E1E8966030046ABAA /* Main.storyboard */,
+				3F586BD41E89D7DA004AFA62 /* ProfilesPersonal.storyboard */,
+				3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -275,8 +287,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20437951E8966030046ABAA /* LaunchScreen.storyboard in Resources */,
+				3F586BD31E89D7CC004AFA62 /* ProfilesGroup.storyboard in Resources */,
 				E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */,
 				A20437921E8966030046ABAA /* Assets.xcassets in Resources */,
+				3F586BD51E89D7DA004AFA62 /* ProfilesPersonal.storyboard in Resources */,
 				A20437901E8966030046ABAA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,8 +406,10 @@
 				A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */,
 				A20437B41E8966CC0046ABAA /* Task.swift in Sources */,
 				A20437B61E8966E70046ABAA /* Message.swift in Sources */,
+				3F586BD11E89D6BF004AFA62 /* ProfilesGroupViewController.swift in Sources */,
 				A20437B01E8966A10046ABAA /* User.swift in Sources */,
 				A20437B21E8966B90046ABAA /* Group.swift in Sources */,
+				3F586BCF1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
