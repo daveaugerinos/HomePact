@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddOrModifyVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AddOrModifyVC: UIViewController {
 
     @IBOutlet weak fileprivate var topFakeNavBarView: UIView!
     @IBOutlet weak fileprivate var titleLabel: UILabel!
