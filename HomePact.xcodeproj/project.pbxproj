@@ -24,6 +24,7 @@
 		A20437C01E89D53B0046ABAA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437BF1E89D53B0046ABAA /* RegisterViewController.swift */; };
 		A20437C21E89D54F0046ABAA /* JoinHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437C11E89D54F0046ABAA /* JoinHomeViewController.swift */; };
 		A20437C41E89D55B0046ABAA /* MakeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20437C31E89D55B0046ABAA /* MakeHomeViewController.swift */; };
+		A288FA931E8AE80000A09299 /* ViewControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288FA921E8AE80000A09299 /* ViewControllerRouter.swift */; };
 		A28DE24675E5BBC0B34198BA /* Pods_HomePact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58F5F72CC5E910F03FF3EC7 /* Pods_HomePact.framework */; };
 		E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		A20437BF1E89D53B0046ABAA /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A20437C11E89D54F0046ABAA /* JoinHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinHomeViewController.swift; sourceTree = "<group>"; };
 		A20437C31E89D55B0046ABAA /* MakeHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeHomeViewController.swift; sourceTree = "<group>"; };
+		A288FA921E8AE80000A09299 /* ViewControllerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRouter.swift; sourceTree = "<group>"; };
 		B5123F6F3FFD054BA86F6DC3 /* Pods-HomePactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePactTests/Pods-HomePactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E73C040F628252F674DBB9FB /* Pods-HomePact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				A20437B11E8966B90046ABAA /* Group.swift */,
 				A20437B31E8966CC0046ABAA /* Task.swift */,
 				A20437B51E8966E70046ABAA /* Message.swift */,
+				A288FA921E8AE80000A09299 /* ViewControllerRouter.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20437C41E89D55B0046ABAA /* MakeHomeViewController.swift in Sources */,
+				A288FA931E8AE80000A09299 /* ViewControllerRouter.swift in Sources */,
 				A20437BE1E89D4C70046ABAA /* LoginViewController.swift in Sources */,
 				A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */,
 				A20437C01E89D53B0046ABAA /* RegisterViewController.swift in Sources */,

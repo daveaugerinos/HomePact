@@ -20,12 +20,12 @@
                     <view key="view" contentMode="scaleToFill" id="EGT-5a-9az">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.38501393795013428" green="0.57021170854568481" blue="0.71594196557998657" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CWH-9I-G5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="239" y="128"/>
+            <point key="canvasLocation" x="238" y="14"/>
         </scene>
     </scenes>
 </document>
