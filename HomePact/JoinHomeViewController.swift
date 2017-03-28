@@ -10,26 +10,27 @@ import UIKit
 
 class JoinHomeViewController: UIViewController {
 
+    
+    @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var makeAHomeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        joinButton.layer.borderColor = UIColor.white.cgColor
+        makeAHomeButton.layer.borderColor = UIColor.white.cgColor
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Action Methods -
+    
+    @IBAction func loginButtonTouched(_ sender: UIButton) {
+        ViewControllerRouter(self).popToRootVC()
     }
-    */
-
+    
+    @IBAction func joinButtonTouched(_ sender: UIButton) {
+    }
+    
+    @IBAction func makeAHomeButtonTouched(_ sender: UIButton) {
+        ViewControllerRouter(self).showMakeHome()
+    }
 }
