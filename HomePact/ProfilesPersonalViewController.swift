@@ -15,7 +15,6 @@ class ProfilesPersonalViewController: UIViewController {
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userPhoneNumberLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

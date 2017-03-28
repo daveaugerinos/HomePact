@@ -11,6 +11,10 @@
 		3F586BD11E89D6BF004AFA62 /* ProfilesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */; };
 		3F586BD31E89D7CC004AFA62 /* ProfilesGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */; };
 		3F586BD51E89D7DA004AFA62 /* ProfilesPersonal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD41E89D7DA004AFA62 /* ProfilesPersonal.storyboard */; };
+		3F586BD71E8A0A3A004AFA62 /* AddOrModify.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD61E8A0A3A004AFA62 /* AddOrModify.storyboard */; };
+		3F586BD91E8A0A62004AFA62 /* CompleteTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD81E8A0A62004AFA62 /* CompleteTask.storyboard */; };
+		3F586BDB1E8A0A90004AFA62 /* AddOrModifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */; };
+		3F586BDD1E8A0AA9004AFA62 /* CompleteTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */; };
 		990B16986FC6FEC1EA92974D /* Pods_HomePactTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */; };
 		A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378A1E8966030046ABAA /* AppDelegate.swift */; };
 		A204378D1E8966030046ABAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378C1E8966030046ABAA /* ViewController.swift */; };
@@ -42,6 +46,10 @@
 		3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesGroupViewController.swift; sourceTree = "<group>"; };
 		3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilesGroup.storyboard; sourceTree = "<group>"; };
 		3F586BD41E89D7DA004AFA62 /* ProfilesPersonal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilesPersonal.storyboard; sourceTree = "<group>"; };
+		3F586BD61E8A0A3A004AFA62 /* AddOrModify.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddOrModify.storyboard; sourceTree = "<group>"; };
+		3F586BD81E8A0A62004AFA62 /* CompleteTask.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CompleteTask.storyboard; sourceTree = "<group>"; };
+		3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrModifyVC.swift; sourceTree = "<group>"; };
+		3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteTaskViewController.swift; sourceTree = "<group>"; };
 		A20437871E8966030046ABAA /* HomePact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A204378A1E8966030046ABAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A204378C1E8966030046ABAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +159,8 @@
 				A204378C1E8966030046ABAA /* ViewController.swift */,
 				3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */,
 				3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */,
+				3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */,
+				3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -162,6 +172,8 @@
 				A204378E1E8966030046ABAA /* Main.storyboard */,
 				3F586BD41E89D7DA004AFA62 /* ProfilesPersonal.storyboard */,
 				3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */,
+				3F586BD61E8A0A3A004AFA62 /* AddOrModify.storyboard */,
+				3F586BD81E8A0A62004AFA62 /* CompleteTask.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -288,6 +300,8 @@
 			files = (
 				A20437951E8966030046ABAA /* LaunchScreen.storyboard in Resources */,
 				3F586BD31E89D7CC004AFA62 /* ProfilesGroup.storyboard in Resources */,
+				3F586BD91E8A0A62004AFA62 /* CompleteTask.storyboard in Resources */,
+				3F586BD71E8A0A3A004AFA62 /* AddOrModify.storyboard in Resources */,
 				E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */,
 				A20437921E8966030046ABAA /* Assets.xcassets in Resources */,
 				3F586BD51E89D7DA004AFA62 /* ProfilesPersonal.storyboard in Resources */,
@@ -406,10 +420,12 @@
 				A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */,
 				A20437B41E8966CC0046ABAA /* Task.swift in Sources */,
 				A20437B61E8966E70046ABAA /* Message.swift in Sources */,
+				3F586BDD1E8A0AA9004AFA62 /* CompleteTaskViewController.swift in Sources */,
 				3F586BD11E89D6BF004AFA62 /* ProfilesGroupViewController.swift in Sources */,
 				A20437B01E8966A10046ABAA /* User.swift in Sources */,
 				A20437B21E8966B90046ABAA /* Group.swift in Sources */,
 				3F586BCF1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift in Sources */,
+				3F586BDB1E8A0A90004AFA62 /* AddOrModifyVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

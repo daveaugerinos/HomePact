@@ -70,6 +70,7 @@
                                 </constraints>
                                 <state key="normal" title="Leave Group"/>
                                 <connections>
+                                    <action selector="leavButtonPressed:" destination="ypr-TE-LkO" eventType="touchUpInside" id="JBE-ZF-hiM"/>
                                     <action selector="leaveGroupButtonPressed:" destination="ypr-TE-LkO" eventType="touchUpInside" id="0mq-pI-8x9"/>
                                 </connections>
                             </button>

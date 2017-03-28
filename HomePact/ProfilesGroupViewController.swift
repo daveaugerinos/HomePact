@@ -20,7 +20,6 @@ class ProfilesGroupViewController: UIViewController {
         
         roundAppropriateViews()
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
