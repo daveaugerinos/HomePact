@@ -11,9 +11,13 @@ import TabPageViewController
 
 class PageViewController: UIViewController {
 
+    @IBOutlet weak var statusBarView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let upcomingTaskVC = UIStoryboard.init(name: "Tasks", bundle: Bundle.main).instantiateViewController(withIdentifier: "upcomingTasks")
+        let completedTaskVC = UIStoryboard.init(name: "Tasks", bundle: Bundle.main).instantiateViewController(withIdentifier: "completedTasks")
+        setupWith(vcArray: [upcomingTaskVC,completedTaskVC])
         // Do any additional setup after loading the view.
     }
 
@@ -30,16 +34,19 @@ class PageViewController: UIViewController {
         }
         
         var option = TabPageOption()
-        option.currentColor = UIColor(red: 246/255, green: 175/255, blue: 32/255, alpha: 1.0)
+        option.currentColor = UIColor.white
+        option.defaultColor = UIColor.white
         option.tabWidth = view.frame.width/2
         option.tabMargin = 30.0
         option.tabBackgroundColor = #colorLiteral(red: 0.8508874774, green: 0.8510339856, blue: 0.8508781791, alpha: 1)
-        
+        option.isTranslucent = false
         tabPageVC.option = option
         
-        self.addChildViewController(tabPageVC)
-        self.view.addSubview(tabPageVC.view)
-        self.view.setNeedsDisplay()
+        addChildViewController(tabPageVC)
+        view.addSubview(tabPageVC.view)
+        view.addSubview(statusBarView)
+
+        view.setNeedsDisplay()
     }
     /*
     // MARK: - Navigation
