@@ -10,7 +10,18 @@ import UIKit
 
 class UpcomingTVCell: UITableViewCell {
 
-    @IBOutlet weak var taskImageContainerView: UIView!
+    @IBOutlet weak fileprivate var userImageContainerView: UIView!
+    @IBOutlet weak fileprivate var taskImageContainerView: UIView!
+    
+    @IBOutlet weak fileprivate var userImageViewOne: UIImageView!
+    @IBOutlet weak fileprivate var userImageViewTwo: UIImageView!
+    @IBOutlet weak fileprivate var userImageViewThree: UIImageView!
+    
+    @IBOutlet weak fileprivate var taskNameLabel: UILabel!
+    @IBOutlet weak fileprivate var taskDateLabel: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
