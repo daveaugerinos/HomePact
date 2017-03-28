@@ -10,22 +10,22 @@ import UIKit
 
 class AddOrModifyVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var topFakeNavBarView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak fileprivate var topFakeNavBarView: UIView!
+    @IBOutlet weak fileprivate var titleLabel: UILabel!
+    @IBOutlet weak fileprivate var cancelButton: UIButton!
     
     
-    @IBOutlet weak var taskNameTextField: UITextField!
-    @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var recurrenceTextField: UITextField!
+    @IBOutlet weak fileprivate var taskNameTextField: UITextField!
+    @IBOutlet weak fileprivate var dateTextField: UITextField!
+    @IBOutlet weak fileprivate var recurrenceTextField: UITextField!
     
-    @IBOutlet weak var groupMembersCollectionView: UICollectionView!
+    @IBOutlet weak fileprivate var groupMembersCollectionView: UICollectionView!
     
-    @IBOutlet weak var repeatDetailsView: UIView!
-    @IBOutlet weak var repeatSlider: UISlider!
-    @IBOutlet weak var repeatNumberOfTimesLabel: UILabel!
+    @IBOutlet weak fileprivate var repeatDetailsView: UIView!
+    @IBOutlet weak fileprivate var repeatSlider: UISlider!
+    @IBOutlet weak fileprivate var repeatNumberOfTimesLabel: UILabel!
     
-    @IBOutlet weak var addMediaImageView: UIImageView!
+    @IBOutlet weak fileprivate var addMediaImageView: UIImageView!
     
     
     override func viewDidLoad() {
@@ -35,12 +35,15 @@ class AddOrModifyVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         //enable interaction of recurrenceTextField -> PickerController
         //set repeatDetailsView frame height to zero
         //enable interaction of addMediaImageView - ImagePickerController etc
+        //configure groupMembersCollectionView dataSource
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        //segue back to upcoming tasks
     }
 
     @IBAction func completeButtonPressed(_ sender: UIButton) {
+        //segue back to upcoming tasks with new task
     }
     
 
