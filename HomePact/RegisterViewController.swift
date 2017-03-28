@@ -15,13 +15,22 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        registerButton.layer.borderColor = UIColor.white.cgColor
+        // registerButton.layer.borderColor = UIColor.white.cgColor
     }
     
     // MARK: - Action Methods -
     
     @IBAction func loginVCButtonTouched(_ sender: UIButton) {
         ViewControllerRouter(self).popToRootVC()
+    }
+
+    @IBAction func pickYourImageButtonTouched(_ sender: UIButton) {
+    }
+
+    @IBAction func clearTextPasswordButtonTouched(_ sender: UIButton) {
+    }
+    
+    @IBAction func registerButtonTouched(_ sender: UIButton) {
+        ViewControllerRouter(self).showJoinHome()
     }
 }
