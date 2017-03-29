@@ -46,6 +46,14 @@ class ViewControllerRouter: NSObject {
         show(makeHomeVC())
     }
     
+    func showTasks() {
+        show(taskPageVCs())
+    }
+    
+    func showProfiles() {
+        show(profilePageVCs())
+    }
+    
     // MARK: - View Controller initializers -
     
     fileprivate func loginVC() -> LoginViewController {
@@ -76,7 +84,29 @@ class ViewControllerRouter: NSObject {
         return controller
     }
     
+    fileprivate func taskPageVCs() -> PageViewController {
+        
+        let storyboard = UIStoryboard(name: "Tasks", bundle: .main)
+        let upcomingTaskVC = storyboard.instantiateViewController(withIdentifier: "upcomingTasks") as! UpcomingTaskTVC
+        let completedTaskVC = storyboard.instantiateViewController(withIdentifier: "completedTasks") as! CompletedTaskTVC
+       
+        let tabPageVC = storyboard.instantiateViewController(withIdentifier: "tabPage") as! PageViewController
+        tabPageVC.setup( with :[upcomingTaskVC,completedTaskVC])
+        
+        return tabPageVC
+    }
     
+    fileprivate func profilePageVCs() -> PageViewController {
+        
+        let storyboard = UIStoryboard(name: "Tasks", bundle: .main)
+        let myProfileVC = storyboard.instantiateViewController(withIdentifier: "") as! UpcomingTaskTVC
+        let groupProfileVC = storyboard.instantiateViewController(withIdentifier: "") as! CompletedTaskTVC
+        
+        let tabPageVC = storyboard.instantiateViewController(withIdentifier: "tabPage") as! PageViewController
+        tabPageVC.setup( with :[myProfileVC,groupProfileVC])
+        
+        return tabPageVC
+    }
     // MARK: - Private functions -
     
     fileprivate func show(_ vc: UIViewController) {
