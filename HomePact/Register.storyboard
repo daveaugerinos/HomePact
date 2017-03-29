@@ -190,6 +190,12 @@
                         <color key="backgroundColor" red="0.38501393795013428" green="0.57021170854568481" blue="0.71594196557998657" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="QFG-X0-KSa" id="7Bi-yu-4Qw"/>
+                        <outlet property="firstNameTextField" destination="xsJ-9n-WVu" id="rMF-jO-M0x"/>
+                        <outlet property="lastNameTextField" destination="Grr-9z-EcR" id="vTk-14-gXJ"/>
+                        <outlet property="passwordTextField" destination="Otu-Xj-cZz" id="ZcC-fV-zMG"/>
+                        <outlet property="phoneNumberTextField" destination="bOW-gr-yuX" id="9au-3V-lw1"/>
+                        <outlet property="reenterPasswordTextField" destination="4nF-aC-jhp" id="lm8-au-zky"/>
                         <outlet property="registerButton" destination="Geq-Wj-xT2" id="Jrt-lu-83D"/>
                     </connections>
                 </viewController>

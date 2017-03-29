@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Use Firebase library to configure APIs
+        FIRApp.configure()
+
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        
         return true
     }
 
@@ -41,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,annotation: [:])
+    }
 }
-
