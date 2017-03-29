@@ -49,7 +49,6 @@ class UpcomingTVCell: UITableViewCell {
 
         roundViews()
         
-
     }
     
     fileprivate func roundViews() {

@@ -15,6 +15,7 @@
 		3F586BD91E8A0A62004AFA62 /* CompleteTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD81E8A0A62004AFA62 /* CompleteTask.storyboard */; };
 		3F586BDB1E8A0A90004AFA62 /* AddOrModifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */; };
 		3F586BDD1E8A0AA9004AFA62 /* CompleteTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */; };
+		3FBEA95D1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */; };
 		990B16986FC6FEC1EA92974D /* Pods_HomePactTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */; };
 		A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378A1E8966030046ABAA /* AppDelegate.swift */; };
 		A20437901E8966030046ABAA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A204378E1E8966030046ABAA /* Login.storyboard */; };
@@ -64,6 +65,7 @@
 		3F586BD81E8A0A62004AFA62 /* CompleteTask.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CompleteTask.storyboard; sourceTree = "<group>"; };
 		3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrModifyVC.swift; sourceTree = "<group>"; };
 		3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteTaskViewController.swift; sourceTree = "<group>"; };
+		3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrModifyCVCell.swift; sourceTree = "<group>"; };
 		A20437871E8966030046ABAA /* HomePact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A204378A1E8966030046ABAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A204378F1E8966030046ABAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				E1D476301E8A06420049E3DE /* UpcomingTVCell.swift */,
 				E1D476321E8A06530049E3DE /* CompletedTVCell.swift */,
+				3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				A20437B61E8966E70046ABAA /* Message.swift in Sources */,
 				3F586BDD1E8A0AA9004AFA62 /* CompleteTaskViewController.swift in Sources */,
 				3F586BD11E89D6BF004AFA62 /* ProfilesGroupViewController.swift in Sources */,
+				3FBEA95D1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift in Sources */,
 				A20437B01E8966A10046ABAA /* User.swift in Sources */,
 				A20437B21E8966B90046ABAA /* Group.swift in Sources */,
 				3F586BCF1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift in Sources */,
