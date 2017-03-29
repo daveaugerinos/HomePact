@@ -85,26 +85,16 @@ class ViewControllerRouter: NSObject {
     }
     
     fileprivate func taskPageVCs() -> PageViewController {
-        
-        let storyboard = UIStoryboard(name: "Tasks", bundle: .main)
-        let upcomingTaskVC = storyboard.instantiateViewController(withIdentifier: "upcomingTasks") as! UpcomingTaskTVC
-        let completedTaskVC = storyboard.instantiateViewController(withIdentifier: "completedTasks") as! CompletedTaskTVC
-       
-        let tabPageVC = storyboard.instantiateViewController(withIdentifier: "tabPage") as! PageViewController
-        tabPageVC.setup( with :[upcomingTaskVC,completedTaskVC])
+        let tabPageVC = UIStoryboard(name: "Tasks", bundle: .main).instantiateViewController(withIdentifier: "tabPage") as! PageViewController
+        tabPageVC.configureTab(with: .tasks)
         
         return tabPageVC
     }
     
     fileprivate func profilePageVCs() -> PageViewController {
-        
-        let storyboard = UIStoryboard(name: "Tasks", bundle: .main)
-        let myProfileVC = storyboard.instantiateViewController(withIdentifier: "") as! UpcomingTaskTVC
-        let groupProfileVC = storyboard.instantiateViewController(withIdentifier: "") as! CompletedTaskTVC
-        
-        let tabPageVC = storyboard.instantiateViewController(withIdentifier: "tabPage") as! PageViewController
-        tabPageVC.setup( with :[myProfileVC,groupProfileVC])
-        
+        let tabPageVC = UIStoryboard(name: "Tasks", bundle: .main).instantiateViewController(withIdentifier: "tabPage") as! PageViewController
+        tabPageVC.configureTab(with: .profiles)
+       
         return tabPageVC
     }
     // MARK: - Private functions -

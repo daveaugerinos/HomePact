@@ -10,6 +10,11 @@ import UIKit
 import TabPageViewController
 
 class PageViewController: UIViewController {
+    
+    enum ConfigureOptions  { case
+        profiles,
+        tasks
+    }
 
     @IBOutlet weak var statusBarView: UIView!
 
@@ -19,8 +24,23 @@ class PageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    func configureTab(with configureOption: ConfigureOptions) {
+        let storyboard = UIStoryboard(name: "Tasks", bundle: .main)
+        
+        switch configureOption {
+        case .profiles:
+            let upcomingTaskVC = storyboard.instantiateViewController(withIdentifier: "upcomingTasks") as! UpcomingTaskTVC
+            let completedTaskVC = storyboard.instantiateViewController(withIdentifier: "completedTasks") as! CompletedTaskTVC
+            setup(with: [upcomingTaskVC,completedTaskVC])
+        case .tasks:
+            let myProfileVC = storyboard.instantiateViewController(withIdentifier: "") as! UpcomingTaskTVC
+            let groupProfileVC = storyboard.instantiateViewController(withIdentifier: "") as! CompletedTaskTVC
+            setup(with: [myProfileVC,groupProfileVC])
+            
+        }
+    }
     
-    func setup(with viewControllers:[UIViewController]){
+    fileprivate func setup(with viewControllers:[UIViewController]){
         let tabPageVC = TabPageViewController.create()
         
         for vc in viewControllers{
