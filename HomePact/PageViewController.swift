@@ -10,17 +10,14 @@ import UIKit
 import TabPageViewController
 
 class PageViewController: UIViewController {
-    
-    enum ConfigureOptions  { case
-        profiles,
-        tasks
-    }
-
+   
+    enum ConfigureOptions  { case profiles, tasks }
+   
     @IBOutlet weak var statusBarView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureTab(with: .tasks)
         // Do any additional setup after loading the view.
     }
 
@@ -28,13 +25,13 @@ class PageViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Tasks", bundle: .main)
         
         switch configureOption {
-        case .profiles:
+        case .tasks:
             let upcomingTaskVC = storyboard.instantiateViewController(withIdentifier: "upcomingTasks") as! UpcomingTaskTVC
             let completedTaskVC = storyboard.instantiateViewController(withIdentifier: "completedTasks") as! CompletedTaskTVC
             setup(with: [upcomingTaskVC,completedTaskVC])
-        case .tasks:
-            let myProfileVC = storyboard.instantiateViewController(withIdentifier: "") as! UpcomingTaskTVC
-            let groupProfileVC = storyboard.instantiateViewController(withIdentifier: "") as! CompletedTaskTVC
+        case .profiles:
+            let myProfileVC = storyboard.instantiateViewController(withIdentifier: "profilesPersonal") as! UpcomingTaskTVC
+            let groupProfileVC = storyboard.instantiateViewController(withIdentifier: "profilesGroup") as! CompletedTaskTVC
             setup(with: [myProfileVC,groupProfileVC])
             
         }
