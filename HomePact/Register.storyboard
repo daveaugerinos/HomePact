@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="top" id="O9A-5M-6dN"/>
                         <viewControllerLayoutGuide type="bottom" id="VDJ-qq-UHu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="D6l-J4-UOB">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="D6l-J4-UOB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -28,14 +28,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytx-bJ-JUi">
-                                <rect key="frame" x="137" y="87" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Person"/>
-                                <connections>
-                                    <action selector="pickYourImageButtonTouched:" destination="Bjz-fs-zdh" eventType="touchUpInside" id="fCH-Mx-1nR"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick Your Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYe-OH-H7v">
                                 <rect key="frame" x="125" y="193" width="125" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -158,10 +150,6 @@
                                     <action selector="loginVCButtonTouched:" destination="Bjz-fs-zdh" eventType="touchUpInside" id="FmZ-xi-5L1"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Thumbs_Up" translatesAutoresizingMaskIntoConstraints="NO" id="OnH-l8-nqw">
-                                <rect key="frame" x="141" y="532" width="90" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Geq-Wj-xT2">
                                 <rect key="frame" x="99" y="617" width="175" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -186,6 +174,44 @@
                                     <action selector="registerButtonTouched:" destination="Bjz-fs-zdh" eventType="touchUpInside" id="C9l-HN-4lt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytx-bJ-JUi" customClass="PickImageButton" customModule="HomePact" customModuleProvider="target">
+                                <rect key="frame" x="136" y="85" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Person"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowWidthOffset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowHeightOffset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColour">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pickYourImageButtonTouched:" destination="Bjz-fs-zdh" eventType="touchUpInside" id="fCH-Mx-1nR"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vbF-Dm-TdU" customClass="RoundView" customModule="HomePact" customModuleProvider="target">
+                                <rect key="frame" x="150" y="532" width="75" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="Thumbs_Up"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.38501393795013428" green="0.57021170854568481" blue="0.71594196557998657" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -195,6 +221,7 @@
                         <outlet property="lastNameTextField" destination="Grr-9z-EcR" id="vTk-14-gXJ"/>
                         <outlet property="passwordTextField" destination="Otu-Xj-cZz" id="ZcC-fV-zMG"/>
                         <outlet property="phoneNumberTextField" destination="bOW-gr-yuX" id="9au-3V-lw1"/>
+                        <outlet property="pickYourImageButton" destination="Ytx-bJ-JUi" id="hm9-yb-TbK"/>
                         <outlet property="reenterPasswordTextField" destination="4nF-aC-jhp" id="lm8-au-zky"/>
                         <outlet property="registerButton" destination="Geq-Wj-xT2" id="Jrt-lu-83D"/>
                     </connections>
