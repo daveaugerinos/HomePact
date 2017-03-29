@@ -43,6 +43,8 @@
 		E1D4762F1E8A05770049E3DE /* CompletedTaskTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4762E1E8A05770049E3DE /* CompletedTaskTVC.swift */; };
 		E1D476311E8A06420049E3DE /* UpcomingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D476301E8A06420049E3DE /* UpcomingTVCell.swift */; };
 		E1D476331E8A06530049E3DE /* CompletedTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D476321E8A06530049E3DE /* CompletedTVCell.swift */; };
+		E1D4763B1E8C45F20049E3DE /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4763A1E8C45F20049E3DE /* RootTabBarController.swift */; };
+		E1D4763D1E8C5DBF0049E3DE /* RootTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D4763C1E8C5DBF0049E3DE /* RootTabBar.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		E1D4762E1E8A05770049E3DE /* CompletedTaskTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedTaskTVC.swift; sourceTree = "<group>"; };
 		E1D476301E8A06420049E3DE /* UpcomingTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingTVCell.swift; sourceTree = "<group>"; };
 		E1D476321E8A06530049E3DE /* CompletedTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedTVCell.swift; sourceTree = "<group>"; };
+		E1D4763A1E8C45F20049E3DE /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		E1D4763C1E8C5DBF0049E3DE /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
 		E73C040F628252F674DBB9FB /* Pods-HomePact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.debug.xcconfig"; sourceTree = "<group>"; };
 		EAAA94FA851AAE8776FCB473 /* Pods-HomePactTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePactTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomePactTests/Pods-HomePactTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomePactTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +194,7 @@
 		A20437AC1E89661B0046ABAA /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				E1D4763A1E8C45F20049E3DE /* RootTabBarController.swift */,
 				E1D4762C1E8A05600049E3DE /* UpcomingTaskTVC.swift */,
 				E1D4762E1E8A05770049E3DE /* CompletedTaskTVC.swift */,
 				E1D476281E89FD470049E3DE /* PageViewController.swift */,
@@ -208,6 +213,7 @@
 		A20437AD1E89661D0046ABAA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E1D4763C1E8C5DBF0049E3DE /* RootTabBar.storyboard */,
 				E1D476241E89DFE90049E3DE /* TabPageView.storyboard */,
 				A20437931E8966030046ABAA /* LaunchScreen.storyboard */,
 				E1D4762A1E8A03BD0049E3DE /* Tasks.storyboard */,
@@ -354,6 +360,7 @@
 				E1D476251E89DFE90049E3DE /* TabPageView.storyboard in Resources */,
 				A20437901E8966030046ABAA /* Login.storyboard in Resources */,
 				A20437BA1E89D30F0046ABAA /* JoinHome.storyboard in Resources */,
+				E1D4763D1E8C5DBF0049E3DE /* RootTabBar.storyboard in Resources */,
 				E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */,
 				A20437921E8966030046ABAA /* Assets.xcassets in Resources */,
 				A20437901E8966030046ABAA /* Login.storyboard in Resources */,
@@ -470,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1D476331E8A06530049E3DE /* CompletedTVCell.swift in Sources */,
+				E1D4763B1E8C45F20049E3DE /* RootTabBarController.swift in Sources */,
 				E1D476291E89FD470049E3DE /* PageViewController.swift in Sources */,
 				E1D4762D1E8A05600049E3DE /* UpcomingTaskTVC.swift in Sources */,
 				A20437C41E89D55B0046ABAA /* MakeHomeViewController.swift in Sources */,
