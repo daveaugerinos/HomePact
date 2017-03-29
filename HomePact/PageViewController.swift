@@ -10,26 +10,37 @@ import UIKit
 import TabPageViewController
 
 class PageViewController: UIViewController {
-
+   
+    enum ConfigureOptions  { case profiles, tasks }
+   
     @IBOutlet weak var statusBarView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let upcomingTaskVC = UIStoryboard.init(name: "Tasks", bundle: Bundle.main).instantiateViewController(withIdentifier: "upcomingTasks")
-        let completedTaskVC = UIStoryboard.init(name: "Tasks", bundle: Bundle.main).instantiateViewController(withIdentifier: "completedTasks")
-        setupWith(vcArray: [upcomingTaskVC,completedTaskVC])
+        configureTab(with: .tasks)
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func configureTab(with configureOption: ConfigureOptions) {
+        let storyboard = UIStoryboard(name: "Tasks", bundle: .main)
+        
+        switch configureOption {
+        case .tasks:
+            let upcomingTaskVC = storyboard.instantiateViewController(withIdentifier: "upcomingTasks") as! UpcomingTaskTVC
+            let completedTaskVC = storyboard.instantiateViewController(withIdentifier: "completedTasks") as! CompletedTaskTVC
+            setup(with: [upcomingTaskVC,completedTaskVC])
+        case .profiles:
+            let myProfileVC = storyboard.instantiateViewController(withIdentifier: "profilesPersonal") as! UpcomingTaskTVC
+            let groupProfileVC = storyboard.instantiateViewController(withIdentifier: "profilesGroup") as! CompletedTaskTVC
+            setup(with: [myProfileVC,groupProfileVC])
+            
+        }
     }
     
-    func setupWith(vcArray:[UIViewController]){
+    fileprivate func setup(with viewControllers:[UIViewController]){
         let tabPageVC = TabPageViewController.create()
         
-        for vc in vcArray{
+        for vc in viewControllers{
             tabPageVC.tabItems.append((vc, vc.title!))
         }
         
@@ -48,14 +59,6 @@ class PageViewController: UIViewController {
 
         view.setNeedsDisplay()
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

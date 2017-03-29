@@ -16,12 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         // Use Firebase library to configure APIs
         FIRApp.configure()
 
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         
+        // Override point for customization after application launch.
         return true
     }
 

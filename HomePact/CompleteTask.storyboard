@@ -13,7 +13,7 @@
         <!--Complete Task View Controller-->
         <scene sceneID="IDp-JQ-grO">
             <objects>
-                <viewController id="fUj-Bx-cbd" customClass="CompleteTaskViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="complete" id="fUj-Bx-cbd" customClass="CompleteTaskViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lSU-bX-4Sn"/>
                         <viewControllerLayoutGuide type="bottom" id="qYB-D3-3Tr"/>

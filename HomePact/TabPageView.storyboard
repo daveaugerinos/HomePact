@@ -12,7 +12,7 @@
         <!--Page View Controller-->
         <scene sceneID="4Ut-ts-hiy">
             <objects>
-                <viewController storyboardIdentifier="tabPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QOi-Nx-1FV" customClass="PageViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tabPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QOi-Nx-1FV" customClass="PageViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NzC-4T-qKz"/>
                         <viewControllerLayoutGuide type="bottom" id="D33-Uh-Gwr"/>
