@@ -10,11 +10,28 @@ import UIKit
 
 class MakeHomeViewController: UIViewController {
 
+    @IBOutlet weak var makeButton: UIButton!
+    @IBOutlet weak var sendInviteButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+         makeButton.layer.borderColor = UIColor.white.cgColor
+        sendInviteButton.layer.borderColor = UIColor.white.cgColor
     }
 
     // MARK: - Action Methods -
+
+    @IBAction func joinButtonTouched(_ sender: UIButton) {
+        ViewControllerRouter(self).showJoinHome()
+    }
+    
+    @IBAction func pickHomeImageButtonTouched(_ sender: UIButton) {
+    }
+    
+    @IBAction func makeButtonTouched(_ sender: UIButton) {
+    }
+    
+    @IBAction func sendInviteButtonTouched(_ sender: UIButton) {
+    }
 }
