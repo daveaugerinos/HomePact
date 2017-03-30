@@ -19,12 +19,20 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var reenterPasswordTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
-    
+    @IBOutlet weak var createUserFeedbackView: RoundView!
+    @IBOutlet weak var networkActivityView: UIView!
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     var userImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = networkActivityView.center
+        activityIndicator.frame = networkActivityView.bounds
+        networkActivityView.addSubview(activityIndicator)
+        createUserFeedbackView.layer.isHidden = true
         passwordTextField.isSecureTextEntry = true
         reenterPasswordTextField.isSecureTextEntry = true
         registerButton.layer.borderColor = UIColor.white.cgColor
@@ -180,33 +188,24 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             present(alert, animated: true)
         }
         
-        // *** ONLY TESTING CHANGE email! and password! ****
+        activityIndicator.startAnimating()
         
+        // *** ONLY TESTING CHANGE email! and password! ****
+ 
         FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: { (user, error) in
+            
             if let error = error {
                 print("Error \(error)")
                 return
             } else {
-                print("Login successful")
                 
-                if let user = user {
-                    let uid = user.uid  // Unique ID, which you can use to identify the user on the client side
-                    let email = user.email
-                    
-                    // let photoURL = user.photoURL
-                    
-                    print("UID: \(uid)")
-                    print("Email: \(email)")
-                    
-                    user.getTokenWithCompletion({ (token, error) in
-                        let idToken = token  // ID token, which you can safely send to a backend
-                        print("Token: \(idToken)")
-                    })
-                }
-                return
+                DispatchQueue.main.async(execute: {
+                    self.activityIndicator.stopAnimating()
+                    self.createUserFeedbackView.layer.isHidden = false
+                    ViewControllerRouter(self).showJoinHome()
+                })
             }
         })
-        
-        ViewControllerRouter(self).showJoinHome()
+        return
     }
 }
