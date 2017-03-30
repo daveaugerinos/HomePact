@@ -23,6 +23,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        passwordTextField.isSecureTextEntry = true
+        reenterPasswordTextField.isSecureTextEntry = true
         registerButton.layer.borderColor = UIColor.white.cgColor
     }
     
@@ -89,7 +91,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         present(imagePickerController, animated: true, completion: nil)
     }
 
-    @IBAction func clearTextPasswordButtonTouched(_ sender: UIButton) {
+    @IBAction func showSecureTextPasswordButtonTouched(_ sender: UIButton) {
+        let _ = passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        let _ = reenterPasswordTextField.isSecureTextEntry = !reenterPasswordTextField.isSecureTextEntry
     }
     
     @IBAction func registerButtonTouched(_ sender: UIButton) {
