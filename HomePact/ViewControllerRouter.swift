@@ -66,29 +66,25 @@ class ViewControllerRouter: NSObject {
     // MARK: - View Controller initializers -
     
     fileprivate func loginVC() -> LoginViewController {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        let controller = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login") as! LoginViewController
         
         return controller
     }
     
     fileprivate func registerVC() -> RegisterViewController {
-        let storyboard = UIStoryboard(name: "Register", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "Register") as! RegisterViewController
+        let controller = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(withIdentifier: "Register") as! RegisterViewController
         
         return controller
     }
     
     fileprivate func joinHomeVC() -> JoinHomeViewController {
-        let storyboard = UIStoryboard(name: "JoinHome", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "JoinHome") as! JoinHomeViewController
+        let controller = UIStoryboard(name: "JoinHome", bundle: nil).instantiateViewController(withIdentifier: "JoinHome") as! JoinHomeViewController
         
         return controller
     }
     
     fileprivate func makeHomeVC() -> MakeHomeViewController {
-        let storyboard = UIStoryboard(name: "MakeHome", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "MakeHome") as! MakeHomeViewController
+        let controller = UIStoryboard(name: "MakeHome", bundle: nil).instantiateViewController(withIdentifier: "MakeHome") as! MakeHomeViewController
         
         return controller
     }
@@ -116,7 +112,8 @@ class ViewControllerRouter: NSObject {
         
         return UIStoryboard(name: "CompleteTask", bundle: .main).instantiateViewController(withIdentifier: "complete") as! CompleteTaskViewController
     }
-    // MARK: - Private functions -
+    
+    // MARK: - Show function -
     
     fileprivate func show(_ vc: UIViewController) {
         controller?.show(vc, sender: controller)
