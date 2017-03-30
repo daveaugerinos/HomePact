@@ -13,7 +13,7 @@
         <!--Me-->
         <scene sceneID="ccz-7c-kqH">
             <objects>
-                <viewController storyboardIdentifier="profilesPersonal" title="Me" id="mqf-Jk-6kf" customClass="ProfilesPersonalViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profilesPersonal" title="Me" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mqf-Jk-6kf" customClass="ProfilesPersonalViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bsE-jF-JXQ"/>
                         <viewControllerLayoutGuide type="bottom" id="BPJ-JL-yRc"/>
