@@ -10,9 +10,6 @@ import UIKit
 
 class CompleteTaskViewController: UIViewController {
 
-    @IBOutlet weak var topFakeNavBarView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var taskNameLabel: UILabel!
     
     @IBOutlet weak var addMediaImageView: UIImageView!

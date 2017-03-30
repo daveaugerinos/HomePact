@@ -9,10 +9,6 @@
 import UIKit
 
 class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    @IBOutlet weak fileprivate var topFakeNavBarView: UIView!
-    @IBOutlet weak fileprivate var titleLabel: UILabel!
-    @IBOutlet weak fileprivate var cancelButton: UIButton!
     
     @IBOutlet weak fileprivate var taskNameTextField: UITextField!
     @IBOutlet weak fileprivate var dateLabel: UILabel!
@@ -20,7 +16,6 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     
     @IBOutlet weak fileprivate var groupMembersCollectionView: UICollectionView!
     
-    @IBOutlet weak var repeatDetailsViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak fileprivate var repeatDetailsView: UIView!
     @IBOutlet weak fileprivate var repeatSlider: UISlider!
     @IBOutlet weak fileprivate var repeatNumberOfTimesLabel: UILabel!
