@@ -11,8 +11,8 @@ import UIKit
 class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak fileprivate var taskNameTextField: UITextField!
-    @IBOutlet weak fileprivate var dateLabel: UILabel!
-    @IBOutlet weak fileprivate var recurrenceLabel: UILabel!
+    @IBOutlet weak fileprivate var dateTextField: UITextField!
+    @IBOutlet weak fileprivate var recurrenceTextField: UITextField!
     
     @IBOutlet weak fileprivate var groupMembersCollectionView: UICollectionView!
     
@@ -22,42 +22,105 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     
     @IBOutlet weak fileprivate var addMediaImageView: UIImageView!
     
-    let datepickerView = UIDatePicker()
-    let recurrencePickerView = UIPickerView()
     let arrayOfRecurrences = ["Once-off", "Weekly", "Fortnightly", "Monthly", "Quarterly", "Yearly"]
     var arrayOfUsers: [User] = []
+    let recurrencePickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateLabel.isUserInteractionEnabled = true
-        dateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showDatePicker(_:))))
-        
-        recurrenceLabel.isUserInteractionEnabled = true
-//        repeatDetailsView.frame.height = 0
-//        repeatDetailsViewHeightConstraint.constant = 0
-//        repeatDetailsView.translatesAutoresizingMaskIntoConstraints = true
-        
+        prepareViews()
+        configureCollectionDataSource()
+    }
+    
+    func prepareViews() {
         addMediaImageView.isUserInteractionEnabled = true
         addMediaImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addMediaImageViewTapped(_:))))
+        repeatDetailsView.alpha = 0
+        repeatDetailsView.isUserInteractionEnabled = false
+        repeatNumberOfTimesLabel.text = ""
+        let array = [taskNameTextField, dateTextField, recurrenceTextField]
+        for i in array {
+            i!.underlined()
+        }
         
-        configureDataSource()
+        
+        recurrenceTextField.text = arrayOfRecurrences[0]
+        
+        recurrencePickerView.delegate = self
+        recurrencePickerView.dataSource = self
+        recurrenceTextField.inputView = recurrencePickerView
+        
+        let doneButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        doneButton.setTitle("Done", for: UIControlState.normal)
+        doneButton.setTitle("Done", for: UIControlState.highlighted)
+        doneButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        doneButton.setTitleColor(UIColor.gray, for: UIControlState.highlighted)
+        doneButton.backgroundColor = UIColor.white
+        doneButton.addTarget(self, action: #selector(doneButtonPressed(_ :)), for: UIControlEvents.touchUpInside)
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .short
+//        dateFormat = "yyyy-MM-dd HH:mm"
+        dateTextField.text = formatter.string(from: date)
+        
+        let datepickerView = UIDatePicker()
+        datepickerView.timeZone = NSTimeZone.local
+        datepickerView.minuteInterval = 5
+        datepickerView.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        dateTextField.inputView = datepickerView
+        dateTextField.inputAccessoryView = doneButton
+        
+        recurrenceTextField.inputAccessoryView = doneButton
+        
     }
     
     //MARK: IBActions
-    @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        //segue back to upcoming tasks
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func completeButtonPressed(_ sender: UIButton) {
-        //segue back to upcoming tasks with new task
+        //save new recurring task  
+        //ViewControllerRouter(self).showUpcoming()
     }
     
-    //MARK: Show Picker Methods
-    
-    func showDatePicker(_ sender: UITapGestureRecognizer) {
-        //change height?
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        repeatNumberOfTimesLabel.text = String(format: "\(Int(sender.value)) times")
     }
+    
+    //MARK: Show Pickers
+    
+    func datePickerValueChanged(_ sender: UIDatePicker){
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        let selectedDate: String = dateFormatter.string(from: sender.date)
+        
+        dateTextField.text = selectedDate
+    }
+    
+    func doneButtonPressed(_ sender:UIButton)
+    {
+        //animate?
+        recurrenceTextField.resignFirstResponder()
+        dateTextField.resignFirstResponder()
+    }
+    
+//    func showRecurrencePicker(_ sender: UITapGestureRecognizer) {
+//        
+//        //replace in future with input​Accessory​View​Controller
+//        let recurrencePickerSuperView = UIView()
+//        recurrencePickerSuperView.frame = CGRect.init(x: 0, y: self.view.frame.height-250, width: self.view.frame.width, height: 250)
+//        
+//        let recurrencePickerView = UIPickerView()
+//        recurrencePickerView.frame = CGRect.init(x: 0, y: 50, width: recurrencePickerSuperView.frame.width, height: 200)
+//        
+//        //add Done button
+//        self.view.addSubview(recurrencePickerView)
+//    }
     
     func addMediaImageViewTapped(_ sender: UITapGestureRecognizer) {
         let imagePicker = UIImagePickerController()
@@ -79,17 +142,22 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     }
     
     //MARK: UIPickerView Delegate Methods
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return arrayOfRecurrences[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //show repeatDetailsView if not one-off
+        recurrenceTextField.text = arrayOfRecurrences[row]
+        if row >= 1 {
+            repeatDetailsView.alpha = 1.0
+            repeatDetailsView.isUserInteractionEnabled = true
+        } else {
+            repeatDetailsView.alpha = 0.0
+            repeatDetailsView.isUserInteractionEnabled = false
+        }
     }
     
     //MARK: UIPickerView DataSource Methods
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -100,7 +168,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     
     //MARK: Collection View Methods
     
-    func configureDataSource() {
+    func configureCollectionDataSource() {
         //TODO: update in future to query db for other group members
         
         //make three sample users
