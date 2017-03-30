@@ -46,25 +46,76 @@ class ViewControllerRouter: NSObject {
         show(makeHomeVC())
     }
     
+    func showTasks() {
+        show(taskPageVCs())
+    }
+    
+    func showProfiles() {
+        show(profilePageVCs())
+    }
+    
+    func showAddOrModify() {
+        show(addOrModifyVC())
+    }
+    
+    func showCompleteTask() {
+        show(completeTaskVC())
+    }
+    
+    
     // MARK: - View Controller initializers -
     
     fileprivate func loginVC() -> LoginViewController {
-        return LoginViewController()
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        
+        return controller
     }
     
     fileprivate func registerVC() -> RegisterViewController {
-        return RegisterViewController()
+        let storyboard = UIStoryboard(name: "Register", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "Register") as! RegisterViewController
+        
+        return controller
     }
     
     fileprivate func joinHomeVC() -> JoinHomeViewController {
-        return JoinHomeViewController()
+        let storyboard = UIStoryboard(name: "JoinHome", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "JoinHome") as! JoinHomeViewController
+        
+        return controller
     }
     
     fileprivate func makeHomeVC() -> MakeHomeViewController {
-        return MakeHomeViewController()
+        let storyboard = UIStoryboard(name: "MakeHome", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MakeHome") as! MakeHomeViewController
+        
+        return controller
     }
     
+    fileprivate func taskPageVCs() -> PageViewController {
+        let tabPageVC = UIStoryboard(name: "Tasks", bundle: .main).instantiateViewController(withIdentifier: "tabPage") as! PageViewController
+        tabPageVC.configureTab(with: .tasks)
+        
+        return tabPageVC
+    }
     
+    fileprivate func profilePageVCs() -> PageViewController {
+        let tabPageVC = UIStoryboard(name: "Tasks", bundle: .main).instantiateViewController(withIdentifier: "tabPage") as! PageViewController
+        tabPageVC.configureTab(with: .profiles)
+       
+        return tabPageVC
+    }
+    
+    fileprivate func addOrModifyVC() -> AddOrModifyVC {
+        
+        return UIStoryboard(name: "AddOrModify", bundle: .main).instantiateViewController(withIdentifier: "addOrModify") as! AddOrModifyVC
+    }
+    
+    fileprivate func completeTaskVC() -> CompleteTaskViewController{
+        
+        return UIStoryboard(name: "CompleteTask", bundle: .main).instantiateViewController(withIdentifier: "complete") as! CompleteTaskViewController
+    }
     // MARK: - Private functions -
     
     fileprivate func show(_ vc: UIViewController) {

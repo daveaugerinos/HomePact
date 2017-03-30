@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profiles Personal View Controller-->
+        <!--Me-->
         <scene sceneID="ccz-7c-kqH">
             <objects>
-                <viewController id="mqf-Jk-6kf" customClass="ProfilesPersonalViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profilesPersonal" title="Me" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mqf-Jk-6kf" customClass="ProfilesPersonalViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bsE-jF-JXQ"/>
                         <viewControllerLayoutGuide type="bottom" id="BPJ-JL-yRc"/>

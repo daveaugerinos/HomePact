@@ -10,45 +10,60 @@ import UIKit
 import TabPageViewController
 
 class PageViewController: UIViewController {
+   
+    enum ConfigureOptions  { case profiles, tasks }
+   
+    @IBOutlet weak var statusBarView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureTab(with: .tasks)
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
-    func setupWith(vcArray:[UIViewController]){
-        let tabPageVC = TabPageViewController.create()
+
+    func configureTab(with configureOption: ConfigureOptions) {
+        let tasksStoryboard = UIStoryboard(name: "Tasks", bundle: .main)
         
-        for vc in vcArray{
+        switch configureOption {
+        case .tasks:
+            let upcomingTaskVC = tasksStoryboard.instantiateViewController(withIdentifier: "upcomingTasks") as! UpcomingTaskTVC
+            let completedTaskVC = tasksStoryboard.instantiateViewController(withIdentifier: "completedTasks") as! CompletedTaskTVC
+            setup(with: [upcomingTaskVC,completedTaskVC])
+        case .profiles:
+            let myProfileVC =  UIStoryboard(name: "ProfilesPersonal", bundle: .main)
+.instantiateViewController(withIdentifier: "profilesPersonal") as! ProfilesPersonalViewController
+            let groupProfileVC =  UIStoryboard(name: "ProfilesGroup", bundle: .main)
+.instantiateViewController(withIdentifier: "profilesGroup") as! ProfilesGroupViewController
+            setup(with: [myProfileVC,groupProfileVC])
+            
+        }
+    }
+    
+    
+    fileprivate func setup(with viewControllers:[UIViewController]){
+        let tabPageVC = TabPageViewController.create()
+       print("\(tabPageVC.gestureRecognizers)")
+        for vc in viewControllers{
             tabPageVC.tabItems.append((vc, vc.title!))
         }
         
         var option = TabPageOption()
-        option.currentColor = UIColor(red: 246/255, green: 175/255, blue: 32/255, alpha: 1.0)
+        option.currentColor = UIColor.white
+        option.defaultColor = UIColor.white
         option.tabWidth = view.frame.width/2
         option.tabMargin = 30.0
         option.tabBackgroundColor = #colorLiteral(red: 0.8508874774, green: 0.8510339856, blue: 0.8508781791, alpha: 1)
-        
+        option.isTranslucent = false
         tabPageVC.option = option
         
-        self.addChildViewController(tabPageVC)
-        self.view.addSubview(tabPageVC.view)
-        self.view.setNeedsDisplay()
-    }
-    /*
-    // MARK: - Navigation
+        addChildViewController(tabPageVC)
+        view.addSubview(tabPageVC.view)
+        view.addSubview(statusBarView)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        view.setNeedsDisplay()
     }
-    */
+
 
 }

@@ -10,21 +10,21 @@ import UIKit
 
 class CompleteTaskViewController: UIViewController {
 
+    @IBOutlet weak var taskNameLabel: UILabel!
+    
+    @IBOutlet weak var addMediaImageView: UIImageView!
+    
+    @IBOutlet weak var extraDetailsTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //enable interaction of addMediaImageView - ImagePickerController etc
         
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
     }
-    */
+
 
 }
