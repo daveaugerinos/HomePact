@@ -101,6 +101,16 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        // Check for matching passwords
+        if(passwordTextField.text != reenterPasswordTextField.text) {
+            let alert = UIAlertController(title: "Passwords Do Not Match", message: "Please ensure your password matches.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+        }
+        
         // Minimum 8 characters, at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character
         let regularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[~$@$#!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"
         let passwordValidation = NSPredicate.init(format: "SELF MATCHES %@", regularExpression)
