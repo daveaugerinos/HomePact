@@ -38,6 +38,9 @@
 		A2DE88671E8C6CEF00C5D515 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A204378E1E8966030046ABAA /* Login.storyboard */; };
 		A2DE88681E8C6CEF00C5D515 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */; };
 		A2DE88691E8C6CEF00C5D515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20437911E8966030046ABAA /* Assets.xcassets */; };
+		E19283B31E8D87A2001BD535 /* FirebaseUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B11E8D87A2001BD535 /* FirebaseUserManager.swift */; };
+		E19283B41E8D87A2001BD535 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */; };
+		E19283B61E8D8CE6001BD535 /* FirebaseTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B51E8D8CE6001BD535 /* FirebaseTaskManager.swift */; };
 		E1D476251E89DFE90049E3DE /* TabPageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D476241E89DFE90049E3DE /* TabPageView.storyboard */; };
 		E1D476291E89FD470049E3DE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D476281E89FD470049E3DE /* PageViewController.swift */; };
 		E1D4762B1E8A03BD0049E3DE /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D4762A1E8A03BD0049E3DE /* Tasks.storyboard */; };
@@ -94,6 +97,9 @@
 		A24940E61E8C628B0059F1A0 /* RoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		A288FA921E8AE80000A09299 /* ViewControllerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRouter.swift; sourceTree = "<group>"; };
 		B5123F6F3FFD054BA86F6DC3 /* Pods-HomePactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePactTests/Pods-HomePactTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E19283B11E8D87A2001BD535 /* FirebaseUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUserManager.swift; sourceTree = "<group>"; };
+		E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
+		E19283B51E8D8CE6001BD535 /* FirebaseTaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTaskManager.swift; sourceTree = "<group>"; };
 		E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1D476241E89DFE90049E3DE /* TabPageView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabPageView.storyboard; sourceTree = "<group>"; };
 		E1D476281E89FD470049E3DE /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +199,9 @@
 				A20437B31E8966CC0046ABAA /* Task.swift */,
 				A20437B51E8966E70046ABAA /* Message.swift */,
 				A288FA921E8AE80000A09299 /* ViewControllerRouter.swift */,
+				E19283B11E8D87A2001BD535 /* FirebaseUserManager.swift */,
+				E19283B51E8D8CE6001BD535 /* FirebaseTaskManager.swift */,
+				E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -489,6 +498,7 @@
 				A20437BE1E89D4C70046ABAA /* LoginViewController.swift in Sources */,
 				A24940E31E8C31C40059F1A0 /* PickImageButton.swift in Sources */,
 				A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */,
+				E19283B41E8D87A2001BD535 /* ScheduleCoordinator.swift in Sources */,
 				A20437C01E89D53B0046ABAA /* RegisterViewController.swift in Sources */,
 				A20437B41E8966CC0046ABAA /* Task.swift in Sources */,
 				E1D476311E8A06420049E3DE /* UpcomingTVCell.swift in Sources */,
@@ -499,9 +509,11 @@
 				A20437B01E8966A10046ABAA /* User.swift in Sources */,
 				A20437B21E8966B90046ABAA /* Group.swift in Sources */,
 				3F586BCF1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift in Sources */,
+				E19283B61E8D8CE6001BD535 /* FirebaseTaskManager.swift in Sources */,
 				3F586BDB1E8A0A90004AFA62 /* AddOrModifyVC.swift in Sources */,
 				E1D4762F1E8A05770049E3DE /* CompletedTaskTVC.swift in Sources */,
 				A20437C21E89D54F0046ABAA /* JoinHomeViewController.swift in Sources */,
+				E19283B31E8D87A2001BD535 /* FirebaseUserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
