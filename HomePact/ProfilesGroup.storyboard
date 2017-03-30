@@ -13,7 +13,7 @@
         <!--Group-->
         <scene sceneID="rG3-FW-FpZ">
             <objects>
-                <viewController storyboardIdentifier="profilesGroup" title="Group" id="ypr-TE-LkO" customClass="ProfilesGroupViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profilesGroup" title="Group" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ypr-TE-LkO" customClass="ProfilesGroupViewController" customModule="HomePact" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zyr-7n-cRQ"/>
                         <viewControllerLayoutGuide type="bottom" id="cS0-11-Qzr"/>
