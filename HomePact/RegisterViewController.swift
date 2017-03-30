@@ -101,16 +101,19 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if((password?.characters.count)! < 5) {
+        // Minimum 8 characters, at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character
+        let regularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[~$@$#!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"
+        let passwordValidation = NSPredicate.init(format: "SELF MATCHES %@", regularExpression)
+        let isValid = passwordValidation.evaluate(with: password)
+        
+        if(!isValid) {
             
-            
-            let alert = UIAlertController(title: "Invalid Password", message: "Password must be greater than 5 characters", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Invalid Password", message: "Your password must have a minimum of 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.", preferredStyle: UIAlertControllerStyle.alert)
             
             let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
             alert.addAction(cancelAction)
             present(alert, animated: true)
-            
         }
         
         // *** ONLY TESTING CHANGE email! and password! ****
