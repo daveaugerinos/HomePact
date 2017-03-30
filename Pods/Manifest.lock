@@ -43,6 +43,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
+  - IQKeyboardManagerSwift (4.0.8)
   - TabPageViewController (0.2.5)
 
 DEPENDENCIES:
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - GoogleSignIn
+  - IQKeyboardManagerSwift
   - TabPageViewController
 
 SPEC CHECKSUMS:
@@ -63,8 +65,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   TabPageViewController: 66aca4291518e66f6ef6800bfe3a98217f58a434
 
-PODFILE CHECKSUM: 13abc2f7459c7b71dda9fd03c430662128a25eb9
+PODFILE CHECKSUM: c73de559bb7eb2c85d317e7cbef31f40df12e7bc
 
 COCOAPODS: 1.2.0
