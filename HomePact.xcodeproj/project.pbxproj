@@ -367,9 +367,6 @@
 				A2DE88671E8C6CEF00C5D515 /* Login.storyboard in Resources */,
 				A20437BA1E89D30F0046ABAA /* JoinHome.storyboard in Resources */,
 				E1D4763D1E8C5DBF0049E3DE /* RootTabBar.storyboard in Resources */,
-				E1D476211E89D01A0049E3DE /* GoogleService-Info.plist in Resources */,
-				A20437921E8966030046ABAA /* Assets.xcassets in Resources */,
-				A20437901E8966030046ABAA /* Login.storyboard in Resources */,
 				A20437B81E89D2ED0046ABAA /* Register.storyboard in Resources */,
 				A20437BC1E89D31B0046ABAA /* MakeHome.storyboard in Resources */,
 			);

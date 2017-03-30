@@ -39,7 +39,9 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         dateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showDatePicker(_:))))
         
         recurrenceLabel.isUserInteractionEnabled = true
-        repeatDetailsViewHeightConstraint.constant = 0
+//        repeatDetailsView.frame.height = 0
+//        repeatDetailsViewHeightConstraint.constant = 0
+//        repeatDetailsView.translatesAutoresizingMaskIntoConstraints = true
         
         addMediaImageView.isUserInteractionEnabled = true
         addMediaImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addMediaImageViewTapped(_:))))
@@ -88,7 +90,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //
+        //show repeatDetailsView if not one-off
     }
     
     //MARK: UIPickerView DataSource Methods
@@ -101,9 +103,10 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         return arrayOfRecurrences.count
     }
     
-    //MARK: Collection View methods
+    //MARK: Collection View Methods
+    
     func configureDataSource() {
-        //update in future to query db for other group members
+        //TODO: update in future to query db for other group members
         
         //make three sample users
         let userNames = ["Dave", "Ali", "Callum"]
@@ -119,13 +122,13 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memberCell", for: indexPath) as! AddOrModifyCVCell
-        let userForCell = arrayOfUsers[indexPath.row]
+        let userForCell = arrayOfUsers[indexPath.item]
         cell.user = userForCell
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return arrayOfUsers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
