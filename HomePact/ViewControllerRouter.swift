@@ -54,6 +54,14 @@ class ViewControllerRouter: NSObject {
         show(profilePageVCs())
     }
     
+    func showAddOrModify() {
+        show(addOrModifyVC())
+    }
+    
+    func showCompleteTask() {
+        show(completeTaskVC())
+    }
+    
     
     // MARK: - View Controller initializers -
     
@@ -97,6 +105,16 @@ class ViewControllerRouter: NSObject {
         tabPageVC.configureTab(with: .profiles)
        
         return tabPageVC
+    }
+    
+    fileprivate func addOrModifyVC() -> AddOrModifyVC {
+        
+        return UIStoryboard(name: "AddOrModify", bundle: .main).instantiateViewController(withIdentifier: "addOrModify") as! AddOrModifyVC
+    }
+    
+    fileprivate func completeTaskVC() -> CompleteTaskViewController{
+        
+        return UIStoryboard(name: "CompleteTask", bundle: .main).instantiateViewController(withIdentifier: "complete") as! CompleteTaskViewController
     }
     // MARK: - Private functions -
     

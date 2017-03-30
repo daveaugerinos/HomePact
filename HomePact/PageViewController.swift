@@ -19,27 +19,32 @@ class PageViewController: UIViewController {
         super.viewDidLoad()
         configureTab(with: .tasks)
         // Do any additional setup after loading the view.
+        
     }
+    
 
     func configureTab(with configureOption: ConfigureOptions) {
-        let storyboard = UIStoryboard(name: "Tasks", bundle: .main)
+        let tasksStoryboard = UIStoryboard(name: "Tasks", bundle: .main)
         
         switch configureOption {
         case .tasks:
-            let upcomingTaskVC = storyboard.instantiateViewController(withIdentifier: "upcomingTasks") as! UpcomingTaskTVC
-            let completedTaskVC = storyboard.instantiateViewController(withIdentifier: "completedTasks") as! CompletedTaskTVC
+            let upcomingTaskVC = tasksStoryboard.instantiateViewController(withIdentifier: "upcomingTasks") as! UpcomingTaskTVC
+            let completedTaskVC = tasksStoryboard.instantiateViewController(withIdentifier: "completedTasks") as! CompletedTaskTVC
             setup(with: [upcomingTaskVC,completedTaskVC])
         case .profiles:
-            let myProfileVC = storyboard.instantiateViewController(withIdentifier: "profilesPersonal") as! UpcomingTaskTVC
-            let groupProfileVC = storyboard.instantiateViewController(withIdentifier: "profilesGroup") as! CompletedTaskTVC
+            let myProfileVC =  UIStoryboard(name: "ProfilesPersonal", bundle: .main)
+.instantiateViewController(withIdentifier: "profilesPersonal") as! ProfilesPersonalViewController
+            let groupProfileVC =  UIStoryboard(name: "ProfilesGroup", bundle: .main)
+.instantiateViewController(withIdentifier: "profilesGroup") as! ProfilesGroupViewController
             setup(with: [myProfileVC,groupProfileVC])
             
         }
     }
     
+    
     fileprivate func setup(with viewControllers:[UIViewController]){
         let tabPageVC = TabPageViewController.create()
-        
+       print("\(tabPageVC.gestureRecognizers)")
         for vc in viewControllers{
             tabPageVC.tabItems.append((vc, vc.title!))
         }

@@ -37,8 +37,12 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //
+        reenterPasswordTextField.resignFirstResponder()
         return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods -
