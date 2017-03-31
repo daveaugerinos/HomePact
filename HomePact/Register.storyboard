@@ -106,7 +106,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Otu-Xj-cZz">
                                 <rect key="frame" x="52" y="440" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -122,7 +122,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter the password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4nF-aC-jhp">
                                 <rect key="frame" x="52" y="489" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -136,7 +136,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Eye_White"/>
                                 <connections>
-                                    <action selector="clearTextPasswordButtonTouched:" destination="Bjz-fs-zdh" eventType="touchUpInside" id="Y08-gu-uxZ"/>
+                                    <action selector="showSecureTextPasswordButtonTouched:" destination="Bjz-fs-zdh" eventType="touchUpInside" id="9Mi-ag-9MT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfl-F2-V93">
@@ -185,12 +185,6 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowWidthOffset">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowHeightOffset">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColour">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
@@ -212,13 +206,20 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="Thumbs_Up"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQc-Kv-eJp">
+                                <rect key="frame" x="150" y="532" width="75" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.38501393795013428" green="0.57021170854568481" blue="0.71594196557998657" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="createUserFeedbackView" destination="vbF-Dm-TdU" id="jwX-gh-clS"/>
                         <outlet property="emailTextField" destination="QFG-X0-KSa" id="7Bi-yu-4Qw"/>
                         <outlet property="firstNameTextField" destination="xsJ-9n-WVu" id="rMF-jO-M0x"/>
                         <outlet property="lastNameTextField" destination="Grr-9z-EcR" id="vTk-14-gXJ"/>
+                        <outlet property="networkActivityView" destination="GQc-Kv-eJp" id="Xnn-md-Vz5"/>
                         <outlet property="passwordTextField" destination="Otu-Xj-cZz" id="ZcC-fV-zMG"/>
                         <outlet property="phoneNumberTextField" destination="bOW-gr-yuX" id="9au-3V-lw1"/>
                         <outlet property="pickYourImageButton" destination="Ytx-bJ-JUi" id="hm9-yb-TbK"/>
