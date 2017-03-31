@@ -154,6 +154,11 @@
                                     <action selector="makeAHomeButtonTouched:" destination="wh8-jm-2FH" eventType="touchUpInside" id="Ivk-Cd-A82"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GoJ-qZ-cQG">
+                                <rect key="frame" x="142" y="387" width="90" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.38501393795013428" green="0.57021170854568481" blue="0.71594196557998657" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
@@ -169,8 +174,12 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="homeImageView" destination="YY4-Iz-9c0" id="6TU-X8-sfk"/>
                         <outlet property="joinButton" destination="Zm8-7D-gHc" id="jiy-b7-w1q"/>
+                        <outlet property="joinHomeFeedbackView" destination="85M-y0-plK" id="fOl-BT-8P5"/>
+                        <outlet property="joinHomeTextField" destination="dO4-sS-f6G" id="CDe-aO-BDc"/>
                         <outlet property="makeAHomeButton" destination="Ijm-de-DTw" id="HUZ-8j-CZm"/>
+                        <outlet property="networkActivityView" destination="GoJ-qZ-cQG" id="LKb-ix-aJ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CWH-9I-G5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
