@@ -53,7 +53,17 @@ class FirebaseUserManager:NSObject {
         
     }
     
-    func add(task:Task, to user:User, for condition:TaskCondition ) {
+    func user(from  userID:String,with closure:@escaping (_ user:User,_ error:Error?)-> (Void) ) {
+        usersRef.child(userID).observeSingleEvent(of: .value, with:{ snapshot in
+        
+         let queryResult = self.user(from: snapshot)
+    
+        })
+        
+    
+    }
+
+    func add(_ task:Task, to user:User, for condition:TaskCondition ) {
         
         var queryCondition: String
        
@@ -69,7 +79,7 @@ class FirebaseUserManager:NSObject {
         
     }
     
-    func remove(task:Task, from user:User, for condition: TaskCondition)  {
+    func remove(_ task:Task, from user:User, for condition: TaskCondition)  {
         var queryCondition: String
         
         switch condition {
@@ -84,10 +94,10 @@ class FirebaseUserManager:NSObject {
         
     }
     
-    func move(task:Task, from user: User, from condition: TaskCondition, to anotherCondition: TaskCondition) {
+    func move(_ task:Task, for user: User, from condition: TaskCondition, to anotherCondition: TaskCondition) {
   
-        remove(task: task, from: user, for: condition)
-        add(task: task, to: user, for: anotherCondition)
+        remove( task, from: user, for: condition)
+        add( task, to: user, for: anotherCondition)
     }
     
     
@@ -164,4 +174,27 @@ class FirebaseUserManager:NSObject {
         return (IDs,nil)
         
     }
+    
+    func user(from snapshot:FIRDataSnapshot) -> (user:User?, error:Error?){
+        
+        
+        guard let userInfo = snapshot.value as? NSDictionary else {
+            let closureError = "Error accesing user details" as! Error
+            return (nil, closureError)
+        }
+        let userName = userInfo.value(forKeyPath: "username") as? String ?? ""
+        let uid = userInfo.value(forKeyPath: "uid") as? String ?? ""
+        let firstName = userInfo.value(forKeyPath: "firstname") as? String ?? ""
+        let lastName = userInfo.value(forKeyPath: "lastname") as? String ?? ""
+        let phoneNumber = userInfo.value(forKeyPath: "phonenumber") as? String ?? ""
+            
+        
+        var newUser = User(id: uid, username: userName, timestamp: Date())
+        newUser.firstName = firstName
+        newUser.lastName = lastName
+        newUser.phoneNumber = phoneNumber
+        
+        return (newUser,nil)
+    }
+    
 }
