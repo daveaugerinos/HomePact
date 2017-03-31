@@ -109,19 +109,6 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         dateTextField.resignFirstResponder()
     }
     
-//    func showRecurrencePicker(_ sender: UITapGestureRecognizer) {
-//        
-//        //replace in future with input​Accessory​View​Controller
-//        let recurrencePickerSuperView = UIView()
-//        recurrencePickerSuperView.frame = CGRect.init(x: 0, y: self.view.frame.height-250, width: self.view.frame.width, height: 250)
-//        
-//        let recurrencePickerView = UIPickerView()
-//        recurrencePickerView.frame = CGRect.init(x: 0, y: 50, width: recurrencePickerSuperView.frame.width, height: 200)
-//        
-//        //add Done button
-//        self.view.addSubview(recurrencePickerView)
-//    }
-    
     func addMediaImageViewTapped(_ sender: UITapGestureRecognizer) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
