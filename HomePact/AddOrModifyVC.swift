@@ -175,7 +175,8 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         let userNames = ["Dave", "Ali", "Callum"]
         
         for item in userNames {
-            var user = User.init(id: "test01-id", token: "test01-token", username: "test01-username", timestamp: Date())
+            
+            var user = User.init(id: "test01-id", username: "test01-username", timestamp: Date())
             user.firstName = item
             user.lastName = "lastName"
             user.userImage = #imageLiteral(resourceName: "Person_Dark")

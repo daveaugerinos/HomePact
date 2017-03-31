@@ -14,7 +14,7 @@ class JoinHomeViewController: UIViewController {
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var makeAHomeButton: UIButton!
     @IBOutlet weak var homeImageView: UIImageView!
-    @IBOutlet weak var joinHomeFeedbackView: UIImageView!
+    @IBOutlet weak var joinHomeFeedbackView: UIView!
     @IBOutlet weak var networkActivityView: UIView!
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
