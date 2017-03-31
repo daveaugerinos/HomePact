@@ -39,10 +39,21 @@
                                     <action selector="joinButtonTouched:" destination="ZhH-rW-iJp" eventType="touchUpInside" id="b58-WN-N0C"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DA-lB-GAn">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DA-lB-GAn" customClass="PickImageButton" customModule="HomePact" customModuleProvider="target">
                                 <rect key="frame" x="137" y="79" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="House_Circle"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColour">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="pickHomeImageButtonTouched:" destination="ZhH-rW-iJp" eventType="touchUpInside" id="vLY-cF-qih"/>
                                 </connections>
@@ -61,11 +72,11 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your home name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qdw-xS-S5b">
                                 <rect key="frame" x="53" y="234" width="306" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STn-7l-RT5">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STn-7l-RT5" userLabel="Home Name Text Field Line View">
                                 <rect key="frame" x="23" y="269" width="336" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -100,10 +111,6 @@
                                     <action selector="makeButtonTouched:" destination="ZhH-rW-iJp" eventType="touchUpInside" id="Krf-5N-p8X"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Thumbs_Up" translatesAutoresizingMaskIntoConstraints="NO" id="dUd-Te-gfv">
-                                <rect key="frame" x="147" y="369" width="90" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Send an Invitation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g8-N7-gKO">
                                 <rect key="frame" x="118" y="474" width="147" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -151,17 +158,40 @@
                                     <action selector="sendInviteButtonTouched:" destination="ZhH-rW-iJp" eventType="touchUpInside" id="ctB-0E-ToB"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4eB-Vd-cRJ" customClass="RoundView" customModule="HomePact" customModuleProvider="target">
+                                <rect key="frame" x="150" y="370" width="75" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="Thumbs_Up"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColour">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColour">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ysQ-eK-nnP">
+                                <rect key="frame" x="150" y="370" width="75" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.38519114255905151" green="0.56627655029296875" blue="0.71199172735214233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="createHomeFeedbackView" destination="4eB-Vd-cRJ" id="Wlg-a3-vl4"/>
+                        <outlet property="homeNameTextField" destination="qdw-xS-S5b" id="pLS-Zt-ay2"/>
                         <outlet property="makeButton" destination="wYF-d1-kjK" id="j4M-dN-2Ms"/>
+                        <outlet property="networkActivityView" destination="ysQ-eK-nnP" id="FBq-9S-HEi"/>
+                        <outlet property="pickYourHomeImageButton" destination="6DA-lB-GAn" id="18d-FO-IKN"/>
                         <outlet property="sendInviteButton" destination="oOR-MI-Z3D" id="dk1-Hg-20J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="73K-SL-HZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="268" y="256.82158920539734"/>
+            <point key="canvasLocation" x="416.80000000000001" y="172.26386806596702"/>
         </scene>
     </scenes>
     <resources>
