@@ -11,7 +11,6 @@ import UIKit
 struct User {
 
     let id: String
-    let token: String
     let username: String
     let timestamp: Date
     var firstName: String?
@@ -19,9 +18,8 @@ struct User {
     var phoneNumber: String?
     var userImage: UIImage?
 
-    init(id: String, token: String, username: String, timestamp: Date) {
+    init(id: String, username: String, timestamp: Date) {
         self.id = id
-        self.token = token
         self.username = username
         self.timestamp = timestamp
     }
