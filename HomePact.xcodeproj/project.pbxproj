@@ -335,7 +335,7 @@
 				TargetAttributes = {
 					A20437861E8966020046ABAA = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9JUJMAUQ3E;
+						DevelopmentTeam = 8MSUYUMX52;
 						ProvisioningStyle = Automatic;
 					};
 					A204379A1E8966030046ABAA = {
@@ -661,10 +661,11 @@
 			baseConfigurationReference = E73C040F628252F674DBB9FB /* Pods-HomePact.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9JUJMAUQ3E;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8MSUYUMX52;
 				INFOPLIST_FILE = HomePact/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = daveaugerinos.HomePact;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daveaugerinos.testhomepact;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -675,10 +676,11 @@
 			baseConfigurationReference = 20A8B61287B2EE17D50D4146 /* Pods-HomePact.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9JUJMAUQ3E;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8MSUYUMX52;
 				INFOPLIST_FILE = HomePact/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = daveaugerinos.HomePact;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daveaugerinos.testhomepact;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
