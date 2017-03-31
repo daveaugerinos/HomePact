@@ -71,10 +71,10 @@ class FirebaseGroupManager: NSObject {
     
     
     
-    func getUserIDs(for group:Group, with closure:@escaping (_ userIDs:[String],_ error:Error?)-> (Void) ) {
+    func observeUserIDs(for group:Group, with closure:@escaping (_ userIDs:[String],_ error:Error?)-> (Void) ) {
         let query = groupUserLogsRef.child(group.id).child("members").queryOrderedByKey()
         
-        query.observeSingleEvent(of: .value, with: { snapshot in
+        query.observe( .value, with: { snapshot in
             
             let queryResults = self.IDs(from: snapshot)
             
@@ -96,7 +96,7 @@ class FirebaseGroupManager: NSObject {
         }
         
         let query = groupTaskLogsRef.child(group.id).child(queryCondition).queryOrderedByKey()
-        query.observeSingleEvent(of: .value, with: { snapshot in
+        query.observe( .value, with: { snapshot in
             
             let queryResults = self.IDs(from: snapshot)
             

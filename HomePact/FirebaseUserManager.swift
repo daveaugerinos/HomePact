@@ -92,7 +92,7 @@ class FirebaseUserManager:NSObject {
     
     
     
-    func getGroupIDs(for user:User, with closure:@escaping (_ groupIDs:[String],_ error:Error?)-> (Void) ) {
+    func observeGroupIDs(for user:User, with closure:@escaping (_ groupIDs:[String],_ error:Error?)-> (Void) ) {
         let query = userGroupLogsRef.child(user.id).child("memberOf").queryOrderedByKey()
        
         query.observeSingleEvent(of: .value, with: { snapshot in
@@ -105,10 +105,10 @@ class FirebaseUserManager:NSObject {
         
     }
     
-    func getMessageIDs(for user:User, with closure:@escaping (_ groupIDs:[String],_ error:Error?)-> (Void) ) {
+    func observeMessageIDs(for user:User, with closure:@escaping (_ groupIDs:[String],_ error:Error?)-> (Void) ) {
         let query = userMessageLogsRef.child(user.id).queryOrderedByKey()
         
-        query.observeSingleEvent(of: .value, with: { snapshot in
+        query.observe( .value, with: { snapshot in
             
             let queryResults = self.IDs(from: snapshot)
             
@@ -118,7 +118,7 @@ class FirebaseUserManager:NSObject {
         
     }
     
-    func getTaskIDs(for user:User, in condition:TaskCondition, with closure:@escaping (_ taskIDs:[String],_ error:Error?)-> (Void) ) {
+    func observeTaskIDs(for user:User, in condition:TaskCondition, with closure:@escaping (_ taskIDs:[String],_ error:Error?)-> (Void) ) {
         
         var queryCondition:String
         switch condition {
@@ -130,7 +130,7 @@ class FirebaseUserManager:NSObject {
         }
         
         let query = userTaskLogsRef.child(user.id).child(queryCondition).queryOrderedByKey()
-        query.observeSingleEvent(of: .value, with: { snapshot in
+        query.observe( .value, with: { snapshot in
             
             let queryResults = self.IDs(from: snapshot)
             

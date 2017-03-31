@@ -33,7 +33,7 @@ class FirebaseTaskManager: NSObject {
     }
 
    
-    func getTasks(with IDs:[String], with closure:@escaping (_ tasks:[Task],_ error:Error?)-> (Void) ){
+    func observeTasks(with IDs:[String], with closure:@escaping (_ tasks:[Task],_ error:Error?)-> (Void) ){
         
         
         let query = tasksRef.queryOrderedByKey().queryStarting(atValue: IDs.first).queryEnding(atValue: IDs.last)
