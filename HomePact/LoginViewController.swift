@@ -16,10 +16,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
      @brief The handler for the auth state listener, to allow cancelling later.
      */
     var handle: FIRAuthStateDidChangeListenerHandle?
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        loginButton.layer.borderColor = UIColor.white.cgColor
+        registerButton.layer.borderColor = UIColor.white.cgColor
+        
         // Hide the navigation bar for current view controller
         self.navigationController?.isNavigationBarHidden = true
         
