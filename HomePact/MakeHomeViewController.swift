@@ -7,19 +7,50 @@
 //
 
 import UIKit
+import Firebase
 
-class MakeHomeViewController: UIViewController {
-
+class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    @IBOutlet weak var pickYourHomeImageButton: PickImageButton!
+    @IBOutlet weak var homeNameTextField: UITextField!
     @IBOutlet weak var makeButton: UIButton!
     @IBOutlet weak var sendInviteButton: UIButton!
+    @IBOutlet weak var createHomeFeedbackView: RoundView!
+    @IBOutlet weak var networkActivityView: UIView!
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    var homeImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-         makeButton.layer.borderColor = UIColor.white.cgColor
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = networkActivityView.center
+        activityIndicator.frame = networkActivityView.bounds
+        networkActivityView.addSubview(activityIndicator)
+        createHomeFeedbackView.layer.isHidden = true
+        makeButton.layer.borderColor = UIColor.white.cgColor
         sendInviteButton.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate Methods -
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Use the orginal image in dictionary
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        // Set button to display the selected image
+        pickYourHomeImageButton.setImage(selectedImage, for: .normal)
+        
+        // Get home image for later upload
+        homeImage = selectedImage
+        
+        // Dismiss the picker
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Action Methods -
@@ -29,9 +60,54 @@ class MakeHomeViewController: UIViewController {
     }
     
     @IBAction func pickHomeImageButtonTouched(_ sender: UIButton) {
+        // Hide the keyboard
+        homeNameTextField.resignFirstResponder()
+        
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken
+        imagePickerController.sourceType = . photoLibrary
+        
+        // Make sure ViewController is notified when the user picks an image
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     @IBAction func makeButtonTouched(_ sender: UIButton) {
+        let image = homeImage
+        let homeName = homeNameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased()
+        
+        // Check for home name
+        if(homeName == "" || homeName == nil) {
+            let alert = UIAlertController(title: "Home Name Required", message: "Please enter the name of your home.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+        }
+        
+        // Check for valid home name
+        let regularExpression = "[a-zA-Z]{5,}"
+        let nameValidation = NSPredicate.init(format: "SELF MATCHES %@", regularExpression)
+        let isValidName = nameValidation.evaluate(with: homeName)
+        
+        if(!isValidName) {
+            let alert = UIAlertController(title: "Invalid Home Name", message: "Your home name must have minimum of 5 alphabet characters and no spaces.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+        }
+        
+        // TESTING!!!! Call create database home method
+        activityIndicator.startAnimating()
+
+        activityIndicator.stopAnimating()
+        createHomeFeedbackView.layer.isHidden = false
+        print("Home name: \(homeName)")
     }
     
     @IBAction func sendInviteButtonTouched(_ sender: UIButton) {

@@ -26,7 +26,6 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
         activityIndicator.center = networkActivityView.center
@@ -49,9 +48,10 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        // Set photoImageView to display the selected image
+        // Set button to display the selected image
         pickYourImageButton.setImage(selectedImage, for: .normal)
         
+        // Get user image for later upload
         userImage = selectedImage
         
         // Dismiss the picker
@@ -73,7 +73,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         passwordTextField.resignFirstResponder()
         reenterPasswordTextField.resignFirstResponder()
 
-        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library
         let imagePickerController = UIImagePickerController()
         
         // Only allow photos to be picked, not taken
