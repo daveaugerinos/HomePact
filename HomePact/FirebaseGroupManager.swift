@@ -23,7 +23,7 @@ class FirebaseGroupManager: NSObject {
     var userGroupLogsRef: FIRDatabaseReference
 
     
-    
+    //MARK: INIT
     override init() {
         
         self.rootRef = FIRDatabase.database().reference()
@@ -34,6 +34,7 @@ class FirebaseGroupManager: NSObject {
         
     }
     
+    //MARK: GROUP METHODS
     func update(_ group:Group){
         
         let updates = [ "name" : group.name,
@@ -51,6 +52,18 @@ class FirebaseGroupManager: NSObject {
     
     func remove(user:User, from group:Group)  {
         groupUserLogsRef.child(group.id).child("members").child(user.id).removeValue()
+        userGroupLogsRef.child(user.id).child("memberOf").child(group.id).removeValue()
+    }
+    
+    func add(admin:User, to group:Group) {
+        groupUserLogsRef.child(group.id).child("admins").child(admin.id).setValue(true)
+        userGroupLogsRef.child(admin.id).child("adminOf").child(group.id).setValue(true)
+
+    }
+    
+    func remove(admin:User, from group:Group)  {
+        groupUserLogsRef.child(group.id).child("admins").child(admin.id).removeValue()
+        userGroupLogsRef.child(admin.id).child("adminOf").child(group.id).removeValue()
     }
     
     func group(groupID:String,with closure:@escaping (_ group:Group?,_ error:Error?)-> (Void)) {
@@ -95,7 +108,7 @@ class FirebaseGroupManager: NSObject {
         
     }
     
-    func move(task:Task, from group: Group, from condition: TaskCondition, to anotherCondition: TaskCondition) {
+    func move(task:Task, in group: Group, from condition: TaskCondition, to anotherCondition: TaskCondition) {
         
         remove(task: task, from: group, for: condition)
         add(task: task, to: group, for: anotherCondition)
