@@ -147,7 +147,7 @@
                                     <constraint firstAttribute="height" constant="1" id="rg8-U0-0pW"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFI-tE-kid" userLabel="SignInRightView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFI-tE-kid" userLabel="Right Line View">
                                 <rect key="frame" x="227" y="373" width="50" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -155,7 +155,7 @@
                                     <constraint firstAttribute="height" constant="1" id="Xci-pi-mRJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IIs-Vi-iQA" userLabel="SignInLeftView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IIs-Vi-iQA" userLabel="Left Left View">
                                 <rect key="frame" x="43" y="373" width="50" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
