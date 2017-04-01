@@ -121,7 +121,7 @@
                                     <constraint firstAttribute="height" constant="20" id="6Ar-Zd-DCS"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cIg-zz-NtQ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username (email address)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cIg-zz-NtQ">
                                 <rect key="frame" x="66" y="180" width="213" height="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -273,7 +273,9 @@
                     <navigationItem key="navigationItem" id="0Z1-Rc-B9r"/>
                     <connections>
                         <outlet property="loginButton" destination="xsI-1A-ZIR" id="xDj-lI-0ok"/>
+                        <outlet property="passwordTextField" destination="4GA-vX-1Oj" id="pgL-on-FJi"/>
                         <outlet property="registerButton" destination="PdW-DC-NK9" id="CyO-fw-ODY"/>
+                        <outlet property="usernameTextField" destination="cIg-zz-NtQ" id="dVU-lI-C4N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
