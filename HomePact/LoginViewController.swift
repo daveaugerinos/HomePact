@@ -70,9 +70,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             alert(title: "Password Required", message: "Please enter your password.")
         }
             
+        // Attempt login to server
         else {
             FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
-
                 if(error != nil) {
                     if let errorCode = FIRAuthErrorCode(rawValue: (error?._code)!) {
                         switch errorCode {
@@ -94,8 +94,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                     }
                 }
                 
+                // Access granted, show Tasks View Controller
                 else {
-                    print("User: \(user)")
+                    ViewControllerRouter(self).showTasks()
                 }
             }
         }
