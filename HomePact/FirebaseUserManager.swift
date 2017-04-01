@@ -10,6 +10,10 @@ import UIKit
 import Firebase
 
 
+enum FBUMError:Error {
+    case badAccess (String)
+}
+
 class FirebaseUserManager:NSObject {
     
     //MARK: Root References
@@ -19,7 +23,7 @@ class FirebaseUserManager:NSObject {
     var userMessageLogsRef: FIRDatabaseReference
     var userGroupLogsRef: FIRDatabaseReference
     
-    
+    //MARK: INIT
      override init() {
         
         self.rootRef = FIRDatabase.database().reference()
@@ -31,7 +35,16 @@ class FirebaseUserManager:NSObject {
         
     }
     
-    func update(_ user:User){
+    //MARK: USER METHODS
+    
+    func create(_ user: User){
+        
+        makeUserPaths(userID: user.id)
+        updateDetails(user)
+        
+    }
+    
+    func updateDetails(_ user:User){
     
         guard let firstname = user.firstName else{
             return
@@ -49,11 +62,26 @@ class FirebaseUserManager:NSObject {
                         "username" : user.username,
                         "uid": user.id]
         
-        usersRef.updateChildValues(["\(user.id)" : updates])
+        usersRef.updateChildValues(["/\(user.id)" : updates])
         
     }
     
-    func add(task:Task, to user:User, for condition:TaskCondition ) {
+    
+    func user(from  userID:String,with closure:@escaping (_ user:User?,_ error:Error?)-> (Void) ) {
+        usersRef.child(userID).observeSingleEvent(of: .value, with:{ snapshot in
+        
+         let queryResult = self.user(from: snapshot)
+
+         closure(queryResult.user, queryResult.error)
+        })
+        
+    
+    }
+    
+    
+    //MARK: TASK METHODS
+
+    func add(_ task:Task, to user:User, for condition:TaskCondition ) {
         
         var queryCondition: String
        
@@ -69,7 +97,7 @@ class FirebaseUserManager:NSObject {
         
     }
     
-    func remove(task:Task, from user:User, for condition: TaskCondition)  {
+    func remove(_ task:Task, from user:User, for condition: TaskCondition)  {
         var queryCondition: String
         
         switch condition {
@@ -79,17 +107,22 @@ class FirebaseUserManager:NSObject {
             queryCondition = condition.rawValue
         }
         
-        userTaskLogsRef.child(user.id).child(queryCondition).child(task.id).setValue(nil)
+        userTaskLogsRef.child(user.id).child(queryCondition).child(task.id).removeValue()
 
         
     }
     
-    func move(task:Task, from user: User, from condition: TaskCondition, to anotherCondition: TaskCondition) {
+    func move(_ task:Task, for user: User, from condition: TaskCondition, to anotherCondition: TaskCondition) {
   
-        remove(task: task, from: user, for: condition)
-        add(task: task, to: user, for: anotherCondition)
+        remove( task, from: user, for: condition)
+        add( task, to: user, for: anotherCondition)
     }
     
+    
+    
+    
+    
+    //MARK: OBSERVER METHODS
     
     
     func observeGroupIDs(for user:User, with closure:@escaping (_ groupIDs:[String],_ error:Error?)-> (Void) ) {
@@ -142,19 +175,19 @@ class FirebaseUserManager:NSObject {
     
 
     
-    func IDs(from snapshot:FIRDataSnapshot) ->(IDs:[String], error:Error?){
+    fileprivate func IDs(from snapshot:FIRDataSnapshot) ->(IDs:[String], error:Error?){
         
         var IDs = [String]()
         
         guard let value = snapshot.value as? NSDictionary else {
-            let closureError = "Error accesing users  IDs" as! Error
+            let closureError = FBUMError.badAccess("Error accesing users  IDs") as Error
             return ([],closureError)
         }
         
         for (key,_) in value{
             
             guard let key = key as? String else {
-                let closureError = "Error reading users IDs" as! Error
+                let closureError = FBUMError.badAccess("Error reading users IDs") as Error
                 return([],closureError)
 
             }
@@ -164,4 +197,36 @@ class FirebaseUserManager:NSObject {
         return (IDs,nil)
         
     }
+    
+    fileprivate func user(from snapshot:FIRDataSnapshot) -> (user:User?, error:Error?){
+        
+        
+        guard let userInfo = snapshot.value as? NSDictionary else {
+            let closureError = "Error accesing user details" as! Error
+            return (nil, closureError)
+        }
+        let userName = userInfo.value(forKeyPath: "username") as? String ?? ""
+        let uid = userInfo.value(forKeyPath: "uid") as? String ?? ""
+        let firstName = userInfo.value(forKeyPath: "firstname") as? String ?? ""
+        let lastName = userInfo.value(forKeyPath: "lastname") as? String ?? ""
+        let phoneNumber = userInfo.value(forKeyPath: "phonenumber") as? String ?? ""
+            
+        
+        var newUser = User(id: uid, username: userName, timestamp: Date())
+        newUser.firstName = firstName
+        newUser.lastName = lastName
+        newUser.phoneNumber = phoneNumber
+        
+        return (newUser,nil)
+    }
+    
+    fileprivate func makeUserPaths(userID:String){
+        
+        usersRef.child(userID)
+        userGroupLogsRef.child(userID)
+        userTaskLogsRef.child(userID)
+        userMessageLogsRef.child(userID)
+        
+    }
+    
 }
