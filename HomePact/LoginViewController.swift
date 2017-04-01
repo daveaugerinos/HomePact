@@ -96,7 +96,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 
                 // Access granted, show Tasks View Controller
                 else {
-                    ViewControllerRouter(self).showTasks()
+                    ViewControllerRouter(self).showRootTabBar()
                 }
             }
         }

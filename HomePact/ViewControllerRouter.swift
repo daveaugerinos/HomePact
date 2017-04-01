@@ -62,6 +62,10 @@ class ViewControllerRouter: NSObject {
         show(completeTaskVC())
     }
     
+    func showRootTabBar() {
+        show(rootTabBar())
+    }
+    
     
     // MARK: - View Controller initializers -
     
@@ -114,7 +118,9 @@ class ViewControllerRouter: NSObject {
     }
     
     
-    
+    fileprivate func rootTabBar() -> RootTabBarController {
+        return UIStoryboard(name: "RootTabBar", bundle: .main).instantiateInitialViewController() as! RootTabBarController
+    }
     // MARK: - Show function -
     
     fileprivate func show(_ vc: UIViewController) {
