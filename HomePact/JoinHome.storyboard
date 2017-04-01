@@ -48,21 +48,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="House_White" translatesAutoresizingMaskIntoConstraints="NO" id="GMr-cb-6le">
-                                <rect key="frame" x="41" y="201" width="20" height="20"/>
+                                <rect key="frame" x="24" y="201" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ACM-7e-7vS"/>
                                     <constraint firstAttribute="width" constant="20" id="k8B-oU-QdC"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uf-p6-aDJ">
-                                <rect key="frame" x="41" y="229" width="238" height="1"/>
+                                <rect key="frame" x="24" y="229" width="272" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="URe-qE-PWJ"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter home name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dO4-sS-f6G">
-                                <rect key="frame" x="66" y="198" width="213" height="26"/>
+                                <rect key="frame" x="49" y="198" width="247" height="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -188,7 +188,7 @@
                             <constraint firstItem="vJa-NZ-Rem" firstAttribute="leading" secondItem="EGT-5a-9az" secondAttribute="leading" id="2hp-nj-mq4"/>
                             <constraint firstItem="4uf-p6-aDJ" firstAttribute="centerX" secondItem="EGT-5a-9az" secondAttribute="centerX" id="3CN-bf-wz1"/>
                             <constraint firstItem="GoJ-qZ-cQG" firstAttribute="height" secondItem="LFO-St-3jx" secondAttribute="height" id="4or-Oa-rE4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4uf-p6-aDJ" secondAttribute="trailing" constant="25" id="5r1-bX-aGz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4uf-p6-aDJ" secondAttribute="trailing" constant="8" id="5r1-bX-aGz"/>
                             <constraint firstItem="Zm8-7D-gHc" firstAttribute="centerY" secondItem="EGT-5a-9az" secondAttribute="centerY" id="6cj-xm-bRG"/>
                             <constraint firstItem="YY4-Iz-9c0" firstAttribute="centerX" secondItem="EGT-5a-9az" secondAttribute="centerX" id="BBN-yb-XGk"/>
                             <constraint firstItem="GMr-cb-6le" firstAttribute="leading" secondItem="4uf-p6-aDJ" secondAttribute="leading" id="EMq-WS-kot"/>
@@ -229,7 +229,7 @@
                             <constraint firstItem="juM-K0-JAQ" firstAttribute="top" secondItem="MJy-4c-VzI" secondAttribute="bottom" constant="8" id="xIJ-Pw-PMO"/>
                             <constraint firstItem="kjq-iV-zwO" firstAttribute="top" secondItem="vJa-NZ-Rem" secondAttribute="bottom" id="y0n-p9-lCV"/>
                             <constraint firstItem="Zm8-7D-gHc" firstAttribute="top" secondItem="kIA-Sb-Ik8" secondAttribute="bottom" constant="10" id="z5Z-aQ-VXx"/>
-                            <constraint firstItem="4uf-p6-aDJ" firstAttribute="leading" secondItem="EGT-5a-9az" secondAttribute="leadingMargin" constant="25" id="zov-iW-e5g"/>
+                            <constraint firstItem="4uf-p6-aDJ" firstAttribute="leading" secondItem="EGT-5a-9az" secondAttribute="leadingMargin" constant="8" id="zov-iW-e5g"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">

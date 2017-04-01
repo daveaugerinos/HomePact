@@ -70,20 +70,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="House_White" translatesAutoresizingMaskIntoConstraints="NO" id="QjD-Md-TyR">
-                                <rect key="frame" x="41" y="202" width="20" height="20"/>
+                                <rect key="frame" x="24" y="202" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="UJH-8J-NEB"/>
                                     <constraint firstAttribute="height" constant="20" id="wnN-Iq-9nr"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your home name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qdw-xS-S5b">
-                                <rect key="frame" x="66" y="200" width="213" height="22"/>
+                                <rect key="frame" x="49" y="200" width="247" height="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STn-7l-RT5" userLabel="Home Name Text Field Line View">
-                                <rect key="frame" x="41" y="227" width="238" height="1"/>
+                                <rect key="frame" x="24" y="227" width="272" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="oz3-vf-C2Y"/>
@@ -209,7 +209,7 @@
                             <constraint firstItem="EMy-K0-PcS" firstAttribute="centerY" secondItem="3tU-wY-t3r" secondAttribute="centerY" id="8Jh-up-5AE"/>
                             <constraint firstItem="3tU-wY-t3r" firstAttribute="top" secondItem="yuP-xl-YIb" secondAttribute="bottom" id="8cf-Bv-KAj"/>
                             <constraint firstItem="qdw-xS-S5b" firstAttribute="leading" secondItem="QjD-Md-TyR" secondAttribute="trailing" constant="5" id="9Ph-5G-RcA"/>
-                            <constraint firstItem="STn-7l-RT5" firstAttribute="leading" secondItem="6aZ-pD-I4u" secondAttribute="leadingMargin" constant="25" id="9Vj-W9-PkP"/>
+                            <constraint firstItem="STn-7l-RT5" firstAttribute="leading" secondItem="6aZ-pD-I4u" secondAttribute="leadingMargin" constant="8" id="9Vj-W9-PkP"/>
                             <constraint firstItem="4eB-Vd-cRJ" firstAttribute="centerX" secondItem="6aZ-pD-I4u" secondAttribute="centerX" id="9vG-Ab-VbR"/>
                             <constraint firstItem="STn-7l-RT5" firstAttribute="top" secondItem="QjD-Md-TyR" secondAttribute="bottom" constant="5" id="Aer-BC-xqL"/>
                             <constraint firstItem="d3v-xr-4Uo" firstAttribute="centerX" secondItem="6aZ-pD-I4u" secondAttribute="centerX" id="CUS-eA-6C7"/>
@@ -235,7 +235,7 @@
                             <constraint firstItem="oOR-MI-Z3D" firstAttribute="centerX" secondItem="6aZ-pD-I4u" secondAttribute="centerX" id="uvg-Bn-IHo"/>
                             <constraint firstItem="ysQ-eK-nnP" firstAttribute="centerY" secondItem="4eB-Vd-cRJ" secondAttribute="centerY" id="uwV-hU-mue"/>
                             <constraint firstItem="oOR-MI-Z3D" firstAttribute="top" secondItem="d3v-xr-4Uo" secondAttribute="bottom" constant="15" id="var-ku-e3C"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="STn-7l-RT5" secondAttribute="trailing" constant="25" id="vqm-g1-7OS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="STn-7l-RT5" secondAttribute="trailing" constant="8" id="vqm-g1-7OS"/>
                             <constraint firstItem="qdw-xS-S5b" firstAttribute="top" secondItem="KbE-Oa-Igs" secondAttribute="bottom" constant="15" id="xRr-Hg-tOb"/>
                             <constraint firstItem="XNL-65-b3S" firstAttribute="centerX" secondItem="6aZ-pD-I4u" secondAttribute="centerX" id="yEc-HK-cdG"/>
                             <constraint firstItem="no2-Xf-TYH" firstAttribute="centerY" secondItem="6g8-N7-gKO" secondAttribute="centerY" id="yFR-Ji-TWM"/>
