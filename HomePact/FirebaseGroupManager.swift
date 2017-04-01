@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+
+enum FBGMError:Error {
+    case badAccess (String)
+}
 class FirebaseGroupManager: NSObject {
 
     //MARK: Root References
@@ -16,6 +20,8 @@ class FirebaseGroupManager: NSObject {
     var groupsRef: FIRDatabaseReference
     var groupTaskLogsRef: FIRDatabaseReference
     var groupUserLogsRef: FIRDatabaseReference
+    var userGroupLogsRef: FIRDatabaseReference
+
     
     
     override init() {
@@ -24,14 +30,40 @@ class FirebaseGroupManager: NSObject {
         self.groupsRef = rootRef.child("groups")
         self.groupTaskLogsRef = rootRef.child("groupTaskLogs")
         self.groupUserLogsRef = rootRef.child("groupUserLogs")
-        
+        self.userGroupLogsRef = rootRef.child("userGroupLogs")
         
     }
     
     func update(_ group:Group){
         
+        let updates = [ "name" : group.name,
+                        "uid" : group.id ]
+        
+        
+        groupsRef.updateChildValues(["/\(group.id)" : updates])
+        
     }
     
+    func add(user:User, to group:Group)   {
+     groupUserLogsRef.child(group.id).child("members").child(user.id).setValue(true)
+     userGroupLogsRef.child(user.id).child("memberOf").child(group.id).setValue(true)
+    }
+    
+    func remove(user:User, from group:Group)  {
+        groupUserLogsRef.child(group.id).child("members").child(user.id).removeValue()
+    }
+    
+    func group(groupID:String,with closure:@escaping (_ group:Group?,_ error:Error?)-> (Void)) {
+        
+        groupsRef.child(groupID).observeSingleEvent(of: .value, with: {snapshot in
+        
+        let result = self.group(from: snapshot)
+            
+        closure(result.group, result.error)
+        
+        })
+        
+    }
     func add(task:Task, to group:Group, for condition:TaskCondition ) {
         
         var queryCondition: String
@@ -107,19 +139,19 @@ class FirebaseGroupManager: NSObject {
     }
     
     
-    func IDs(from snapshot:FIRDataSnapshot) ->(IDs:[String], error:Error?){
+    fileprivate func IDs(from snapshot:FIRDataSnapshot) ->(IDs:[String], error:Error?){
         
         var IDs = [String]()
         
         guard let value = snapshot.value as? NSDictionary else {
-            let closureError = "Error accesing groups  IDs" as! Error
+            let closureError = FBGMError.badAccess("Error accesing groups IDs") as Error
             return ([],closureError)
         }
         
         for (key,_) in value{
             
             guard let key = key as? String else {
-                let closureError = "Error reading groups IDs" as! Error
+                let closureError = FBGMError.badAccess("Error reading groups IDs") as Error
                 return([],closureError)
                 
             }
@@ -128,6 +160,20 @@ class FirebaseGroupManager: NSObject {
         
         return (IDs,nil)
         
+    }
+    
+    fileprivate func group(from snapshot:FIRDataSnapshot) -> (group:Group?, error:Error?){
+        
+        
+        guard let groupInfo = snapshot.value as? NSDictionary else {
+            let closureError = FBGMError.badAccess("Error accesing group details") as Error
+            return (nil, closureError)
+        }
+        let name = groupInfo.value(forKeyPath: "name") as? String ?? ""
+        let uid = groupInfo.value(forKeyPath: "uid") as? String ?? ""
+        
+        let newGroup = Group(id: uid, name: name, timestamp: Date())
+        return (newGroup,nil)
     }
     
 }

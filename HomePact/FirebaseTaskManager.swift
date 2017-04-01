@@ -14,6 +14,9 @@ enum TaskCondition:String {
     case upcoming = "upcoming", completed = "completed"
 }
 
+enum FBTMError:Error {
+    case badAccess (String)
+}
 
 class FirebaseTaskManager: NSObject {
 
@@ -32,7 +35,27 @@ class FirebaseTaskManager: NSObject {
         
     }
 
-   
+    func update(_ task:Task){
+
+        guard let taskDate = task.taskDate?.timeIntervalSince1970 else {
+            return
+        }
+        guard let notes = task.notes else {
+            return
+        }
+        let updates = ["uid" : task.id,
+                       "name" : task.name,
+                       "taskDate" : taskDate,
+                       "reccurenceTime" : task.recurrenceTime.rawValue,
+                       "notes" : notes,
+                       "timestamp" : task.timestamp.timeIntervalSince1970,
+                       "isCompleted" : task.isCompleted] as [String : Any]
+        
+        tasksRef.updateChildValues(["/\(task.id)" : updates])
+    }
+    
+     
+    
     func observeTasks(with IDs:[String], with closure:@escaping (_ tasks:[Task],_ error:Error?)-> (Void) ){
         
         
@@ -43,18 +66,14 @@ class FirebaseTaskManager: NSObject {
             closure(result.tasks, result.error)
         })
         
-    
-    
-
-        
     }
     
-    func tasks(from snapshot:FIRDataSnapshot, with IDs:[String]) ->(tasks:[Task], error:Error?){
+   fileprivate func tasks(from snapshot:FIRDataSnapshot, with IDs:[String]) ->(tasks:[Task], error:Error?){
         
         var tasks = [Task]()
         
         guard let value = snapshot.value as? NSDictionary else {
-            let closureError = "Error accesing groups  IDs" as! Error
+            let closureError = FBTMError.badAccess("Error accesing groups  IDs") as Error
             return ([],closureError)
         }
         
@@ -62,12 +81,14 @@ class FirebaseTaskManager: NSObject {
             return IDs.contains(key as! String)
         })
         
+        print("\(filteredTasks)")
         //filteredTasks to Task struct parsing
         
 
         
         return (tasks,nil)
     }
+
 
 }
 
