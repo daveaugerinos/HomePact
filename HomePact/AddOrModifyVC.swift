@@ -16,6 +16,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     
     @IBOutlet weak fileprivate var groupMembersCollectionView: UICollectionView!
     
+    @IBOutlet weak var pickYourImageButton: PickImageButton!
     @IBOutlet weak fileprivate var repeatDetailsView: UIView!
     @IBOutlet weak fileprivate var repeatSlider: UISlider!
     @IBOutlet weak fileprivate var repeatNumberOfTimesLabel: UILabel!
@@ -34,8 +35,6 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     }
     
     func prepareViews() {
-        addMediaImageView.isUserInteractionEnabled = true
-        addMediaImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addMediaImageViewTapped(_:))))
         repeatDetailsView.alpha = 0
         repeatDetailsView.isUserInteractionEnabled = false
         repeatNumberOfTimesLabel.text = ""
@@ -109,19 +108,31 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         dateTextField.resignFirstResponder()
     }
     
-    func addMediaImageViewTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction func pickImageButtonPressed(_ sender: PickImageButton) {
+        recurrenceTextField.resignFirstResponder()
+        dateTextField.resignFirstResponder()
+        
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
+        
     }
     
     //MARK: UIImagePickerController Delegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            addMediaImageView.contentMode = .scaleAspectFit
-            addMediaImageView.image = pickedImage
+        
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
+        // Set button to display the selected image
+        pickYourImageButton.setImage(selectedImage, for: .normal)
+        
+        // Get user image for later upload
+//        userImage = selectedImage
+        
+        // Dismiss the picker
         dismiss(animated: true, completion: nil)
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

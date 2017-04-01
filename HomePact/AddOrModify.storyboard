@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="64" width="413" height="672"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="onx-he-0FM">
-                                        <rect key="frame" x="20" y="8" width="374" height="611"/>
+                                        <rect key="frame" x="20" y="8" width="374" height="609"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HO-5m-i1r">
                                                 <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="20"/>
@@ -197,15 +197,26 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoVideoGlyph" translatesAutoresizingMaskIntoConstraints="NO" id="LzI-Ca-17L">
-                                                <rect key="frame" x="0.0" y="472" width="100" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="ggc-eh-lux"/>
-                                                    <constraint firstAttribute="height" constant="100" id="pdG-Dt-ZO8"/>
-                                                </constraints>
-                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35r-Kw-dB2" customClass="PickImageButton" customModule="HomePact" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="472" width="98" height="98"/>
+                                                <state key="normal" image="PhotoVideoGlyph"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColour">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="pickImageButtonPressed:" destination="5Af-JC-9PQ" eventType="touchUpInside" id="B0f-V6-Fg8"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osG-6I-JsC">
-                                                <rect key="frame" x="0.0" y="581" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="579" width="374" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="yVg-nx-lgu"/>
                                                 </constraints>
@@ -248,9 +259,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addMediaImageView" destination="LzI-Ca-17L" id="Fa5-UT-KfD"/>
                         <outlet property="dateTextField" destination="4Gn-TZ-qaM" id="PnR-wR-nJf"/>
                         <outlet property="groupMembersCollectionView" destination="U21-ZG-MmI" id="Jjj-p3-1Nb"/>
+                        <outlet property="pickYourImageButton" destination="35r-Kw-dB2" id="R1F-Hd-v2I"/>
                         <outlet property="recurrenceTextField" destination="qFz-at-437" id="Ryx-9B-4kZ"/>
                         <outlet property="repeatDetailsView" destination="PUA-KU-Q9Z" id="wmV-vB-3Ne"/>
                         <outlet property="repeatNumberOfTimesLabel" destination="br1-jY-3lj" id="qta-3f-cC3"/>

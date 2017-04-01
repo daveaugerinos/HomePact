@@ -16,6 +16,7 @@
 		3F586BDB1E8A0A90004AFA62 /* AddOrModifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */; };
 		3F586BDD1E8A0AA9004AFA62 /* CompleteTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */; };
 		3F8B4F171E8DADC30019D568 /* UITextField+Underlined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B4F161E8DADC30019D568 /* UITextField+Underlined.swift */; };
+		3F90F5471E90582E0080B79B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F90F5461E90582E0080B79B /* NotificationManager.swift */; };
 		3FBEA95D1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */; };
 		990B16986FC6FEC1EA92974D /* Pods_HomePactTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */; };
 		A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378A1E8966030046ABAA /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 		3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrModifyVC.swift; sourceTree = "<group>"; };
 		3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteTaskViewController.swift; sourceTree = "<group>"; };
 		3F8B4F161E8DADC30019D568 /* UITextField+Underlined.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Underlined.swift"; sourceTree = "<group>"; };
+		3F90F5461E90582E0080B79B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrModifyCVCell.swift; sourceTree = "<group>"; };
 		A20437871E8966030046ABAA /* HomePact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A204378A1E8966030046ABAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				E19283B51E8D8CE6001BD535 /* FirebaseTaskManager.swift */,
 				E19283B91E8DE1FF001BD535 /* FirebaseGroupManager.swift */,
 				E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */,
+				3F90F5461E90582E0080B79B /* NotificationManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -335,7 +338,6 @@
 				TargetAttributes = {
 					A20437861E8966020046ABAA = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 8MSUYUMX52;
 						ProvisioningStyle = Automatic;
 					};
 					A204379A1E8966030046ABAA = {
@@ -521,6 +523,7 @@
 				3F586BDB1E8A0A90004AFA62 /* AddOrModifyVC.swift in Sources */,
 				E1D4762F1E8A05770049E3DE /* CompletedTaskTVC.swift in Sources */,
 				A20437C21E89D54F0046ABAA /* JoinHomeViewController.swift in Sources */,
+				3F90F5471E90582E0080B79B /* NotificationManager.swift in Sources */,
 				E19283B31E8D87A2001BD535 /* FirebaseUserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,8 +665,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8MSUYUMX52;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HomePact/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daveaugerinos.testhomepact;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -677,8 +681,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8MSUYUMX52;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HomePact/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daveaugerinos.testhomepact;
 				PRODUCT_NAME = "$(TARGET_NAME)";
