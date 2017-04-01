@@ -107,7 +107,7 @@ class FirebaseUserManager:NSObject {
             queryCondition = condition.rawValue
         }
         
-        userTaskLogsRef.child(user.id).child(queryCondition).child(task.id).setValue(nil)
+        userTaskLogsRef.child(user.id).child(queryCondition).child(task.id).removeValue()
 
         
     }

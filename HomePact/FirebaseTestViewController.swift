@@ -18,19 +18,25 @@ class FirebaseTestViewController: UIViewController {
         let firebaseGM = FirebaseGroupManager()
         let firebaseTM = FirebaseTaskManager()
         
-        FIRAuth.auth()?.signIn(withEmail: "ipf@example.com", password: "password", completion: { (user, error) in
+        FIRAuth.auth()?.createUser(withEmail: "ipf@example.com", password: "password", completion: { (user, error) in
             guard let user = user else {
                 print("error making user")
                 return
             }
-
+            
+            var firebender  = User(id: user.uid, username: user.email!, timestamp: Date())
+            firebender.firstName = "Reginal"
+            firebender.lastName = "Jackson"
+            firebender.phoneNumber = "7778889999"
+            firebaseUM.create(firebender)
+            
             
             firebaseUM.user(from: user.uid, with: { (fireBender, error) -> (Void) in
                 
                 
                 
                 let key = firebaseGM.groupsRef.childByAutoId().key
-                let group = Group(id: key, name: "neyney", timestamp: Date())
+                let group = Group(id: key, name: "Sunshite", timestamp: Date())
                 firebaseGM.update(group)
                 firebaseGM.add(user: fireBender!, to: group)
                 firebaseUM.observeGroupIDs(for: fireBender!, with: { (IDs, error) -> (Void) in
