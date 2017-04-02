@@ -34,10 +34,13 @@ class RootTabBarController: UITabBarController {
         
         let profilesPageView = createProfilesPageView()
         let tasksPageView = createTasksPageView()
-        let profilesNav = createNavigationController(for: profilesPageView)
-        let tasksNav = createNavigationController(for: tasksPageView)
+        let _ = createNavigationController(for: profilesPageView)
+        let _ = createNavigationController(for: tasksPageView)
+        self.setViewControllers([tasksPageView, profilesPageView], animated: false)
         
-        self.viewControllers = [tasksNav, profilesNav]
+        tasksPageView.tabBarItem = UITabBarItem(title: "Tasks", image: #imageLiteral(resourceName: "Magical Scroll") , selectedImage: #imageLiteral(resourceName: "Magical Scroll Filled"))
+        profilesPageView.tabBarItem = UITabBarItem(title: "Profiles", image:#imageLiteral(resourceName: "User Groups"), selectedImage: #imageLiteral(resourceName: "User Groups Filled"))
+        tabBar.tintColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
         setupButtons()
 
     }
@@ -123,13 +126,13 @@ class RootTabBarController: UITabBarController {
     func showActionsTapped(sender: UIButton) {
         
         if showActionsActive == false {
-            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { 
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 self.addTask.center = self.addTaskActiveCenter
                 self.completeTask.center = self.completeTaskActiveCenter
             }, completion: nil)
             self.toggleShowActions()
         }else {
-            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 self.addTask.center = self.showActions.center
                 self.completeTask.center = self.showActions.center
             }, completion: nil)
