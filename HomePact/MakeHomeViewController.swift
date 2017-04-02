@@ -75,7 +75,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func makeButtonTouched(_ sender: UIButton) {
-        let image = homeImage
+        let currentImage = homeImage
         guard let homeName = homeNameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for home name
@@ -92,12 +92,39 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
             alert(title: "Invalid Home Name", message: "Your home name must have minimum of 5 alphabet characters and no spaces.")
         }
         
-        // TESTING!!!! Call create database home method
-        activityIndicator.startAnimating()
-
-        activityIndicator.stopAnimating()
-        createHomeFeedbackView.layer.isHidden = false
-        print("Home name: \(homeName)")
+        // !!!!!!!!! Need to check if home already exists !!!!!!!!!!!
+        // If not, then add home
+        
+        else {
+            // Provide feedback while making network call
+            activityIndicator.startAnimating()
+            
+//            let currentUser = FIRAuth.auth()?.currentUser
+//            let key = FirebaseGroupManager().groupsRef.childByAutoId().key
+//            var group = Group(id: key, name: homeName, timestamp: Date())
+//            group.groupImage = currentImage
+//            FirebaseGroupManager().update(group)
+//            FirebaseGroupManager().add(user: currentUser, to: group)
+//            FirebaseGroupManager().observeGroupIDs(for: currentUser, with: { (IDs, error) -> (Void) in
+//                
+//                if IDs.contains(group.id){
+//                    print("yay")
+//                }
+//                
+//                firebaseGM.group(groupID: group.id, with: { (yay, error) -> (Void) in
+//                    
+//                    
+//                    print("\(String(describing: yay)), \(String(describing: error))")
+//                })
+//                
+//            })
+            
+            // add the user to that home
+            
+            activityIndicator.stopAnimating()
+            createHomeFeedbackView.layer.isHidden = false
+            print("Home name: \(homeName)")
+        }
     }
     
     @IBAction func sendInviteButtonTouched(_ sender: UIButton) {

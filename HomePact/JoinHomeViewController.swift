@@ -53,6 +53,12 @@ class JoinHomeViewController: UIViewController {
             alert(title: "Invalid Home Name", message: "A home name must have minimum of 5 alphabet characters and no spaces.")
         }
         
+        // check to see if home exists
+        
+        // if home exists check if user has invite
+        
+        // if user has invite, add user to home
+        
         // TESTING!!!! Call create database home method
         activityIndicator.startAnimating()
         activityIndicator.stopAnimating()
