@@ -10,21 +10,24 @@ import UIKit
 import UserNotifications
 
 class NotificationManager: NSObject {
-
+    
     func scheduleReminderNotification(withDate: Date) {
         let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: "Wake up!", arguments: nil)
-        content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
-                                                                arguments: nil)
+        content.title = NSString.localizedUserNotificationString(forKey: "You have a task to do!", arguments: nil)
+//        content.body = NSString.localizedUserNotificationString(forKey: "It's your turn next.", arguments: nil)
         
-        // Configure the trigger for a 7am wakeup.
-        var dateInfo = DateComponents()
-        dateInfo.hour = 7
-        dateInfo.minute = 0
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents([.day, .hour, .minute], from: withDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         
         // Create the request object.
-        let request = UNNotificationRequest(identifier: "MorningAlarm", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "upcoming", content: content, trigger: trigger)
+        
+        //Schedule request
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
     }
+    
+//schedule notification for completed task?
     
 }
