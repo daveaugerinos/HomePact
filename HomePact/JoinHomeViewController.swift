@@ -37,16 +37,11 @@ class JoinHomeViewController: UIViewController {
     }
     
     @IBAction func joinButtonTouched(_ sender: UIButton) {
-        let homeName = joinHomeTextField.text?.trimmingCharacters(in: .whitespaces).lowercased()
+        guard let homeName = joinHomeTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for home name
-        if(homeName == "" || homeName == nil) {
-            let alert = UIAlertController(title: "Home Name Required", message: "Please enter the name of the home you which to join.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+        if(homeName == "") {
+            alert(title: "Home Name Required", message: "Please enter the name of the home you which to join.")
         }
         
         // Check for valid home name
@@ -55,12 +50,7 @@ class JoinHomeViewController: UIViewController {
         let isValidName = nameValidation.evaluate(with: homeName)
         
         if(!isValidName) {
-            let alert = UIAlertController(title: "Invalid Home Name", message: "A home name must have minimum of 5 alphabet characters and no spaces.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+            alert(title: "Invalid Home Name", message: "A home name must have minimum of 5 alphabet characters and no spaces.")
         }
         
         // TESTING!!!! Call create database home method
@@ -73,5 +63,14 @@ class JoinHomeViewController: UIViewController {
     
     @IBAction func makeAHomeButtonTouched(_ sender: UIButton) {
         ViewControllerRouter(self).showMakeHome()
+    }
+    
+    // MARK: - Alert -
+    
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
 }

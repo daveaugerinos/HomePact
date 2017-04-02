@@ -66,7 +66,6 @@ class ViewControllerRouter: NSObject {
         show(rootTabBar())
     }
     
-    
     // MARK: - View Controller initializers -
     
     fileprivate func loginVC() -> LoginViewController {
@@ -117,10 +116,10 @@ class ViewControllerRouter: NSObject {
         return UIStoryboard(name: "CompleteTask", bundle: .main).instantiateViewController(withIdentifier: "complete") as! CompleteTaskViewController
     }
     
-    
     fileprivate func rootTabBar() -> RootTabBarController {
         return UIStoryboard(name: "RootTabBar", bundle: .main).instantiateInitialViewController() as! RootTabBarController
     }
+    
     // MARK: - Show function -
     
     fileprivate func show(_ vc: UIViewController) {

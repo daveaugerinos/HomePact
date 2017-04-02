@@ -146,6 +146,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         // ...
     }
     
+    // MARK: - Alert -
+    
     func alert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

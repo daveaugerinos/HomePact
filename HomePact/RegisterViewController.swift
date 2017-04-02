@@ -92,87 +92,52 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func registerButtonTouched(_ sender: UIButton) {
         
         // *** CHANGE TO GUARD ***
-        let image = userImage
-        let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces)
-        let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces)
-        let email = emailTextField.text?.trimmingCharacters(in: .whitespaces).lowercased()
-        let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespaces)
-        let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces)
+        let currentImage = userImage
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
+        guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
+        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
+        guard let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
+        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         
         // Check for first name
-        if(firstName == "" || firstName == nil) {
-            let alert = UIAlertController(title: "First Name Required", message: "Please enter your first name.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+        if(firstName == "") {
+            alert(title: "First Name Required", message: "Please enter your first name.")
         }
         
         // Check for last name
-        if(lastName == "" || lastName == nil) {
-            let alert = UIAlertController(title: "Last Name Required", message: "Please enter your last name.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+        if(lastName == "") {
+            alert(title: "Last Name Required", message: "Please enter your last name.")
         }
         
         // Check for valid email
-        if(email == "" || email == nil) {
-            let alert = UIAlertController(title: "Valid Email Required", message: "Please enter your email address.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+        if(email == "") {
+            alert(title: "Valid Email Required", message: "Please enter your email address.")
         }
         
         let regex = try? NSRegularExpression(pattern: "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", options: .caseInsensitive)
-        let isValidEmail = regex?.firstMatch(in: email!, options: [], range: NSMakeRange(0, (email?.characters.count)!)) != nil
+        let isValidEmail = regex?.firstMatch(in: email, options: [], range: NSMakeRange(0, (email.characters.count))) != nil
 
         if(!isValidEmail) {
-            let alert = UIAlertController(title: "Invalid Email Address", message: "Please enter a valid email address.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+            alert(title: "Invalid Email Address", message: "Please enter a valid email address.")
         }
         
         // Check for valid phone number
-        if(phoneNumber == "" || email == nil) {
-            let alert = UIAlertController(title: "Phone Number Required", message: "Please enter your phone number.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+        if(phoneNumber == "") {
+            alert(title: "Phone Number Required", message: "Please enter your phone number.")
         }
  
         let type: NSTextCheckingResult.CheckingType = .phoneNumber
         guard let detector = try? NSDataDetector(types: type.rawValue) else { return }
 
-        let validPhoneNumber = detector.matches(in: phoneNumber!, options: [], range: NSMakeRange(0, (phoneNumber?.characters.count)!)).first?.phoneNumber
+        let validPhoneNumber = detector.matches(in: phoneNumber, options: [], range: NSMakeRange(0, (phoneNumber.characters.count))).first?.phoneNumber
 
         if(validPhoneNumber == nil) {
-            let alert = UIAlertController(title: "Valid Phone Number Required", message: "Please enter a valid phone number (e.g. 5552228888.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+            alert(title: "Valid Phone Number Required", message: "Please enter a valid phone number (e.g. 5552228888.")
         }
 
         // Check for matching passwords
         if(passwordTextField.text != reenterPasswordTextField.text) {
-            let alert = UIAlertController(title: "Passwords Do Not Match", message: "Please ensure your password matches.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+            alert(title: "Passwords Do Not Match", message: "Please ensure your password matches.")
         }
         
         // Minimum 8 characters, at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character
@@ -181,32 +146,64 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         let isValid = passwordValidation.evaluate(with: password)
         
         if(!isValid) {
-            let alert = UIAlertController(title: "Invalid Password", message: "Your password must have a minimum of 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
+            alert(title: "Invalid Password", message: "Your password must have a minimum of 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.")
         }
         
-        activityIndicator.startAnimating()
-        
-        // *** ONLY TESTING CHANGE email! and password! ****
- 
-        FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: { (user, error) in
+        else {
+            // Provide feedback while making network call
+            activityIndicator.startAnimating()
             
-            if let error = error {
-                print("Error \(error)")
-                return
-            } else {
+            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 
-                DispatchQueue.main.async(execute: {
-                    self.activityIndicator.stopAnimating()
-                    self.createUserFeedbackView.layer.isHidden = false
-                    ViewControllerRouter(self).showJoinHome()
-                })
-            }
-        })
-        return
+                if(error != nil) {
+                    if let errorCode = FIRAuthErrorCode(rawValue: (error?._code)!) {
+                        switch errorCode {
+                        case .errorCodeNetworkError:
+                            self.alert(title: "Sign Up Error", message: "A network error occurred.")
+                        case .errorCodeOperationNotAllowed:
+                            self.alert(title: "Sign Up Error", message: "Username and password account not currently enabled.")
+                        case .errorCodeInvalidEmail:
+                            self.alert(title: "Sign Up Error", message: "The email address improperly formed.")
+                        case .errorCodeEmailAlreadyInUse:
+                            self.alert(title: "Sign Up Error", message: "The email used to attempt sign up already exists.")
+                        case .errorCodeWeakPassword:
+                            self.alert(title: "Sign Up Error", message: "You have enter a password that is considered too weak.")
+                        default:
+                            self.alert(title: "Sign Up Error", message: "An unusal error has occurred. Please contact support.")
+                        }
+                    }
+                }
+                
+                else {
+                    guard let user = user else { return }
+                    
+                    // Upload user info
+                    var currentUser = User(id: user.uid, username: email, timestamp: Date())
+                    
+                    currentUser.firstName = firstName
+                    currentUser.lastName = lastName
+                    currentUser.phoneNumber = phoneNumber
+                    currentUser.userImage = currentImage
+                    
+                    FirebaseUserManager().create(currentUser)
+                    
+                    DispatchQueue.main.async(execute: {
+                        self.activityIndicator.stopAnimating()
+                        self.createUserFeedbackView.layer.isHidden = false
+                        ViewControllerRouter(self).showJoinHome()
+                    })
+                }
+            })
+            return
+        }
+    }
+    
+    // MARK: - Alert -
+    
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
 }
