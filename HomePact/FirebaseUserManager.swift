@@ -56,11 +56,17 @@ class FirebaseUserManager:NSObject {
         guard let phoneNumber = user.phoneNumber else {
             return
         }
+        guard let imageString = user.userImage?.base64Encode() else {
+            return
+        }
+        
+        
         let updates = [ "firstname" : firstname,
                         "lastname" : lastname,
                         "phonenumber" : phoneNumber,
                         "username" : user.username,
-                        "uid": user.id]
+                        "uid": user.id,
+                        "imageString": imageString]
         
         usersRef.updateChildValues(["/\(user.id)" : updates])
         
@@ -173,7 +179,7 @@ class FirebaseUserManager:NSObject {
         
     }
     
-
+    //MARK: HELPER METHODS
     
     fileprivate func IDs(from snapshot:FIRDataSnapshot) ->(IDs:[String], error:Error?){
         
@@ -205,21 +211,23 @@ class FirebaseUserManager:NSObject {
             let closureError = "Error accesing user details" as! Error
             return (nil, closureError)
         }
-        let userName = userInfo.value(forKeyPath: "username") as? String ?? ""
-        let uid = userInfo.value(forKeyPath: "uid") as? String ?? ""
-        let firstName = userInfo.value(forKeyPath: "firstname") as? String ?? ""
-        let lastName = userInfo.value(forKeyPath: "lastname") as? String ?? ""
-        let phoneNumber = userInfo.value(forKeyPath: "phonenumber") as? String ?? ""
-            
+        let userName = userInfo.value(forKey: "username") as? String ?? ""
+        let uid = userInfo.value(forKey: "uid") as? String ?? ""
+        let firstName = userInfo.value(forKey: "firstname") as? String ?? ""
+        let lastName = userInfo.value(forKey: "lastname") as? String ?? ""
+        let phoneNumber = userInfo.value(forKey: "phonenumber") as? String ?? ""
+        let imageString = userInfo.value(forKey: "imageString" ) as? String
+        let userImage = imageString?.decodeBase64Image()
         
         var newUser = User(id: uid, username: userName, timestamp: Date())
         newUser.firstName = firstName
         newUser.lastName = lastName
         newUser.phoneNumber = phoneNumber
-        
+        newUser.userImage = userImage
         return (newUser,nil)
     }
     
+
     fileprivate func makeUserPaths(userID:String){
         
         usersRef.child(userID)

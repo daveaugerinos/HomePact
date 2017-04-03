@@ -37,12 +37,14 @@ class FirebaseGroupManager: NSObject {
     //MARK: GROUP METHODS
     func update(_ group:Group){
         
+        guard let imageString = group.groupImage?.base64Encode() else {
+            return
+        }
         let updates = [ "name" : group.name,
-                        "uid" : group.id ]
-        
+                        "uid" : group.id,
+                        "imageString": imageString]
         
         groupsRef.updateChildValues(["/\(group.id)" : updates])
-        
     }
     
     func add(user:User, to group:Group)   {
@@ -184,8 +186,11 @@ class FirebaseGroupManager: NSObject {
         }
         let name = groupInfo.value(forKeyPath: "name") as? String ?? ""
         let uid = groupInfo.value(forKeyPath: "uid") as? String ?? ""
+        let imageString = groupInfo.value(forKey: "imageString") as? String
+        let image = imageString?.decodeBase64Image()
         
-        let newGroup = Group(id: uid, name: name, timestamp: Date())
+        var newGroup = Group(id: uid, name: name, timestamp: Date())
+        newGroup.groupImage = image
         return (newGroup,nil)
     }
     
