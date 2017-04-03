@@ -10,12 +10,12 @@ import UIKit
 import Firebase
 
 
-enum TaskCondition:String {
+public enum TaskCondition:String {
     case upcoming = "upcoming", completed = "completed"
 }
 
-enum FBTMError:Error {
-    case badAccess (String)
+public enum FBTMError:Error {
+    case badAccess (String), parse(String)
 }
 
 class FirebaseTaskManager: NSObject {
@@ -34,6 +34,11 @@ class FirebaseTaskManager: NSObject {
         self.taskLogsRef = rootRef.child("taskLogs")
         
     }
+    
+    deinit {
+        tasksRef.removeAllObservers()
+        taskLogsRef.removeAllObservers()
+    }
 
     func update(_ task:Task){
 
@@ -43,13 +48,17 @@ class FirebaseTaskManager: NSObject {
         guard let notes = task.notes else {
             return
         }
+        guard let imageString = task.taskImage?.base64Encode() else {
+            return
+        }
         let updates = ["uid" : task.id,
                        "name" : task.name,
                        "taskDate" : taskDate,
                        "recurenceTime" : task.recurrenceTime.rawValue,
                        "notes" : notes,
                        "timestamp" : task.timestamp.timeIntervalSince1970,
-                       "isCompleted" : task.isCompleted] as [String : Any]
+                       "isCompleted" : task.isCompleted,
+                       "imageString" : imageString] as [String : Any]
         
         tasksRef.updateChildValues(["/\(task.id)" : updates])
     }
@@ -71,7 +80,7 @@ class FirebaseTaskManager: NSObject {
    fileprivate func tasks(from snapshot:FIRDataSnapshot, with IDs:[String]) ->(tasks:[Task], error:Error?){
         
         var tasks = [Task]()
-        var closureError: FBTMError
+        var closureError: FBTMError?
         guard let tasksDict = snapshot.value as? NSDictionary else {
             closureError = FBTMError.badAccess("Error accesing groups IDs")
             return ([],closureError)
@@ -81,50 +90,67 @@ class FirebaseTaskManager: NSObject {
             return IDs.contains(key as! String)
         })
     
-    for (_, value) in filteredTasks{
+        for (_, value) in filteredTasks{
         
             
             guard let taskInfo = value as? NSDictionary else {
-                closureError = FBTMError.badAccess("Error reading task info")
+                closureError = FBTMError.parse("Error reading task info")
                 break
             }
             
-            guard let taskID = taskInfo.value(forKey:"uid") as? String else {
+            guard let task = parseToTask(dictionary: taskInfo) else {
+                closureError = FBTMError.parse("Error parsing task info")
                 break
             }
-            guard let taskName = taskInfo.value(forKey: "name") as? String else {
-                break
-            }
-            guard let taskDate = taskInfo.value(forKey: "taskDate") as? TimeInterval else {
-                break
-            }
-            guard let recurrenceTime = Task.RecurrenceTime(rawValue:(taskInfo.value(forKey: "recurrenceTime")as! String)) else {
-                break
-            }
-            guard let notes = taskInfo.value(forKey: "notes") as? String else {
-                break
-            }
-            guard let timestamp = taskInfo.value(forKey: "timestamp") as? TimeInterval else {
-                break
-            }
-            guard let isCompleted = taskInfo.value(forKey: "isCompleted") as? Bool else {
-                break
-            }
-
-            var task = Task(id: taskID, name: taskName, timestamp: Date(timeIntervalSince1970: timestamp))
-            task.taskDate = Date(timeIntervalSince1970:taskDate)
-            task.recurrenceTime = recurrenceTime
-            task.notes = notes
-            task.isCompleted = isCompleted
-        
             tasks.append(task)
         }
         print("\(tasks)")
         //filteredTasks to Task struct parsing
         
 
-        
+    if closureError != nil{
+        return (tasks,closureError)
+    }
         return (tasks,nil)
+    }
+    
+    fileprivate func parseToTask(dictionary:NSDictionary) -> Task? {
+       
+        guard let taskID = dictionary.value(forKey:"uid") as? String else {
+            return nil
+        }
+        guard let taskName = dictionary.value(forKey: "name") as? String else {
+            return nil
+        }
+        guard let taskDate = dictionary.value(forKey: "taskDate") as? TimeInterval else {
+            return nil
+        }
+        guard let recurrenceTime = Task.RecurrenceTime(rawValue:(dictionary.value(forKey: "recurrenceTime")as! String)) else {
+            return nil
+        }
+        guard let notes = dictionary.value(forKey: "notes") as? String else {
+            return nil
+        }
+        guard let timestamp = dictionary.value(forKey: "timestamp") as? TimeInterval else {
+            return nil
+        }
+        guard let isCompleted = dictionary.value(forKey: "isCompleted") as? Bool else {
+            return nil
+        }
+        guard let imageString = dictionary.value(forKey: "imageString") as? String else {
+            return nil
+        }
+        let image = imageString.decodeBase64Image()
+        
+        var task = Task(id: taskID, name: taskName, timestamp: Date(timeIntervalSince1970: timestamp))
+        
+        task.taskDate = Date(timeIntervalSince1970:taskDate)
+        task.recurrenceTime = recurrenceTime
+        task.notes = notes
+        task.isCompleted = isCompleted
+        task.taskImage = image
+        
+        return task
     }
 
 

@@ -11,7 +11,7 @@ import Firebase
 
 
 enum FBUMError:Error {
-    case badAccess (String)
+    case badAccess (String), parse(String)
 }
 
 class FirebaseUserManager:NSObject {
@@ -23,7 +23,7 @@ class FirebaseUserManager:NSObject {
     var userMessageLogsRef: FIRDatabaseReference
     var userGroupLogsRef: FIRDatabaseReference
     
-    //MARK: INIT
+    //MARK: INIT & DEINIT
      override init() {
         
         self.rootRef = FIRDatabase.database().reference()
@@ -31,11 +31,19 @@ class FirebaseUserManager:NSObject {
         self.userTaskLogsRef = rootRef.child("userTaskLogs")
         self.userMessageLogsRef = rootRef.child("userMessageLogs")
         self.userGroupLogsRef = rootRef.child("userGroupLogs")
-    
+        super.init()
         
     }
     
+    deinit{
+        usersRef.removeAllObservers()
+        userTaskLogsRef.removeAllObservers()
+        userMessageLogsRef.removeAllObservers()
+        userGroupLogsRef.removeAllObservers()
+        
+    }
     //MARK: USER METHODS
+    
     
     func create(_ user: User){
         
@@ -56,18 +64,85 @@ class FirebaseUserManager:NSObject {
         guard let phoneNumber = user.phoneNumber else {
             return
         }
+        guard let imageString = user.userImage?.base64Encode() else {
+            return
+        }
+        
+        
         let updates = [ "firstname" : firstname,
                         "lastname" : lastname,
                         "phonenumber" : phoneNumber,
                         "username" : user.username,
-                        "uid": user.id]
+                        "uid": user.id,
+                        "imageString": imageString]
         
         usersRef.updateChildValues(["/\(user.id)" : updates])
         
     }
     
+     func currentUser(_ closure: @escaping (User?) ->(Void)){
+        
+        FIRAuth.auth()?.addStateDidChangeListener({ (auth, FBUser) in
+            
+            
+            guard let user = FBUser else {
+                return
+            }
+            self.user(from: user.uid, with: { (user, closureError) in
+                
+                if let error = closureError {
+                    print("\(error.localizedDescription)")
+                    return
+                }
+                
+                guard let appUser = user else {
+                    return
+                }
+                closure(appUser)
+                
+            })
+        })
+        
+    }
     
-    func user(from  userID:String,with closure:@escaping (_ user:User?,_ error:Error?)-> (Void) ) {
+    func usersWith(userIDs:[String], closure:@escaping ([User]?, Error?) -> (Void)) {
+        
+      
+        let query = usersRef.queryOrderedByKey().queryStarting(atValue: userIDs.first).queryEnding(atValue: userIDs.last)
+        query.observe(.value, with: { snapshot in
+            var users = [User]()
+            var closureError: FBUMError?
+            guard let usersDict = snapshot.value as? NSDictionary else {
+                closureError = FBUMError.badAccess("Error accesing user IDs")
+                return
+            }
+            
+            let filteredUsers = usersDict.filter({ (key, _) in
+                return userIDs.contains(key as! String)
+            })
+            
+            for (_, value) in filteredUsers{
+                
+                
+                guard let userInfo = value as? NSDictionary else {
+                    closureError = FBUMError.parse("Error reading user info")
+                    break
+                }
+                
+                guard let user = self.parseUser(from: userInfo) else {
+                    closureError = FBUMError.parse("Error parsing us info")
+                    break
+                }
+                users.append(user)
+            }
+            
+            closure(users, closureError)
+
+        })
+        
+    }
+    
+    func user(from userID:String,with closure:@escaping (_ user:User?,_ error:Error?)-> (Void) ) {
         usersRef.child(userID).observeSingleEvent(of: .value, with:{ snapshot in
         
          let queryResult = self.user(from: snapshot)
@@ -173,7 +248,7 @@ class FirebaseUserManager:NSObject {
         
     }
     
-
+    //MARK: HELPER METHODS
     
     fileprivate func IDs(from snapshot:FIRDataSnapshot) ->(IDs:[String], error:Error?){
         
@@ -202,24 +277,35 @@ class FirebaseUserManager:NSObject {
         
         
         guard let userInfo = snapshot.value as? NSDictionary else {
-            let closureError = "Error accesing user details" as! Error
+            let closureError = FBUMError.badAccess("Error accesing user details")
             return (nil, closureError)
         }
-        let userName = userInfo.value(forKeyPath: "username") as? String ?? ""
-        let uid = userInfo.value(forKeyPath: "uid") as? String ?? ""
-        let firstName = userInfo.value(forKeyPath: "firstname") as? String ?? ""
-        let lastName = userInfo.value(forKeyPath: "lastname") as? String ?? ""
-        let phoneNumber = userInfo.value(forKeyPath: "phonenumber") as? String ?? ""
-            
+       
+        guard let user = parseUser(from: userInfo) else {
+            let closureError = FBUMError.parse("Error parsing user")
+            return(nil,closureError)
+        }
+        return (user,nil)
+    }
+    
+    fileprivate func parseUser(from dictionary:NSDictionary) ->User? {
+        
+        let userName = dictionary.value(forKey: "username") as? String ?? ""
+        let uid = dictionary.value(forKey: "uid") as? String ?? ""
+        let firstName = dictionary.value(forKey: "firstname") as? String ?? ""
+        let lastName = dictionary.value(forKey: "lastname") as? String ?? ""
+        let phoneNumber = dictionary.value(forKey: "phonenumber") as? String ?? ""
+        let imageString = dictionary.value(forKey: "imageString" ) as? String
+        let userImage = imageString?.decodeBase64Image()
         
         var newUser = User(id: uid, username: userName, timestamp: Date())
         newUser.firstName = firstName
         newUser.lastName = lastName
         newUser.phoneNumber = phoneNumber
-        
-        return (newUser,nil)
+        newUser.userImage = userImage
+        return newUser
     }
-    
+
     fileprivate func makeUserPaths(userID:String){
         
         usersRef.child(userID)

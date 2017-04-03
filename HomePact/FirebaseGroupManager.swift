@@ -21,7 +21,6 @@ class FirebaseGroupManager: NSObject {
     var groupTaskLogsRef: FIRDatabaseReference
     var groupUserLogsRef: FIRDatabaseReference
     var userGroupLogsRef: FIRDatabaseReference
-
     
     //MARK: INIT
     override init() {
@@ -34,15 +33,35 @@ class FirebaseGroupManager: NSObject {
         
     }
     
+    deinit {
+        groupsRef.removeAllObservers()
+        groupTaskLogsRef.removeAllObservers()
+        groupUserLogsRef.removeAllObservers()
+    }
+    
     //MARK: GROUP METHODS
     func update(_ group:Group){
         
+        guard let imageString = group.groupImage?.base64Encode() else {
+            return
+        }
         let updates = [ "name" : group.name,
-                        "uid" : group.id ]
-        
+                        "uid" : group.id,
+                        "imageString": imageString]
         
         groupsRef.updateChildValues(["/\(group.id)" : updates])
-        
+    }
+    
+    func addCurrentUser(group:Group) -> Bool{
+       
+        guard let user =  FIRAuth.auth()?.currentUser else {
+             return false
+        }
+
+        groupUserLogsRef.child(group.id).child("members").child(user.uid).setValue(true)
+        userGroupLogsRef.child(user.uid).child("memberOf").child(group.id).setValue(true)
+ 
+        return true
     }
     
     func add(user:User, to group:Group)   {
@@ -129,7 +148,7 @@ class FirebaseGroupManager: NSObject {
         
     }
 
-    func getTaskIDs(for group:Group, in condition:TaskCondition, with closure:@escaping (_ taskIDs:[String],_ error:Error?)-> (Void) ) {
+    func observeTaskIDs(for group:Group, in condition:TaskCondition, with closure:@escaping (_ taskIDs:[String],_ error:Error?)-> (Void) ) {
         
         var queryCondition:String
         switch condition {
@@ -184,8 +203,11 @@ class FirebaseGroupManager: NSObject {
         }
         let name = groupInfo.value(forKeyPath: "name") as? String ?? ""
         let uid = groupInfo.value(forKeyPath: "uid") as? String ?? ""
+        let imageString = groupInfo.value(forKey: "imageString") as? String
+        let image = imageString?.decodeBase64Image()
         
-        let newGroup = Group(id: uid, name: name, timestamp: Date())
+        var newGroup = Group(id: uid, name: name, timestamp: Date())
+        newGroup.groupImage = image
         return (newGroup,nil)
     }
     
