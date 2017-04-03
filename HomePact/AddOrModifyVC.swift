@@ -126,10 +126,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         }
         // Set button to display the selected image
         pickYourImageButton.setImage(selectedImage, for: .normal)
-        
-        // Get user image for later upload
-//        userImage = selectedImage
-        
+
         // Dismiss the picker
         dismiss(animated: true, completion: nil)
         
@@ -170,16 +167,16 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         //TODO: update in future to query db for other group members
         
         //make three sample users
-        let userNames = ["Dave", "Ali", "Callum"]
-        
-        for item in userNames {
-            
-            var user = User.init(id: "test01-id", username: "test01-username", timestamp: Date())
-            user.firstName = item
-            user.lastName = "lastName"
-            user.userImage = #imageLiteral(resourceName: "Person_Dark")
-            arrayOfUsers.append(user)
-        }
+//        let userNames = ["Dave", "Ali", "Callum"]
+//
+//        for item in userNames {
+//            
+//            var user = User.init(id: "test01-id", username: "test01-username", timestamp: Date())
+//            user.firstName = item
+//            user.lastName = "lastName"
+//            user.userImage = #imageLiteral(resourceName: "Person_Dark")
+//            arrayOfUsers.append(user)
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
