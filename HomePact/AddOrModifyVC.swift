@@ -178,7 +178,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
 //            arrayOfUsers.append(user)
 //        }
         
-        FirebaseGroupManager().observeUserIDs(for: <#T##Group#>, with: <#T##([String], Error?) -> (Void)#>)
+//        FirebaseGroupManager().observeUserIDs(for: <#T##Group#>, with: <#T##([String], Error?) -> (Void)#>)
 //        get users from userID's (Ali's method)
     }
     
