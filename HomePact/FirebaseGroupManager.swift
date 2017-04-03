@@ -21,7 +21,6 @@ class FirebaseGroupManager: NSObject {
     var groupTaskLogsRef: FIRDatabaseReference
     var groupUserLogsRef: FIRDatabaseReference
     var userGroupLogsRef: FIRDatabaseReference
-
     
     //MARK: INIT
     override init() {
@@ -32,6 +31,12 @@ class FirebaseGroupManager: NSObject {
         self.groupUserLogsRef = rootRef.child("groupUserLogs")
         self.userGroupLogsRef = rootRef.child("userGroupLogs")
         
+    }
+    
+    deinit {
+        groupsRef.removeAllObservers()
+        groupTaskLogsRef.removeAllObservers()
+        groupUserLogsRef.removeAllObservers()
     }
     
     //MARK: GROUP METHODS
@@ -45,6 +50,18 @@ class FirebaseGroupManager: NSObject {
                         "imageString": imageString]
         
         groupsRef.updateChildValues(["/\(group.id)" : updates])
+    }
+    
+    func addCurrentUser(group:Group) -> Bool{
+       
+        guard let user =  FIRAuth.auth()?.currentUser else {
+             return false
+        }
+
+        groupUserLogsRef.child(group.id).child("members").child(user.uid).setValue(true)
+        userGroupLogsRef.child(user.uid).child("memberOf").child(group.id).setValue(true)
+ 
+        return true
     }
     
     func add(user:User, to group:Group)   {
@@ -131,7 +148,7 @@ class FirebaseGroupManager: NSObject {
         
     }
 
-    func getTaskIDs(for group:Group, in condition:TaskCondition, with closure:@escaping (_ taskIDs:[String],_ error:Error?)-> (Void) ) {
+    func observeTaskIDs(for group:Group, in condition:TaskCondition, with closure:@escaping (_ taskIDs:[String],_ error:Error?)-> (Void) ) {
         
         var queryCondition:String
         switch condition {

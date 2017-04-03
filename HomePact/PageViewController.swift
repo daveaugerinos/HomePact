@@ -48,7 +48,6 @@ class PageViewController: UIViewController {
         for vc in viewControllers{
             tabPageVC.tabItems.append((vc, vc.title!))
         }
-        
         var option = TabPageOption()
         option.currentColor = UIColor.white
         option.defaultColor = UIColor.white
