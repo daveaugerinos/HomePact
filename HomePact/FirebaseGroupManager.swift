@@ -170,6 +170,19 @@ class FirebaseGroupManager: NSObject {
         
     }
     
+    func checkExisting(groupName:String, closure:@escaping(Bool) ->(Void)){
+        
+        let query = groupsRef.queryOrdered(byChild: "name").queryEqual(toValue: groupName, childKey: "name")
+        query.observeSingleEvent(of: .value, with: { snapshot in
+            
+            if snapshot.value == nil {
+                closure(false)
+            }
+            closure(true)
+        
+        })
+    }
+    
     
     fileprivate func IDs(from snapshot:FIRDataSnapshot) ->(IDs:[String], error:Error?){
         

@@ -104,12 +104,13 @@ class FirebaseUserManager:NSObject {
         })
         
     }
+
     
     func usersWith(userIDs:[String], closure:@escaping ([User]?, Error?) -> (Void)) {
         
       
         let query = usersRef.queryOrderedByKey().queryStarting(atValue: userIDs.first).queryEnding(atValue: userIDs.last)
-        query.observe(.value, with: { snapshot in
+        query.observeSingleEvent(of:.value, with: { snapshot in
             var users = [User]()
             var closureError: FBUMError?
             guard let usersDict = snapshot.value as? NSDictionary else {
