@@ -14,20 +14,23 @@ class PageViewController: UIViewController {
     enum ConfigureOptions  { case profiles, tasks }
    
     @IBOutlet weak var statusBarView: UIView!
-    var swipeLeft:UISwipeGestureRecognizer!
-    var swipeRight:UISwipeGestureRecognizer!
+    var swipeLeft:UIScreenEdgePanGestureRecognizer!
+    var swipeRight:UIScreenEdgePanGestureRecognizer!
     var tabPage:TabPageViewController!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft(gesture:)))
-        swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight(gesture:)))
-        swipeLeft.direction = .left
-        swipeRight.direction = .right
+        configureTab(with: .tasks)
+        
+        swipeLeft = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedLeft))
+        swipeRight = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedRight))
+        swipeLeft.edges = .right
+        swipeRight.edges = .left
         swipeLeft.delegate = self
         swipeRight.delegate = self
-        view.addGestureRecognizer(swipeLeft)
-        view.addGestureRecognizer(swipeRight)
-        configureTab(with: .tasks)
+        tabPage.view.addGestureRecognizer(swipeLeft)
+        tabPage.view.addGestureRecognizer(swipeRight)
+        
         // Do any additional setup after loading the view.
         
     }
@@ -54,7 +57,6 @@ class PageViewController: UIViewController {
     
     fileprivate func setup(with viewControllers:[UIViewController]){
         tabPage = TabPageViewController.create()
-        
         print("\(tabPage.gestureRecognizers)")
         for vc in viewControllers{
             tabPage.tabItems.append((vc, vc.title!))
@@ -75,11 +77,11 @@ class PageViewController: UIViewController {
         view.setNeedsDisplay()
     }
     
-    func swipedLeft(gesture:UISwipeGestureRecognizer) {
+    func swipedLeft() {
      tabPage.resignFirstResponder()
     }
     
-    func swipeRight(gesture:UISwipeGestureRecognizer) {
+    func swipedRight() {
         tabPage.resignFirstResponder()
     }
 
@@ -88,5 +90,9 @@ class PageViewController: UIViewController {
 
 extension PageViewController:UIGestureRecognizerDelegate{
     
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        tabPage.resignFirstResponder()
+        return true
+    }
     
 }
