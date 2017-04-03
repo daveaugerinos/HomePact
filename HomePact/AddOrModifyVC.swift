@@ -45,11 +45,11 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         
         
         recurrenceTextField.text = arrayOfRecurrences[0]
-        
         recurrencePickerView.delegate = self
         recurrencePickerView.dataSource = self
         recurrenceTextField.inputView = recurrencePickerView
         
+        //make Done button
         let doneButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 50))
         doneButton.setTitle("Done", for: UIControlState.normal)
         doneButton.setTitle("Done", for: UIControlState.highlighted)
@@ -58,13 +58,14 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         doneButton.backgroundColor = UIColor.white
         doneButton.addTarget(self, action: #selector(doneButtonPressed(_ :)), for: UIControlEvents.touchUpInside)
         
+        //get current date
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .short
-//        dateFormat = "yyyy-MM-dd HH:mm"
         dateTextField.text = formatter.string(from: date)
         
+        //make date picker with current date and Done button
         let datepickerView = UIDatePicker()
         datepickerView.timeZone = NSTimeZone.local
         datepickerView.minuteInterval = 5
@@ -103,7 +104,6 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     
     func doneButtonPressed(_ sender:UIButton)
     {
-        //animate?
         recurrenceTextField.resignFirstResponder()
         dateTextField.resignFirstResponder()
     }
@@ -126,10 +126,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         }
         // Set button to display the selected image
         pickYourImageButton.setImage(selectedImage, for: .normal)
-        
-        // Get user image for later upload
-//        userImage = selectedImage
-        
+
         // Dismiss the picker
         dismiss(animated: true, completion: nil)
         
@@ -170,16 +167,19 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         //TODO: update in future to query db for other group members
         
         //make three sample users
-        let userNames = ["Dave", "Ali", "Callum"]
+//        let userNames = ["Dave", "Ali", "Callum"]
+//
+//        for item in userNames {
+//            
+//            var user = User.init(id: "test01-id", username: "test01-username", timestamp: Date())
+//            user.firstName = item
+//            user.lastName = "lastName"
+//            user.userImage = #imageLiteral(resourceName: "Person_Dark")
+//            arrayOfUsers.append(user)
+//        }
         
-        for item in userNames {
-            
-            var user = User.init(id: "test01-id", username: "test01-username", timestamp: Date())
-            user.firstName = item
-            user.lastName = "lastName"
-            user.userImage = #imageLiteral(resourceName: "Person_Dark")
-            arrayOfUsers.append(user)
-        }
+        FirebaseGroupManager().observeUserIDs(for: <#T##Group#>, with: <#T##([String], Error?) -> (Void)#>)
+//        get users from userID's (Ali's method)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -194,7 +194,10 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //visually "select" a group member
+        
+//        let selectedCell = AddOrModifyCVCell groupMembers
+//        let confirmationView = UIImageView(frame: <#T##CGRect#>)
+//        indexPath.item
     }
     
 }
