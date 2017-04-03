@@ -92,38 +92,28 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
             alert(title: "Invalid Home Name", message: "Your home name must have minimum of 5 alphabet characters and no spaces.")
         }
         
-        // !!!!!!!!! Need to check if home already exists !!!!!!!!!!!
-        // If not, then add home
-        
-        else {
-            // Provide feedback while making network call
-            activityIndicator.startAnimating()
+        // Check if home already exists
+        FirebaseGroupManager().checkExisting(groupName: homeName, closure: { name in
+            if name == false {
+                self.alert(title: "Invalid Home Name", message: "This home name is already in use.")
+            }
             
-//            let currentUser = FIRAuth.auth()?.currentUser
-//            let key = FirebaseGroupManager().groupsRef.childByAutoId().key
-//            var group = Group(id: key, name: homeName, timestamp: Date())
-//            group.groupImage = currentImage
-//            FirebaseGroupManager().update(group)
-//            FirebaseGroupManager().add(user: currentUser, to: group)
-//            FirebaseGroupManager().observeGroupIDs(for: currentUser, with: { (IDs, error) -> (Void) in
-//                
-//                if IDs.contains(group.id){
-//                    print("yay")
-//                }
-//                
-//                firebaseGM.group(groupID: group.id, with: { (yay, error) -> (Void) in
-//                    
-//                    
-//                    print("\(String(describing: yay)), \(String(describing: error))")
-//                })
-//                
-//            })
-            
-            // add the user to that home
-            
-            activityIndicator.stopAnimating()
-            createHomeFeedbackView.layer.isHidden = false
-        }
+            // If home name does not exist, then add it to database
+            else {
+                // Provide feedback while making network call
+                self.activityIndicator.startAnimating()
+                
+                let key = FirebaseGroupManager().groupsRef.childByAutoId().key
+                var group = Group(id: key, name: homeName, timestamp: Date())
+                group.groupImage = currentImage
+                FirebaseGroupManager().update(group)
+                
+                if(FirebaseGroupManager().addCurrentUser(group: group)) {
+                    self.activityIndicator.stopAnimating()
+                    self.createHomeFeedbackView.layer.isHidden = false
+                }
+            }
+        })
     }
     
     @IBAction func sendInviteButtonTouched(_ sender: UIButton) {
