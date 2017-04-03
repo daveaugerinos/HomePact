@@ -123,20 +123,21 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
             
             activityIndicator.stopAnimating()
             createHomeFeedbackView.layer.isHidden = false
-            print("Home name: \(homeName)")
         }
     }
     
     @IBAction func sendInviteButtonTouched(_ sender: UIButton) {
-        
+        ViewControllerRouter(self).showSendInvite()
     }
     
     // MARK: - Alert - 
     
     func alert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true)
+        }
     }
 }

@@ -8,6 +8,7 @@ target 'HomePact' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Invites'
   pod 'GoogleSignIn'
   pod 'TabPageViewController'
   pod 'IQKeyboardManagerSwift'

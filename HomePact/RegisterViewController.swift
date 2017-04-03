@@ -156,6 +156,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 
                 if(error != nil) {
+                    self.activityIndicator.stopAnimating()
                     if let errorCode = FIRAuthErrorCode(rawValue: (error?._code)!) {
                         switch errorCode {
                         case .errorCodeNetworkError:
@@ -201,9 +202,11 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     // MARK: - Alert -
     
     func alert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true)
+        }
     }
 }

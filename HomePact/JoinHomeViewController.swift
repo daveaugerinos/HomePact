@@ -74,9 +74,11 @@ class JoinHomeViewController: UIViewController {
     // MARK: - Alert -
     
     func alert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true)
+        }
     }
 }

@@ -46,6 +46,10 @@ class ViewControllerRouter: NSObject {
         show(makeHomeVC())
     }
     
+    func showSendInvite() {
+        show(sendInviteVC())
+    }
+    
     func showTasks() {
         show(taskPageVCs())
     }
@@ -88,6 +92,12 @@ class ViewControllerRouter: NSObject {
     
     fileprivate func makeHomeVC() -> MakeHomeViewController {
         let controller = UIStoryboard(name: "MakeHome", bundle: nil).instantiateViewController(withIdentifier: "MakeHome") as! MakeHomeViewController
+        
+        return controller
+    }
+    
+    fileprivate func sendInviteVC() -> SendInviteViewController {
+        let controller = UIStoryboard(name: "SendInvite", bundle: nil).instantiateViewController(withIdentifier: "SendInvite") as! SendInviteViewController
         
         return controller
     }

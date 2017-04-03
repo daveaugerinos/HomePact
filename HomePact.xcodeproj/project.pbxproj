@@ -40,6 +40,8 @@
 		A2DE88671E8C6CEF00C5D515 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A204378E1E8966030046ABAA /* Login.storyboard */; };
 		A2DE88681E8C6CEF00C5D515 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */; };
 		A2DE88691E8C6CEF00C5D515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20437911E8966030046ABAA /* Assets.xcassets */; };
+		A2ECDED91E92C1230043EC84 /* SendInvite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2ECDED81E92C1230043EC84 /* SendInvite.storyboard */; };
+		A2ECDEDB1E92C15C0043EC84 /* SendInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ECDEDA1E92C15C0043EC84 /* SendInviteViewController.swift */; };
 		E19283B31E8D87A2001BD535 /* FirebaseUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B11E8D87A2001BD535 /* FirebaseUserManager.swift */; };
 		E19283B41E8D87A2001BD535 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */; };
 		E19283B61E8D8CE6001BD535 /* FirebaseTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B51E8D8CE6001BD535 /* FirebaseTaskManager.swift */; };
@@ -103,6 +105,8 @@
 		A24940E21E8C31C40059F1A0 /* PickImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickImageButton.swift; sourceTree = "<group>"; };
 		A24940E61E8C628B0059F1A0 /* RoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		A288FA921E8AE80000A09299 /* ViewControllerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRouter.swift; sourceTree = "<group>"; };
+		A2ECDED81E92C1230043EC84 /* SendInvite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SendInvite.storyboard; sourceTree = "<group>"; };
+		A2ECDEDA1E92C15C0043EC84 /* SendInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendInviteViewController.swift; sourceTree = "<group>"; };
 		B5123F6F3FFD054BA86F6DC3 /* Pods-HomePactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePactTests/Pods-HomePactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E19283B11E8D87A2001BD535 /* FirebaseUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUserManager.swift; sourceTree = "<group>"; };
 		E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				A20437BF1E89D53B0046ABAA /* RegisterViewController.swift */,
 				A20437C11E89D54F0046ABAA /* JoinHomeViewController.swift */,
 				A20437C31E89D55B0046ABAA /* MakeHomeViewController.swift */,
+				A2ECDEDA1E92C15C0043EC84 /* SendInviteViewController.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				A20437B71E89D2ED0046ABAA /* Register.storyboard */,
 				A20437B91E89D30F0046ABAA /* JoinHome.storyboard */,
 				A20437BB1E89D31B0046ABAA /* MakeHome.storyboard */,
+				A2ECDED81E92C1230043EC84 /* SendInvite.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -344,6 +350,7 @@
 				TargetAttributes = {
 					A20437861E8966020046ABAA = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 8MSUYUMX52;
 						ProvisioningStyle = Automatic;
 					};
 					A204379A1E8966030046ABAA = {
@@ -383,6 +390,7 @@
 				3F586BD91E8A0A62004AFA62 /* CompleteTask.storyboard in Resources */,
 				3F586BD71E8A0A3A004AFA62 /* AddOrModify.storyboard in Resources */,
 				A2DE88681E8C6CEF00C5D515 /* GoogleService-Info.plist in Resources */,
+				A2ECDED91E92C1230043EC84 /* SendInvite.storyboard in Resources */,
 				A2DE88691E8C6CEF00C5D515 /* Assets.xcassets in Resources */,
 				3F586BD51E89D7DA004AFA62 /* ProfilesPersonal.storyboard in Resources */,
 				E1D4762B1E8A03BD0049E3DE /* Tasks.storyboard in Resources */,
@@ -512,6 +520,7 @@
 				A20437C41E89D55B0046ABAA /* MakeHomeViewController.swift in Sources */,
 				A288FA931E8AE80000A09299 /* ViewControllerRouter.swift in Sources */,
 				A20437BE1E89D4C70046ABAA /* LoginViewController.swift in Sources */,
+				A2ECDEDB1E92C15C0043EC84 /* SendInviteViewController.swift in Sources */,
 				A24940E31E8C31C40059F1A0 /* PickImageButton.swift in Sources */,
 				A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */,
 				E19283B41E8D87A2001BD535 /* ScheduleCoordinator.swift in Sources */,
@@ -673,7 +682,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8MSUYUMX52;
 				INFOPLIST_FILE = HomePact/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -690,7 +699,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8MSUYUMX52;
 				INFOPLIST_FILE = HomePact/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
