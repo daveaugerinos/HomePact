@@ -34,6 +34,11 @@ class FirebaseTaskManager: NSObject {
         self.taskLogsRef = rootRef.child("taskLogs")
         
     }
+    
+    deinit {
+        tasksRef.removeAllObservers()
+        taskLogsRef.removeAllObservers()
+    }
 
     func update(_ task:Task){
 
@@ -109,7 +114,7 @@ class FirebaseTaskManager: NSObject {
         return (tasks,nil)
     }
     
-    func parseToTask(dictionary:NSDictionary) -> Task? {
+    fileprivate func parseToTask(dictionary:NSDictionary) -> Task? {
        
         guard let taskID = dictionary.value(forKey:"uid") as? String else {
             return nil
