@@ -80,6 +80,7 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.9)
   - IQKeyboardManagerSwift (4.0.8)
   - Protobuf (3.2.0)
+  - SwipeCellKit (1.7.0)
   - TabPageViewController (0.2.5)
 
 DEPENDENCIES:
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - Firebase/Invites
   - GoogleSignIn
   - IQKeyboardManagerSwift
+  - SwipeCellKit
   - TabPageViewController
 
 SPEC CHECKSUMS:
@@ -107,8 +109,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
+  SwipeCellKit: 73440541f03434eaedc158e5aed9bc1e0d9b898e
   TabPageViewController: 66aca4291518e66f6ef6800bfe3a98217f58a434
 
-PODFILE CHECKSUM: 2bf0ddc8645c2c4ef5a4fe4be40f0601959e195b
+PODFILE CHECKSUM: 9f59277a86c4b7203469b98e5bdca22806be7f30
 
 COCOAPODS: 1.2.0
