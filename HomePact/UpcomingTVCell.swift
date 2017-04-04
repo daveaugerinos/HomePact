@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class UpcomingTVCell: UITableViewCell {
+class UpcomingTVCell: SwipeTableViewCell {
 
     @IBOutlet weak fileprivate var userImageContainerView: UIView!
     @IBOutlet weak fileprivate var taskImageContainerView: UIView!
