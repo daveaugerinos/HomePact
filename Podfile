@@ -12,6 +12,7 @@ target 'HomePact' do
   pod 'GoogleSignIn'
   pod 'TabPageViewController'
   pod 'IQKeyboardManagerSwift'
+  pod 'SwipeCellKit'
 
   # Pods for HomePact
 

@@ -82,13 +82,13 @@ class FirebaseUserManager:NSObject {
     
      func currentUser(_ closure: @escaping (User?) ->(Void)){
         
-        FIRAuth.auth()?.addStateDidChangeListener({ (auth, FBUser) in
-            
-            
-            guard let user = FBUser else {
-                return
-            }
-            self.user(from: user.uid, with: { (user, closureError) in
+        guard let user = FIRAuth.auth()?.currentUser else {
+            //show login
+            return
+        }
+        
+
+        getUser(from: user.uid, with: { (user, closureError) in
                 
                 if let error = closureError {
                     print("\(error.localizedDescription)")
@@ -101,7 +101,7 @@ class FirebaseUserManager:NSObject {
                 closure(appUser)
                 
             })
-        })
+    
         
     }
 
@@ -143,7 +143,7 @@ class FirebaseUserManager:NSObject {
         
     }
     
-    func user(from userID:String,with closure:@escaping (_ user:User?,_ error:Error?)-> (Void) ) {
+    func getUser(from userID:String,with closure:@escaping (_ user:User?,_ error:Error?)-> (Void) ) {
         usersRef.child(userID).observeSingleEvent(of: .value, with:{ snapshot in
         
          let queryResult = self.user(from: snapshot)

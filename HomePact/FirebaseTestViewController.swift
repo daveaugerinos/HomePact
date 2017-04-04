@@ -31,7 +31,7 @@ class FirebaseTestViewController: UIViewController {
             firebaseUM.create(firebender)
             
             
-            firebaseUM.user(from: user.uid, with: { (fireBender, error) -> (Void) in
+            firebaseUM.getUser(from: user.uid, with: { (fireBender, error) -> (Void) in
                 
                 
                 

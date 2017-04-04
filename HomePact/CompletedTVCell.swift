@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class CompletedTVCell: UITableViewCell {
+class CompletedTVCell: SwipeTableViewCell {
 
     
     @IBOutlet weak fileprivate var completedTaskImageView: UIImageView!
