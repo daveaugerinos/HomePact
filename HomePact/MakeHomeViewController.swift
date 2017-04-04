@@ -108,10 +108,10 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
 //            print("SNAPSHOT: \(snapshot)")
 //        })
         
-        groupRef.queryOrdered(byChild:"name").queryEqual(toValue:"homewithspikes").observe(.value, with: { snapshot in
+        groupRef.queryOrdered(byChild:"name").queryEqual(toValue:homeName).observe(.value, with: { snapshot in
             // Returns all groups with state "open"
             for group in snapshot.children {
-                print("SEARCH FOR HOMESTEAD: \(group)")
+                print("SEARCH FOR \(homeName) already exist -> \(group)")
             }
         })
         
