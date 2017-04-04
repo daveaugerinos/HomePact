@@ -17,15 +17,6 @@ class UpcomingTaskTVC: UITableViewController {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(52, 0, 0, 0)
         
-        let fbUM = FirebaseUserManager()
-        fbUM.currentUser({ user in
-            guard let user = user else {
-                print("booooooo")
-                return
-            }
-            
-            print("\(user.id)")
-        })
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

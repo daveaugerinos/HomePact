@@ -11,7 +11,7 @@ import UIKit
 struct Task {
     let id: String
     let name: String
-    let timestamp: Date
+    var timestamp: Date
     var taskDate: Date?
     var taskImage: UIImage?
     var notes: String?

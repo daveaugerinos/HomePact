@@ -54,13 +54,12 @@ class FirebaseTaskManager: NSObject {
         let updates = ["uid" : task.id,
                        "name" : task.name,
                        "taskDate" : taskDate,
-                       "recurenceTime" : task.recurrenceTime.rawValue,
+                       "recurrenceTime" : task.recurrenceTime.rawValue,
                        "notes" : notes,
                        "timestamp" : task.timestamp.timeIntervalSince1970,
                        "isCompleted" : task.isCompleted,
-                       "imageString" : imageString] as [String : Any]
-        
-        tasksRef.updateChildValues(["/\(task.id)" : updates])
+                       "imageString" : imageString] as NSDictionary
+        tasksRef.updateChildValues(["\(task.id)" : updates])
     }
     
      
@@ -68,8 +67,8 @@ class FirebaseTaskManager: NSObject {
     func observeTasks(with IDs:[String], with closure:@escaping (_ tasks:[Task],_ error:Error?)-> (Void) ){
         
         
-        let query = tasksRef.queryOrderedByKey().queryStarting(atValue: IDs.first).queryEnding(atValue: IDs.last)
-        query.observe(.value, with: {snapshot in
+       
+        tasksRef.observe(.value, with: {snapshot in
         
             let result = self.tasks(from: snapshot, with: IDs)
             closure(result.tasks, result.error)
@@ -77,7 +76,7 @@ class FirebaseTaskManager: NSObject {
         
     }
     
-   fileprivate func tasks(from snapshot:FIRDataSnapshot, with IDs:[String]) ->(tasks:[Task], error:Error?){
+    fileprivate func tasks(from snapshot:FIRDataSnapshot, with IDs:[String]) ->(tasks:[Task], error:Error?){
         
         var tasks = [Task]()
         var closureError: FBTMError?
@@ -85,34 +84,35 @@ class FirebaseTaskManager: NSObject {
             closureError = FBTMError.badAccess("Error accesing groups IDs")
             return ([],closureError)
         }
+     
         
-        let filteredTasks = tasksDict.filter({ (key, _) in
-            return IDs.contains(key as! String)
-        })
-    
-        for (_, value) in filteredTasks{
-        
-            
-            guard let taskInfo = value as? NSDictionary else {
-                closureError = FBTMError.parse("Error reading task info")
+        for (key, value) in tasksDict {
+            guard let key = key as? String else {
                 break
             }
-            
-            guard let task = parseToTask(dictionary: taskInfo) else {
-                closureError = FBTMError.parse("Error parsing task info")
-                break
+            if IDs.contains(key){
+                guard let taskInfo = value as? NSDictionary else {
+                    closureError = FBTMError.parse("Error reading task info")
+                    break
+                }
+                guard let task = parseToTask(dictionary: taskInfo) else {
+                    closureError = FBTMError.parse("Error parsing task info")
+                    break
+                }
+                tasks.append(task)
             }
-            tasks.append(task)
         }
         print("\(tasks)")
         //filteredTasks to Task struct parsing
         
-
-    if closureError != nil{
-        return (tasks,closureError)
-    }
+        
+        if closureError != nil{
+            return (tasks,closureError)
+        }
         return (tasks,nil)
+        
     }
+    
     
     fileprivate func parseToTask(dictionary:NSDictionary) -> Task? {
        
