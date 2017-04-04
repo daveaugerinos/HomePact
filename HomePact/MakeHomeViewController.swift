@@ -104,38 +104,50 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
         ref = FIRDatabase.database().reference()
         let groupRef = ref.child("groups")
         
-        groupRef.observeSingleEvent(of: .childAdded, with: { (snapshot: FIRDataSnapshot) in
-            if let dict = snapshot.value as? [String:AnyObject]{
-                for item in dict {
-                    print(item)
-                    print(item.key)
-                    print(item.value)
-                }
+//        groupRef.observe(.value, with: { (snapshot) -> Void in
+//            print("SNAPSHOT: \(snapshot)")
+//        })
+        
+        groupRef.queryOrdered(byChild:"name").queryEqual(toValue:"homewithspikes").observe(.value, with: { snapshot in
+            // Returns all groups with state "open"
+            for group in snapshot.children {
+                print("SEARCH FOR HOMESTEAD: \(group)")
             }
         })
         
+        
+//        groupRef.observeSingleEvent(of: .childAdded, with: { (snapshot: FIRDataSnapshot) in
+//            if let dict = snapshot.value as? [String:AnyObject]{
+//                for item in dict {
+//                    print(item)
+//                    print(item.key)
+//                    print(item.value)
+//                }
+//            }
+//        })
+        
         // Check if home already exists
-        FirebaseGroupManager().checkExisting(groupName: homeName, closure: { name in
-            if name == false {
-                self.alert(title: "Invalid Home Name", message: "This home name is already in use.")
-            }
-            
-            // If home name does not exist, then add it to database
-            else {
-                // Provide feedback while making network call
-                self.activityIndicator.startAnimating()
-                
-                let key = FirebaseGroupManager().groupsRef.childByAutoId().key
-                var group = Group(id: key, name: homeName, timestamp: Date())
-                group.groupImage = currentImage
-                FirebaseGroupManager().update(group)
-                
-                if(FirebaseGroupManager().addCurrentUser(group: group)) {
-                    self.activityIndicator.stopAnimating()
-                    self.createHomeFeedbackView.layer.isHidden = false
-                }
-            }
-        })
+//        FirebaseGroupManager().checkExisting(groupName: homeName, closure: { name in
+//            if name == false {
+//                self.alert(title: "Invalid Home Name", message: "This home name is already in use.")
+//            }
+//            
+//            // If home name does not exist, then add it to database
+//            else {
+//                // Provide feedback while making network call
+//                self.activityIndicator.startAnimating()
+//                
+//                let key = FirebaseGroupManager().groupsRef.childByAutoId().key
+//                var group = Group(id: key, name: homeName, timestamp: Date())
+//                group.groupImage = currentImage
+//                FirebaseGroupManager().update(group)
+//                
+//                if(FirebaseGroupManager().addCurrentUser(group: group)) {
+//                    self.activityIndicator.stopAnimating()
+//                    self.createHomeFeedbackView.layer.isHidden = false
+//                }
+//            }
+//        })
     }
     
     @IBAction func sendInviteButtonTouched(_ sender: UIButton) {
