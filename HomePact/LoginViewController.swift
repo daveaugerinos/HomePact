@@ -103,6 +103,31 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     }
 
     @IBAction func forgotPasswordButtonTouched(_ sender: UIButton) {
+        
+        guard let email = usernameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
+        
+        if email == "" {
+            alert(title: "Reset Password Error", message: "Please enter your email address into username textfield.")
+        }
+        
+        else {
+            FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
+                var title = ""
+                var message = ""
+                
+                if let error = error  {
+                    title = "Error"
+                    message = (error.localizedDescription)
+                }
+                    
+                else {
+                    title = "Success"
+                    message = "Password reset email sent."
+                }
+                
+                self.alert(title: title, message: message)
+            })
+        }
     }
 
     @IBAction func googleButtonTouched(_ sender: UIButton) {
