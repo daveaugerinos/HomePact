@@ -116,6 +116,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
                     if(FirebaseGroupManager().addCurrentUser(group: group)) {
                         self.activityIndicator.stopAnimating()
                         self.createHomeFeedbackView.layer.isHidden = false
+                        ViewControllerRouter(self).showRootTabBar()
                     }
                     
                     else {
