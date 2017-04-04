@@ -20,7 +20,6 @@ class PageViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTab(with: .tasks)
         
         swipeLeft = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedLeft))
         swipeRight = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedRight))
