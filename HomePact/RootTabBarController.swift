@@ -34,9 +34,9 @@ class RootTabBarController: UITabBarController {
         
         let profilesPageView = createProfilesPageView()
         let tasksPageView = createTasksPageView()
-        let _ = createNavigationController(for: profilesPageView)
-        let _ = createNavigationController(for: tasksPageView)
-        self.setViewControllers([tasksPageView, profilesPageView], animated: false)
+        let profilesNav = createNavigationController(for: profilesPageView)
+        let tasksNav = createNavigationController(for: tasksPageView)
+        self.setViewControllers([tasksNav, profilesNav], animated: false)
         
         tasksPageView.tabBarItem = UITabBarItem(title: "Tasks", image: #imageLiteral(resourceName: "Magical Scroll") , selectedImage: #imageLiteral(resourceName: "Magical Scroll Filled"))
         profilesPageView.tabBarItem = UITabBarItem(title: "Profiles", image:#imageLiteral(resourceName: "User Groups"), selectedImage: #imageLiteral(resourceName: "User Groups Filled"))
@@ -115,12 +115,7 @@ class RootTabBarController: UITabBarController {
     fileprivate func toggleShowActions()  {
         showActionsActive = !showActionsActive
     }
-    
-    fileprivate func animateButtons() {
-        
-        
-    }
-    
+
     
     
     func showActionsTapped(sender: UIButton) {
