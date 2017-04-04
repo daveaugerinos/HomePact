@@ -112,8 +112,17 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
                     var group = Group(id: key, name: homeName, timestamp: Date())
                     group.groupImage = currentImage
                     FirebaseGroupManager().update(group)
-                    self.activityIndicator.stopAnimating()
-                    self.createHomeFeedbackView.layer.isHidden = false
+                    
+                    if(FirebaseGroupManager().addCurrentUser(group: group)) {
+                        self.activityIndicator.stopAnimating()
+                        self.createHomeFeedbackView.layer.isHidden = false
+                    }
+                    
+                    else {
+                        self.alert(title: "Error", message: "Unable to add user to group.")
+                        self.activityIndicator.stopAnimating()
+                        self.createHomeFeedbackView.layer.isHidden = true // REMOVE THIS AFTER TESTING
+                    }
                 }
                 
                 self.activityIndicator.stopAnimating()
