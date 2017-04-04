@@ -92,7 +92,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func registerButtonTouched(_ sender: UIButton) {
         
         // *** CHANGE TO GUARD ***
-        let currentImage = userImage
+        let currentImage = UIImage(named: "default_person.jpg")
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }

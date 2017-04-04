@@ -75,7 +75,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func makeButtonTouched(_ sender: UIButton) {
-        let currentImage = homeImage
+        let currentImage = UIImage(named: "default_home.jpg")
         guard let homeName = homeNameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for home name
@@ -91,6 +91,28 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
         if(!isValidName) {
             alert(title: "Invalid Home Name", message: "Your home name must have minimum of 5 alphabet characters and no spaces.")
         }
+        
+        // TESTING
+        let key = FirebaseGroupManager().groupsRef.childByAutoId().key
+        var group = Group(id: key, name: homeName, timestamp: Date())
+        group.groupImage = currentImage
+        FirebaseGroupManager().update(group)
+        print(group)
+        
+        var ref: FIRDatabaseReference!
+        
+        ref = FIRDatabase.database().reference()
+        let groupRef = ref.child("groups")
+        
+        groupRef.observeSingleEvent(of: .childAdded, with: { (snapshot: FIRDataSnapshot) in
+            if let dict = snapshot.value as? [String:AnyObject]{
+                for item in dict {
+                    print(item)
+                    print(item.key)
+                    print(item.value)
+                }
+            }
+        })
         
         // Check if home already exists
         FirebaseGroupManager().checkExisting(groupName: homeName, closure: { name in

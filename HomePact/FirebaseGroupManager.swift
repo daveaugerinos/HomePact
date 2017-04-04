@@ -172,15 +172,18 @@ class FirebaseGroupManager: NSObject {
     
     func checkExisting(groupName:String, closure:@escaping(Bool) ->(Void)){
         
-        let query = groupsRef.queryOrdered(byChild: "name").queryEqual(toValue: groupName, childKey: "name")
-        query.observeSingleEvent(of: .value, with: { snapshot in
-            
-            if snapshot.value == nil {
-                closure(false)
-            }
-            closure(true)
-        
-        })
+        //let query = groupsRef.queryOrdered(byChild: "name").queryEqual(toValue: groupName, childKey: "name")
+       // print("Query \(query)")
+
+        let query = self.rootRef.child("groups").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get group value
+            let value = snapshot.value as? NSDictionary
+            let groupname = value?["name"] as? String ?? ""
+            print("Query Dict: \(value)")
+            print("Query Group Name: \(groupname)")
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     
