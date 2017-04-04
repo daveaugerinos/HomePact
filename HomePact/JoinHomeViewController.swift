@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class JoinHomeViewController: UIViewController {
 
@@ -37,34 +38,58 @@ class JoinHomeViewController: UIViewController {
     }
     
     @IBAction func joinButtonTouched(_ sender: UIButton) {
-        guard let homeName = joinHomeTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
+        guard let groupName = joinHomeTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for home name
-        if(homeName == "") {
+        if(groupName == "") {
             alert(title: "Home Name Required", message: "Please enter the name of the home you which to join.")
         }
         
         // Check for valid home name
         let regularExpression = "[a-zA-Z]{5,}"
         let nameValidation = NSPredicate.init(format: "SELF MATCHES %@", regularExpression)
-        let isValidName = nameValidation.evaluate(with: homeName)
+        let isValidName = nameValidation.evaluate(with: groupName)
         
         if(!isValidName) {
             alert(title: "Invalid Home Name", message: "A home name must have minimum of 5 alphabet characters and no spaces.")
         }
         
-        // check to see if home exists
-        
-        // if home exists check if user has invite
-        
-        // if user has invite, add user to home
-        
-        // TESTING!!!! Call create database home method
-        activityIndicator.startAnimating()
-        activityIndicator.stopAnimating()
-        joinHomeFeedbackView.layer.isHidden = false
-        // **** homeImageView.image = image
-        print("Join Home Name: \(homeName)")
+        else {
+            activityIndicator.startAnimating()
+            
+            var ref: FIRDatabaseReference!
+            ref = FIRDatabase.database().reference()
+            let groupRef = ref.child("groups")
+            
+            groupRef.queryOrdered(byChild:"name").queryEqual(toValue:groupName).observe(.value, with: { snapshot in
+            
+                if (snapshot.children.allObjects.count == 0) {
+                    self.alert(title: "Invalid Home Name", message: "Name not found.  Please choose another one.")
+                    self.activityIndicator.stopAnimating()
+                    self.joinHomeFeedbackView.layer.isHidden = true // REMOVE THIS AFTER TESTING
+                }
+                
+                else {
+                    for group in snapshot.children {
+                        if let groupSnapshot = group as? FIRDataSnapshot {
+                            let groupID = groupSnapshot.key
+                            FirebaseGroupManager().group(groupID: groupID, with: { (group, error) in
+                                if(error != nil) {
+                                    print(error!)
+                                }
+                                else {
+                                    if(FirebaseGroupManager().addCurrentUser(group: group!)) {
+                                        self.activityIndicator.stopAnimating()
+                                        self.joinHomeFeedbackView.layer.isHidden = false
+                                        ViewControllerRouter(self).showRootTabBar()
+                                    }
+                                }
+                            })
+                        }
+                    }
+                }
+            })
+        }
     }
     
     @IBAction func makeAHomeButtonTouched(_ sender: UIButton) {
