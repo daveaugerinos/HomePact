@@ -49,7 +49,7 @@
                                         <rect key="frame" x="20" y="8" width="374" height="636"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HO-5m-i1r">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.333333333333329" id="Cg0-ma-TyR"/>
                                                 </constraints>
@@ -64,7 +64,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When should it be done?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQj-de-ZUz">
-                                                <rect key="frame" x="0.0" y="68" width="190" height="21"/>
+                                                <rect key="frame" x="0.0" y="68" width="189.66666666666666" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.333333333333314" id="E7o-y8-JCV"/>
                                                 </constraints>
@@ -79,7 +79,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who should do it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMz-3U-kWD">
-                                                <rect key="frame" x="0.0" y="137" width="138" height="20"/>
+                                                <rect key="frame" x="0.0" y="137" width="137.66666666666666" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.333333333333357" id="QM8-6X-T2b"/>
                                                 </constraints>
@@ -101,7 +101,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memberCell" id="mgO-J6-S3k" customClass="AddOrModifyCVCell" customModule="HomePact" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="4" width="89" height="83"/>
+                                                        <rect key="frame" x="0.0" y="3.6666666666666665" width="89" height="83"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="89" height="83"/>
@@ -160,19 +160,19 @@
                                                 <rect key="frame" x="0.0" y="334" width="373" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeats how many times?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uW-ff-2NV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="20.333333333333314"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-tR-6vf">
-                                                        <rect key="frame" x="-2" y="29" width="377" height="31"/>
+                                                        <rect key="frame" x="-2" y="28.333333333333314" width="377" height="31"/>
                                                         <connections>
                                                             <action selector="sliderValueChanged:" destination="5Af-JC-9PQ" eventType="valueChanged" id="R8J-Vd-QXm"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="numberOfTimesLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="br1-jY-3lj">
-                                                        <rect key="frame" x="104" y="67" width="166" height="21"/>
+                                                        <rect key="frame" x="104" y="66.333333333333314" width="166" height="20.333333333333371"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="166" id="XXM-ki-QD9"/>
                                                         </constraints>
@@ -194,7 +194,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a photo or video?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zv-U6-2bh">
-                                                <rect key="frame" x="0.0" y="443" width="168" height="20"/>
+                                                <rect key="frame" x="0.0" y="443" width="167.66666666666666" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.333333333333314" id="XvC-Ik-17s"/>
                                                 </constraints>
