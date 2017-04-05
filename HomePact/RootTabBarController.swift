@@ -12,20 +12,16 @@ class RootTabBarController: UITabBarController {
     
     fileprivate let buttonDiameter = CGFloat(60)
     fileprivate var showActionsActive = false
-    
     fileprivate var showActions: UIButton!
     fileprivate var addTask: UIButton!
     fileprivate var completeTask: UIButton!
-    
     fileprivate var addTaskActiveCenter: CGPoint!
     fileprivate var completeTaskActiveCenter: CGPoint!
-    
     private var rotationAngle: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -116,7 +112,6 @@ class RootTabBarController: UITabBarController {
         showActionsActive = !showActionsActive
     }
 
-    
     
     func showActionsTapped(sender: UIButton) {
         

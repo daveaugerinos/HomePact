@@ -79,7 +79,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     
     //MARK: IBActions
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        let _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func completeButtonPressed(_ sender: UIButton) {

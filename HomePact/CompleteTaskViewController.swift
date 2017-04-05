@@ -22,7 +22,7 @@ class CompleteTaskViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        let _ = navigationController?.popViewController(animated: true)
     }
     @IBAction func completeButtonPressed(_ sender: UIButton) {
         //save new completed task
