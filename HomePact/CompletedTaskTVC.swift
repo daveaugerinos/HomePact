@@ -7,18 +7,61 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 class CompletedTaskTVC: UITableViewController {
     
     let kCompletedTaskCellIdentifier = "completedTaskCell"
+    var userManager:FirebaseUserManager!
+    var groupManager:FirebaseGroupManager!
+    var taskManager:FirebaseTaskManager!
+    var completedTasks = [Task]()
+    var currentUser:User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(52, 0, 0, 0)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        userManager = FirebaseUserManager()
+        taskManager = FirebaseTaskManager()
+        groupManager = FirebaseGroupManager()
+        
+        userManager.currentUser { user in
+        
+            guard let user = user else {
+                return
+            }
+            self.currentUser = user
+            
+            self.userManager.observeTaskIDs(for: user, in: .completed, with: { taskIDs, error  in
+                
+                if error != nil {
+                    print("\(error)")
+                }
+                
+                self.taskManager.observeTasks(with: taskIDs, with:{ observedTasks, error in
+                    
+                    if error != nil {
+                        print("\(error)")
+                    }
+                    
+                    if self.completedTasks.count == 0{
+                        self.completedTasks = observedTasks
+                        self.tableView.reloadData()
+                    }else if self.completedTasks.count < observedTasks.count {
+                        self.completedTasks = observedTasks
+                        self.tableView.reloadData()
+                    }else {
+                        self.completedTasks = observedTasks
+                    }
 
+                
+                })
+                
+            })
+        }
+        
+        
     }
 
 
@@ -31,29 +74,58 @@ class CompletedTaskTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return completedTasks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: kCompletedTaskCellIdentifier, for: indexPath) 
+         let cell = tableView.dequeueReusableCell(withIdentifier: kCompletedTaskCellIdentifier, for: indexPath) as! CompletedTVCell
+        cell.delegate = self
+        cell.configureWith(completedTasks[indexPath.row])
         
-        // Configure the cell...
-
         return cell
     }
 
-    
+}
 
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+extension CompletedTaskTVC: SwipeTableViewCellDelegate{
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]?{
+        switch orientation {
+        case .left:
+                 return nil
+        case .right:
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete", handler: { action, indexPath in
+                
+                let doomedTask = self.completedTasks[indexPath.row]
+                self.completedTasks.remove(at: indexPath.row)
+                
+                self.tableView.beginUpdates()
+                action.fulfill(with: .delete)
+                self.userManager.remove(doomedTask, from: self.currentUser, for: .upcoming)
+                self.taskManager.delete(doomedTask)
+                self.tableView.endUpdates()
+                
+            })
+            deleteAction.image = #imageLiteral(resourceName: "Trash")
+            return [deleteAction]
+        }
     }
     
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions{
+        var options = SwipeTableOptions()
+        
+        switch orientation {
+        case .right:
+            options.transitionStyle = .border
+            options.expansionStyle = SwipeExpansionStyle.destructive
+        case .left:
+            options.transitionStyle = .border
+        }
+        
+        
+        return options
+        
+    }
 
-
+    
 }

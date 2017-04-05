@@ -15,7 +15,7 @@ class UpcomingTaskTVC: UITableViewController {
     var userManager:FirebaseUserManager!
     var groupManager:FirebaseGroupManager!
     var taskManager:FirebaseTaskManager!
-    var tasks = [Task]()
+    var upcomingTasks = [Task]()
     var currentUser:User!
     
     override func viewDidLoad() {
@@ -33,28 +33,7 @@ class UpcomingTaskTVC: UITableViewController {
                 return
             }
             self.currentUser = user
-            let key1 = self.taskManager.tasksRef.childByAutoId().key
-            let key2 = self.taskManager.tasksRef.childByAutoId().key
-            
-            var task1 = Task(id: key1, name: "wohooo", timestamp: Date())
-            task1.taskDate = Date()
-            task1.taskImage = #imageLiteral(resourceName: "default_person")
-            task1.recurrenceTime = .none
-            task1.notes = "you have a lot of work"
-            task1.isCompleted = false
-            
-            var task2 = Task(id: key2, name: "yiiihaaa", timestamp: Date())
-            task2.taskDate = Date()
-            task2.taskImage = #imageLiteral(resourceName: "default_person")
-            task2.recurrenceTime = .none
-            task2.notes = "you have a lot of work"
-            task2.isCompleted = false
-            self.taskManager.update(task1)
-            self.taskManager.update(task2)
-            
-            self.userManager.add(task1, to: self.currentUser, for: .upcoming)
-            self.userManager.add(task2, to: self.currentUser, for: .upcoming)
-            
+                      
             self.userManager.observeTaskIDs(for: user, in: .upcoming, with: { observedIDs, error  in
                 
                 if error != nil {
@@ -62,17 +41,19 @@ class UpcomingTaskTVC: UITableViewController {
                 }
 
                 self.taskManager.observeTasks(with: observedIDs, with: { observedTasks, error  in
+                   
                     if error != nil {
                         print("\(error)")
                     }
-                    if self.tasks.count == 0{
-                        self.tasks = observedTasks
+                   
+                    if self.upcomingTasks.count == 0{
+                        self.upcomingTasks = observedTasks
                         self.tableView.reloadData()
-                    }else if self.tasks.count < observedTasks.count {
-                        self.tasks = observedTasks
+                    }else if self.upcomingTasks.count < observedTasks.count {
+                        self.upcomingTasks = observedTasks
                         self.tableView.reloadData()
                     }else {
-                        self.tasks = observedTasks
+                        self.upcomingTasks = observedTasks
                     }
                 })
             })
@@ -87,14 +68,14 @@ class UpcomingTaskTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return tasks.count
+        return upcomingTasks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kUpcomingCellIdentifier, for: indexPath) as! UpcomingTVCell
         cell.delegate = self
         
-        cell.configureWith(tasks[indexPath.row])
+        cell.configureWith(upcomingTasks[indexPath.row])
 
         return cell
     }
@@ -112,13 +93,19 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
                 print("yay edit")
                 action.fulfill(with: .reset)
             })
-            editAction.image = #imageLiteral(resourceName: "Edit")
-            return [editAction]
+            let completeAction = SwipeAction(style: .default, title: "Complete", handler: { action, indexPath in
+                ViewControllerRouter(self).showCompleteTask()
+                action.fulfill(with: .reset)
+                
+            })
+            editAction.image = #imageLiteral(resourceName: "Compose Icon")
+            completeAction.image = #imageLiteral(resourceName: "Checkmark")
+            return [editAction, completeAction]
         case .right:
             let deleteAction = SwipeAction(style: .destructive, title: "Delete", handler: { action, indexPath in
                 
-                let doomedTask = self.tasks[indexPath.row]
-                self.tasks.remove(at: indexPath.row)
+                let doomedTask = self.upcomingTasks[indexPath.row]
+                self.upcomingTasks.remove(at: indexPath.row)
                 
                 self.tableView.beginUpdates()
                 action.fulfill(with: .delete)
@@ -127,7 +114,8 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
                 self.tableView.endUpdates()
                 
             })
-            deleteAction.image = #imageLiteral(resourceName: "DeleteX")
+            
+            deleteAction.image = #imageLiteral(resourceName: "Trash")
             return [deleteAction]
         }
     }
@@ -136,14 +124,16 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
         var options = SwipeTableOptions()
 
         switch orientation {
-        case .right:
-            options.transitionStyle = .border
-            options.expansionStyle = SwipeExpansionStyle.destructive
         case .left:
             options.transitionStyle = .border
             options.expansionStyle = SwipeExpansionStyle.fill
+        case .right:
+            options.expansionStyle = SwipeExpansionStyle.destructive
+            options.transitionStyle = .border
         }
-
+        
+        options.expansionDelegate = ScaleAndAlphaExpansion.default
+        options.buttonPadding = 20
         
         return options
         
