@@ -40,6 +40,42 @@ class FirebaseGroupManager: NSObject {
     }
     
     //MARK: GROUP METHODS
+    
+    func currentUserGroup(_ closure:@escaping (Group?, Error?) -> (Void) ){
+        
+        let fbUM = FirebaseUserManager()
+            fbUM.currentUser { user  in
+            guard let user = user else {
+                return
+            }
+            fbUM.observeGroupIDs(for: user, with: { IDs, error in
+                
+                if error != nil {
+                    closure(nil, error)
+                    return
+                }
+                
+                self.group(groupID: IDs[0], with: { group, error in
+                    
+                    if error != nil {
+                        closure(nil, error)
+                        return
+                    }
+                    guard let group = group else {
+                        closure(nil, error)
+                         return
+                    }
+                    
+                    closure(group, nil)
+                    
+                })
+            })
+            
+        }
+        
+    }
+    
+    
     func update(_ group:Group){
         
         guard let imageString = group.groupImage?.base64Encode() else {
