@@ -39,6 +39,9 @@ class RootTabBarController: UITabBarController {
 
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        animateButtons()
+    }
     
     fileprivate func createNavigationController(for viewController: PageViewController) -> UINavigationController {
         let navController = UINavigationController(rootViewController: viewController)
@@ -111,10 +114,14 @@ class RootTabBarController: UITabBarController {
     fileprivate func toggleShowActions()  {
         showActionsActive = !showActionsActive
     }
-
+    
     
     func showActionsTapped(sender: UIButton) {
         
+        animateButtons()
+    }
+    
+    func animateButtons() {
         if showActionsActive == false {
             
             rotationAngle = M_PI_4
@@ -124,12 +131,12 @@ class RootTabBarController: UITabBarController {
                 self.completeTask.center = self.completeTaskActiveCenter
                 
                 self.showActions.setBackgroundImage(#imageLiteral(resourceName: "Plus_Button_Down"), for: .normal)
-                sender.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotationAngle))
+                self.showActions.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotationAngle))
                 
             }, completion: nil)
             
             self.toggleShowActions()
-        
+            
         } else {
             
             rotationAngle = 0
@@ -139,8 +146,8 @@ class RootTabBarController: UITabBarController {
                 self.completeTask.center = self.showActions.center
                 
                 self.showActions.setBackgroundImage(#imageLiteral(resourceName: "Plus_Button_Up"), for: .normal)
-
-                sender.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotationAngle))
+                
+                self.showActions.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotationAngle))
                 
             }, completion: nil)
             
