@@ -91,7 +91,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func registerButtonTouched(_ sender: UIButton) {
         
-        let currentImage = UIImage(named: "default_person.jpg")
+        userImage = UIImage(named: "default_person.jpg")
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
@@ -183,7 +183,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                     currentUser.firstName = firstName
                     currentUser.lastName = lastName
                     currentUser.phoneNumber = phoneNumber
-                    currentUser.userImage = currentImage
+                    currentUser.userImage = self.userImage
                     
                     FirebaseUserManager().create(currentUser)
                     

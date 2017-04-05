@@ -75,7 +75,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func makeButtonTouched(_ sender: UIButton) {
-        let currentImage = UIImage(named: "default_home.jpg")
+        homeImage = UIImage(named: "default_home.jpg")
         guard let homeName = homeNameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for home name
@@ -110,7 +110,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
                 else {
                     let key = FirebaseGroupManager().groupsRef.childByAutoId().key
                     var group = Group(id: key, name: homeName, timestamp: Date())
-                    group.groupImage = currentImage
+                    group.groupImage = self.homeImage
                     FirebaseGroupManager().update(group)
                     
                     if(FirebaseGroupManager().addCurrentUser(group: group)) {
