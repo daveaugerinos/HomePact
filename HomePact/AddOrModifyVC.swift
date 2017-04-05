@@ -99,7 +99,30 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                 let key = FirebaseTaskManager().tasksRef.childByAutoId().key
                 var newTask = Task(id: key, name: taskName, timestamp: Date())
                 
-                // Add details to task....
+                newTask.taskDate = DateFormatter().date(from: self.dateTextField.text!)
+                
+                //                case none = "none", minute = "minute", hour = "hour", day = "day", week = "week", month = "month", year = "year"
+                
+                switch (self.recurrenceTextField.text!) {
+                case "Once-off":
+                    newTask.recurrenceTime = .none
+                case "Weekly":
+                    newTask.recurrenceTime = .week
+                case "Fortnightly":
+                    newTask.recurrenceTime = .fortnight
+                case "Monthly":
+                    newTask.recurrenceTime = .month
+                case "Quarterly":
+                    newTask.recurrenceTime = .quarter
+                case "Yearly":
+                    newTask.recurrenceTime = .year
+                default:
+                    print("yay enum worked")
+                }
+                
+                
+                newTask.taskImage = self.addMediaImageView.image
+                newTask.isCompleted = false
                 
                 print("TASK: \(newTask)")
                 

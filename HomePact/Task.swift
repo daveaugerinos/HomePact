@@ -21,7 +21,7 @@ struct Task {
     
     
     enum RecurrenceTime:String {
-        case none = "none", minute = "minute", hour = "hour", day = "day", week = "week", month = "month", year = "year"
+        case none = "none", minute = "minute", hour = "hour", day = "day", week = "week", fortnight = "fortnight" , month = "month", quarter = "quarter", year = "year"
         
     }
     
