@@ -62,6 +62,11 @@ class FirebaseTaskManager: NSObject {
         tasksRef.updateChildValues(["\(task.id)" : updates])
     }
     
+    
+    func delete(_ task:Task){
+        tasksRef.child(task.id).removeValue()
+    }
+    
      
     
     func observeTasks(with IDs:[String], with closure:@escaping (_ tasks:[Task],_ error:Error?)-> (Void) ){

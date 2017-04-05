@@ -25,8 +25,6 @@ class UpcomingTaskTVC: UITableViewController {
         userManager = FirebaseUserManager()
         taskManager = FirebaseTaskManager()
         groupManager = FirebaseGroupManager()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         userManager.currentUser { user  in
             
@@ -40,14 +38,41 @@ class UpcomingTaskTVC: UITableViewController {
                 if error != nil {
                     print("\(error)")
                 }
+                let key1 = self.taskManager.tasksRef.childByAutoId().key
+                let key2 = self.taskManager.tasksRef.childByAutoId().key
+                
+                var task1 = Task(id: key1, name: "wohooo", timestamp: Date())
+                task1.taskDate = Date()
+                task1.taskImage = #imageLiteral(resourceName: "default_person")
+                task1.recurrenceTime = .none
+                task1.notes = "you have a lot of work"
+                task1.isCompleted = false
+                
+                var task2 = Task(id: key2, name: "yiiihaaa", timestamp: Date())
+                task2.taskDate = Date()
+                task2.taskImage = #imageLiteral(resourceName: "default_person")
+                task2.recurrenceTime = .none
+                task2.notes = "you have a lot of work"
+                task2.isCompleted = false
+                self.taskManager.update(task1)
+                self.taskManager.update(task2)
+                
+                self.userManager.add(task1, to: self.currentUser, for: .upcoming)
+                self.userManager.add(task2, to: self.currentUser, for: .upcoming)
+                
                 
                 self.taskManager.observeTasks(with: observedIDs, with: { observedTasks, error  in
                     if error != nil {
                         print("\(error)")
                     }
+                    if self.tasks.count == 0{
+                        self.tasks = observedTasks
+                        self.tableView.reloadData()
+                    }else {
+                        self.tasks = observedTasks
+                    }
                     
-                    self.tasks = observedTasks
-                    self.tableView.reloadData()
+                   
                 })
             })
         }
@@ -90,16 +115,27 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
         case .right:
             let deleteAction = SwipeAction(style: .destructive, title: "Delete", handler: { action, indexPath in
                 
-                self.tableView.beginUpdates()
-                action.fulfill(with: .delete)
                 self.userManager.remove(self.tasks[indexPath.row], from: self.currentUser, for: .upcoming)
+                self.taskManager.delete(self.tasks[indexPath.row])
+                
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+                action.fulfill(with: .delete)
                 self.tableView.endUpdates()
                 
             })
             deleteAction.image = #imageLiteral(resourceName: "DeleteX")
-            
             return [deleteAction]
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions{
+        var options = SwipeTableOptions()
+        options.transitionStyle = .border
+        options.expansionStyle = SwipeExpansionStyle.destructive
+        
+        return options
+        
     }
  
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation){
