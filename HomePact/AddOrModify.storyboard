@@ -82,7 +82,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memberCell" id="mgO-J6-S3k" customClass="AddOrModifyCVCell" customModule="HomePact" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="4" width="89" height="83"/>
+                                                <rect key="frame" x="0.0" y="3.5" width="89" height="83"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="89" height="83"/>
