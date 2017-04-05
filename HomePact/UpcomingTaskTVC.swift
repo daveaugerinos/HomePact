@@ -61,8 +61,6 @@ class UpcomingTaskTVC: UITableViewController {
                     print("\(error)")
                 }
 
-                
-                
                 self.taskManager.observeTasks(with: observedIDs, with: { observedTasks, error  in
                     if error != nil {
                         print("\(error)")
@@ -70,11 +68,12 @@ class UpcomingTaskTVC: UITableViewController {
                     if self.tasks.count == 0{
                         self.tasks = observedTasks
                         self.tableView.reloadData()
+                    }else if self.tasks.count < observedTasks.count {
+                        self.tasks = observedTasks
+                        self.tableView.reloadData()
                     }else {
                         self.tasks = observedTasks
                     }
-                    
-                   
                 })
             })
         }
