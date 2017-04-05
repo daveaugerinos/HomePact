@@ -8,23 +8,29 @@
 
 import UIKit
 
-class CompleteTaskViewController: UIViewController {
+class CompleteTaskViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var taskNameLabel: UILabel!
-    
     @IBOutlet weak var addMediaImageView: UIImageView!
-    
     @IBOutlet weak var extraDetailsTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //enable interaction of addMediaImageView - ImagePickerController etc
-        
+
     }
 
-    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        let _ = navigationController?.popViewController(animated: true)
+    }
+    @IBAction func completeButtonPressed(_ sender: UIButton) {
+        //save new completed task
+        //ViewControllerRouter(self).showCompleted()
     }
 
-
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
 }

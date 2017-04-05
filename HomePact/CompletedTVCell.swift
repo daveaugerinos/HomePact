@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class CompletedTVCell: UITableViewCell {
+class CompletedTVCell: SwipeTableViewCell {
 
     
     @IBOutlet weak fileprivate var completedTaskImageView: UIImageView!
@@ -28,7 +29,7 @@ class CompletedTVCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    fileprivate func configureCell() {
+    func configureWith(_ task:Task) {
         completedUserImageView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         completedTaskImageView.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         completedTaskNameLabel.text = "test task"

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F069A881E956B230079E18F /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F069A871E956B230079E18F /* GroupTableViewCell.swift */; };
 		3F586BCF1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */; };
 		3F586BD11E89D6BF004AFA62 /* ProfilesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */; };
 		3F586BD31E89D7CC004AFA62 /* ProfilesGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */; };
@@ -15,6 +16,8 @@
 		3F586BD91E8A0A62004AFA62 /* CompleteTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD81E8A0A62004AFA62 /* CompleteTask.storyboard */; };
 		3F586BDB1E8A0A90004AFA62 /* AddOrModifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */; };
 		3F586BDD1E8A0AA9004AFA62 /* CompleteTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */; };
+		3F8B4F171E8DADC30019D568 /* UITextField+Underlined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B4F161E8DADC30019D568 /* UITextField+Underlined.swift */; };
+		3F90F5471E90582E0080B79B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F90F5461E90582E0080B79B /* NotificationManager.swift */; };
 		3FBEA95D1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */; };
 		990B16986FC6FEC1EA92974D /* Pods_HomePactTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */; };
 		A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204378A1E8966030046ABAA /* AppDelegate.swift */; };
@@ -38,6 +41,13 @@
 		A2DE88671E8C6CEF00C5D515 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A204378E1E8966030046ABAA /* Login.storyboard */; };
 		A2DE88681E8C6CEF00C5D515 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */; };
 		A2DE88691E8C6CEF00C5D515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20437911E8966030046ABAA /* Assets.xcassets */; };
+		A2ECDED91E92C1230043EC84 /* SendInvite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2ECDED81E92C1230043EC84 /* SendInvite.storyboard */; };
+		A2ECDEDB1E92C15C0043EC84 /* SendInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ECDEDA1E92C15C0043EC84 /* SendInviteViewController.swift */; };
+		E19283B31E8D87A2001BD535 /* FirebaseUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B11E8D87A2001BD535 /* FirebaseUserManager.swift */; };
+		E19283B41E8D87A2001BD535 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */; };
+		E19283B61E8D8CE6001BD535 /* FirebaseTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B51E8D8CE6001BD535 /* FirebaseTaskManager.swift */; };
+		E19283BA1E8DE1FF001BD535 /* FirebaseGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19283B91E8DE1FF001BD535 /* FirebaseGroupManager.swift */; };
+		E1AEDD691E91C98000F5D67D /* UIImage+Base64Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AEDD681E91C98000F5D67D /* UIImage+Base64Encoding.swift */; };
 		E1D476251E89DFE90049E3DE /* TabPageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D476241E89DFE90049E3DE /* TabPageView.storyboard */; };
 		E1D476291E89FD470049E3DE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D476281E89FD470049E3DE /* PageViewController.swift */; };
 		E1D4762B1E8A03BD0049E3DE /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D4762A1E8A03BD0049E3DE /* Tasks.storyboard */; };
@@ -47,6 +57,8 @@
 		E1D476331E8A06530049E3DE /* CompletedTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D476321E8A06530049E3DE /* CompletedTVCell.swift */; };
 		E1D4763B1E8C45F20049E3DE /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4763A1E8C45F20049E3DE /* RootTabBarController.swift */; };
 		E1D4763D1E8C5DBF0049E3DE /* RootTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D4763C1E8C5DBF0049E3DE /* RootTabBar.storyboard */; };
+		E1FBDBE61E8EFA630058A3A2 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1FBDBE51E8EFA630058A3A2 /* Test.storyboard */; };
+		E1FBDBE81E8EFA9C0058A3A2 /* FirebaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBDBE71E8EFA9C0058A3A2 /* FirebaseTestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		20A8B61287B2EE17D50D4146 /* Pods-HomePact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.release.xcconfig"; sourceTree = "<group>"; };
+		3F069A871E956B230079E18F /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesPersonalViewController.swift; sourceTree = "<group>"; };
 		3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesGroupViewController.swift; sourceTree = "<group>"; };
 		3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilesGroup.storyboard; sourceTree = "<group>"; };
@@ -69,6 +82,8 @@
 		3F586BD81E8A0A62004AFA62 /* CompleteTask.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CompleteTask.storyboard; sourceTree = "<group>"; };
 		3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrModifyVC.swift; sourceTree = "<group>"; };
 		3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteTaskViewController.swift; sourceTree = "<group>"; };
+		3F8B4F161E8DADC30019D568 /* UITextField+Underlined.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Underlined.swift"; sourceTree = "<group>"; };
+		3F90F5461E90582E0080B79B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrModifyCVCell.swift; sourceTree = "<group>"; };
 		A20437871E8966030046ABAA /* HomePact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A204378A1E8966030046ABAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,7 +108,14 @@
 		A24940E21E8C31C40059F1A0 /* PickImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickImageButton.swift; sourceTree = "<group>"; };
 		A24940E61E8C628B0059F1A0 /* RoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		A288FA921E8AE80000A09299 /* ViewControllerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRouter.swift; sourceTree = "<group>"; };
+		A2ECDED81E92C1230043EC84 /* SendInvite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SendInvite.storyboard; sourceTree = "<group>"; };
+		A2ECDEDA1E92C15C0043EC84 /* SendInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendInviteViewController.swift; sourceTree = "<group>"; };
 		B5123F6F3FFD054BA86F6DC3 /* Pods-HomePactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePactTests/Pods-HomePactTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E19283B11E8D87A2001BD535 /* FirebaseUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUserManager.swift; sourceTree = "<group>"; };
+		E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
+		E19283B51E8D8CE6001BD535 /* FirebaseTaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTaskManager.swift; sourceTree = "<group>"; };
+		E19283B91E8DE1FF001BD535 /* FirebaseGroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseGroupManager.swift; sourceTree = "<group>"; };
+		E1AEDD681E91C98000F5D67D /* UIImage+Base64Encoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Base64Encoding.swift"; sourceTree = "<group>"; };
 		E1D476201E89D01A0049E3DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1D476241E89DFE90049E3DE /* TabPageView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabPageView.storyboard; sourceTree = "<group>"; };
 		E1D476281E89FD470049E3DE /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +126,8 @@
 		E1D476321E8A06530049E3DE /* CompletedTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedTVCell.swift; sourceTree = "<group>"; };
 		E1D4763A1E8C45F20049E3DE /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		E1D4763C1E8C5DBF0049E3DE /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
+		E1FBDBE51E8EFA630058A3A2 /* Test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		E1FBDBE71E8EFA9C0058A3A2 /* FirebaseTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTestViewController.swift; sourceTree = "<group>"; };
 		E73C040F628252F674DBB9FB /* Pods-HomePact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.debug.xcconfig"; sourceTree = "<group>"; };
 		EAAA94FA851AAE8776FCB473 /* Pods-HomePactTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePactTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomePactTests/Pods-HomePactTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED5EB00B633CDC89FE9DFE96 /* Pods_HomePactTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomePactTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +204,9 @@
 				A24940E21E8C31C40059F1A0 /* PickImageButton.swift */,
 				A24940E61E8C628B0059F1A0 /* RoundView.swift */,
 				3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */,
+				3F8B4F161E8DADC30019D568 /* UITextField+Underlined.swift */,
+				E1AEDD681E91C98000F5D67D /* UIImage+Base64Encoding.swift */,
+				3F069A871E956B230079E18F /* GroupTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -193,6 +220,11 @@
 				A20437B31E8966CC0046ABAA /* Task.swift */,
 				A20437B51E8966E70046ABAA /* Message.swift */,
 				A288FA921E8AE80000A09299 /* ViewControllerRouter.swift */,
+				E19283B11E8D87A2001BD535 /* FirebaseUserManager.swift */,
+				E19283B51E8D8CE6001BD535 /* FirebaseTaskManager.swift */,
+				E19283B91E8DE1FF001BD535 /* FirebaseGroupManager.swift */,
+				E19283B21E8D87A2001BD535 /* ScheduleCoordinator.swift */,
+				3F90F5461E90582E0080B79B /* NotificationManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -200,18 +232,20 @@
 		A20437AC1E89661B0046ABAA /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				E1FBDBE71E8EFA9C0058A3A2 /* FirebaseTestViewController.swift */,
 				E1D4763A1E8C45F20049E3DE /* RootTabBarController.swift */,
 				E1D4762C1E8A05600049E3DE /* UpcomingTaskTVC.swift */,
 				E1D4762E1E8A05770049E3DE /* CompletedTaskTVC.swift */,
 				E1D476281E89FD470049E3DE /* PageViewController.swift */,
 				3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */,
 				3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */,
+				A20437BD1E89D4C70046ABAA /* LoginViewController.swift */,
 				3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */,
 				3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */,
-				A20437BD1E89D4C70046ABAA /* LoginViewController.swift */,
 				A20437BF1E89D53B0046ABAA /* RegisterViewController.swift */,
 				A20437C11E89D54F0046ABAA /* JoinHomeViewController.swift */,
 				A20437C31E89D55B0046ABAA /* MakeHomeViewController.swift */,
+				A2ECDEDA1E92C15C0043EC84 /* SendInviteViewController.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -219,6 +253,7 @@
 		A20437AD1E89661D0046ABAA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E1FBDBE51E8EFA630058A3A2 /* Test.storyboard */,
 				E1D4763C1E8C5DBF0049E3DE /* RootTabBar.storyboard */,
 				E1D476241E89DFE90049E3DE /* TabPageView.storyboard */,
 				A20437931E8966030046ABAA /* LaunchScreen.storyboard */,
@@ -231,6 +266,7 @@
 				A20437B71E89D2ED0046ABAA /* Register.storyboard */,
 				A20437B91E89D30F0046ABAA /* JoinHome.storyboard */,
 				A20437BB1E89D31B0046ABAA /* MakeHome.storyboard */,
+				A2ECDED81E92C1230043EC84 /* SendInvite.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -320,7 +356,6 @@
 				TargetAttributes = {
 					A20437861E8966020046ABAA = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9JUJMAUQ3E;
 						ProvisioningStyle = Automatic;
 					};
 					A204379A1E8966030046ABAA = {
@@ -360,10 +395,12 @@
 				3F586BD91E8A0A62004AFA62 /* CompleteTask.storyboard in Resources */,
 				3F586BD71E8A0A3A004AFA62 /* AddOrModify.storyboard in Resources */,
 				A2DE88681E8C6CEF00C5D515 /* GoogleService-Info.plist in Resources */,
+				A2ECDED91E92C1230043EC84 /* SendInvite.storyboard in Resources */,
 				A2DE88691E8C6CEF00C5D515 /* Assets.xcassets in Resources */,
 				3F586BD51E89D7DA004AFA62 /* ProfilesPersonal.storyboard in Resources */,
 				E1D4762B1E8A03BD0049E3DE /* Tasks.storyboard in Resources */,
 				E1D476251E89DFE90049E3DE /* TabPageView.storyboard in Resources */,
+				E1FBDBE61E8EFA630058A3A2 /* Test.storyboard in Resources */,
 				A2DE88671E8C6CEF00C5D515 /* Login.storyboard in Resources */,
 				A20437BA1E89D30F0046ABAA /* JoinHome.storyboard in Resources */,
 				E1D4763D1E8C5DBF0049E3DE /* RootTabBar.storyboard in Resources */,
@@ -482,15 +519,21 @@
 				E1D476331E8A06530049E3DE /* CompletedTVCell.swift in Sources */,
 				A24940E71E8C628B0059F1A0 /* RoundView.swift in Sources */,
 				E1D4763B1E8C45F20049E3DE /* RootTabBarController.swift in Sources */,
+				E1FBDBE81E8EFA9C0058A3A2 /* FirebaseTestViewController.swift in Sources */,
 				E1D476291E89FD470049E3DE /* PageViewController.swift in Sources */,
 				E1D4762D1E8A05600049E3DE /* UpcomingTaskTVC.swift in Sources */,
 				A20437C41E89D55B0046ABAA /* MakeHomeViewController.swift in Sources */,
 				A288FA931E8AE80000A09299 /* ViewControllerRouter.swift in Sources */,
 				A20437BE1E89D4C70046ABAA /* LoginViewController.swift in Sources */,
+				A2ECDEDB1E92C15C0043EC84 /* SendInviteViewController.swift in Sources */,
 				A24940E31E8C31C40059F1A0 /* PickImageButton.swift in Sources */,
 				A204378B1E8966030046ABAA /* AppDelegate.swift in Sources */,
+				E19283B41E8D87A2001BD535 /* ScheduleCoordinator.swift in Sources */,
+				E19283BA1E8DE1FF001BD535 /* FirebaseGroupManager.swift in Sources */,
 				A20437C01E89D53B0046ABAA /* RegisterViewController.swift in Sources */,
+				3F069A881E956B230079E18F /* GroupTableViewCell.swift in Sources */,
 				A20437B41E8966CC0046ABAA /* Task.swift in Sources */,
+				E1AEDD691E91C98000F5D67D /* UIImage+Base64Encoding.swift in Sources */,
 				E1D476311E8A06420049E3DE /* UpcomingTVCell.swift in Sources */,
 				A20437B61E8966E70046ABAA /* Message.swift in Sources */,
 				3F586BDD1E8A0AA9004AFA62 /* CompleteTaskViewController.swift in Sources */,
@@ -498,10 +541,14 @@
 				3FBEA95D1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift in Sources */,
 				A20437B01E8966A10046ABAA /* User.swift in Sources */,
 				A20437B21E8966B90046ABAA /* Group.swift in Sources */,
+				3F8B4F171E8DADC30019D568 /* UITextField+Underlined.swift in Sources */,
 				3F586BCF1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift in Sources */,
+				E19283B61E8D8CE6001BD535 /* FirebaseTaskManager.swift in Sources */,
 				3F586BDB1E8A0A90004AFA62 /* AddOrModifyVC.swift in Sources */,
 				E1D4762F1E8A05770049E3DE /* CompletedTaskTVC.swift in Sources */,
 				A20437C21E89D54F0046ABAA /* JoinHomeViewController.swift in Sources */,
+				3F90F5471E90582E0080B79B /* NotificationManager.swift in Sources */,
+				E19283B31E8D87A2001BD535 /* FirebaseUserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,12 +688,15 @@
 			baseConfigurationReference = E73C040F628252F674DBB9FB /* Pods-HomePact.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9JUJMAUQ3E;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HomePact/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = daveaugerinos.HomePact;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daveaugerinos.testhomepact;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -655,12 +705,15 @@
 			baseConfigurationReference = 20A8B61287B2EE17D50D4146 /* Pods-HomePact.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9JUJMAUQ3E;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HomePact/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = daveaugerinos.HomePact;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daveaugerinos.testhomepact;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

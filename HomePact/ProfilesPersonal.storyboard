@@ -74,7 +74,7 @@
                     </view>
                     <connections>
                         <outlet property="userEmailLabel" destination="jlF-Ij-47r" id="np7-T7-eob"/>
-                        <outlet property="userImageView" destination="A0h-SP-JUJ" id="LoM-lZ-FZa"/>
+                        <outlet property="userImageView" destination="A0h-SP-JUJ" id="YEV-ML-1rb"/>
                         <outlet property="userNameLabel" destination="3SH-6N-azG" id="29r-au-QVp"/>
                         <outlet property="userPhoneNumberLabel" destination="oQE-MW-007" id="Fdq-4R-eie"/>
                     </connections>

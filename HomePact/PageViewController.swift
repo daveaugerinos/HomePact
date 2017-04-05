@@ -14,10 +14,22 @@ class PageViewController: UIViewController {
     enum ConfigureOptions  { case profiles, tasks }
    
     @IBOutlet weak var statusBarView: UIView!
-
+    var swipeLeft:UIScreenEdgePanGestureRecognizer!
+    var swipeRight:UIScreenEdgePanGestureRecognizer!
+    var tabPage:TabPageViewController!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTab(with: .tasks)
+        
+        swipeLeft = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedLeft))
+        swipeRight = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedRight))
+        swipeLeft.edges = .right
+        swipeRight.edges = .left
+        swipeLeft.delegate = self
+        swipeRight.delegate = self
+        tabPage.view.addGestureRecognizer(swipeLeft)
+        tabPage.view.addGestureRecognizer(swipeRight)
+        
         // Do any additional setup after loading the view.
         
     }
@@ -43,12 +55,11 @@ class PageViewController: UIViewController {
     
     
     fileprivate func setup(with viewControllers:[UIViewController]){
-        let tabPageVC = TabPageViewController.create()
-       print("\(tabPageVC.gestureRecognizers)")
+        tabPage = TabPageViewController.create()
+        print("\(tabPage.gestureRecognizers)")
         for vc in viewControllers{
-            tabPageVC.tabItems.append((vc, vc.title!))
+            tabPage.tabItems.append((vc, vc.title!))
         }
-        
         var option = TabPageOption()
         option.currentColor = UIColor.white
         option.defaultColor = UIColor.white
@@ -56,14 +67,31 @@ class PageViewController: UIViewController {
         option.tabMargin = 30.0
         option.tabBackgroundColor = #colorLiteral(red: 0.8508874774, green: 0.8510339856, blue: 0.8508781791, alpha: 1)
         option.isTranslucent = false
-        tabPageVC.option = option
+        tabPage.option = option
         
-        addChildViewController(tabPageVC)
-        view.addSubview(tabPageVC.view)
+        addChildViewController(tabPage)
+        view.addSubview(tabPage.view)
         view.addSubview(statusBarView)
 
         view.setNeedsDisplay()
     }
+    
+    func swipedLeft() {
+     tabPage.resignFirstResponder()
+    }
+    
+    func swipedRight() {
+        tabPage.resignFirstResponder()
+    }
 
 
+}
+
+extension PageViewController:UIGestureRecognizerDelegate{
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        tabPage.resignFirstResponder()
+        return true
+    }
+    
 }

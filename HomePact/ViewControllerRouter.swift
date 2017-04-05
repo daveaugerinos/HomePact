@@ -46,6 +46,10 @@ class ViewControllerRouter: NSObject {
         show(makeHomeVC())
     }
     
+    func showSendInvite() {
+        show(sendInviteVC())
+    }
+    
     func showTasks() {
         show(taskPageVCs())
     }
@@ -62,33 +66,38 @@ class ViewControllerRouter: NSObject {
         show(completeTaskVC())
     }
     
+    func showRootTabBar() {
+        show(rootTabBar())
+    }
     
     // MARK: - View Controller initializers -
     
     fileprivate func loginVC() -> LoginViewController {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        let controller = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login") as! LoginViewController
         
         return controller
     }
     
     fileprivate func registerVC() -> RegisterViewController {
-        let storyboard = UIStoryboard(name: "Register", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "Register") as! RegisterViewController
+        let controller = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(withIdentifier: "Register") as! RegisterViewController
         
         return controller
     }
     
     fileprivate func joinHomeVC() -> JoinHomeViewController {
-        let storyboard = UIStoryboard(name: "JoinHome", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "JoinHome") as! JoinHomeViewController
+        let controller = UIStoryboard(name: "JoinHome", bundle: nil).instantiateViewController(withIdentifier: "JoinHome") as! JoinHomeViewController
         
         return controller
     }
     
     fileprivate func makeHomeVC() -> MakeHomeViewController {
-        let storyboard = UIStoryboard(name: "MakeHome", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "MakeHome") as! MakeHomeViewController
+        let controller = UIStoryboard(name: "MakeHome", bundle: nil).instantiateViewController(withIdentifier: "MakeHome") as! MakeHomeViewController
+        
+        return controller
+    }
+    
+    fileprivate func sendInviteVC() -> SendInviteViewController {
+        let controller = UIStoryboard(name: "SendInvite", bundle: nil).instantiateViewController(withIdentifier: "SendInvite") as! SendInviteViewController
         
         return controller
     }
@@ -116,7 +125,12 @@ class ViewControllerRouter: NSObject {
         
         return UIStoryboard(name: "CompleteTask", bundle: .main).instantiateViewController(withIdentifier: "complete") as! CompleteTaskViewController
     }
-    // MARK: - Private functions -
+    
+    fileprivate func rootTabBar() -> RootTabBarController {
+        return UIStoryboard(name: "RootTabBar", bundle: .main).instantiateInitialViewController() as! RootTabBarController
+    }
+    
+    // MARK: - Show function -
     
     fileprivate func show(_ vc: UIViewController) {
         controller?.show(vc, sender: controller)

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class UpcomingTVCell: UITableViewCell {
+class UpcomingTVCell: SwipeTableViewCell {
 
     @IBOutlet weak fileprivate var userImageContainerView: UIView!
     @IBOutlet weak fileprivate var taskImageContainerView: UIView!
@@ -26,13 +27,39 @@ class UpcomingTVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        configureCell()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureWith(_ task:Task){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        
+        guard let taskDate = task.taskDate else {
+            return
+        }
+        guard let taskImage = task.taskImage else {
+            return
+        }
+        
+        
+        taskNameLabel.text = task.name
+        taskDateLabel.text = dateFormatter.string(from: taskDate)
+        taskImageView.image = taskImage
+        
+        userImageViewOne.image = UIImage(named: "Person_Dark")
+        userImageViewTwo.image = UIImage(named: "Person_Dark")
+        userImageViewThree.image = UIImage(named: "Person_Dark")
+        userImageViewOne.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        userImageViewTwo.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        userImageViewThree.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        
+        roundViews()
     }
     
     fileprivate func configureCell() {
