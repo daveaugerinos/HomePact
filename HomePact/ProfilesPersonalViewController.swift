@@ -14,11 +14,30 @@ class ProfilesPersonalViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userPhoneNumberLabel: UILabel!
+    var thisUser = User.init(id: "", username: "", timestamp: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        roundAppropriateViews()
+        
+        self.roundAppropriateViews()
+        self.view.backgroundColor = UIColor.lightGray
+        
+        
+        FirebaseUserManager().currentUser { (user) in
+            
+            guard let user = user else {
+                print("no user for you")
+                return
+            }
+            
+            self.userImageView.image = user.userImage
+            let first = user.firstName!
+            let last = user.lastName!
+            self.userNameLabel.text = String(format: "\(first) \(last)")
+            self.userEmailLabel.text = user.username
+            self.userPhoneNumberLabel.text = user.phoneNumber
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
