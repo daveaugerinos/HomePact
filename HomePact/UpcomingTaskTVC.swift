@@ -117,12 +117,14 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
         case .right:
             let deleteAction = SwipeAction(style: .destructive, title: "Delete", handler: { action, indexPath in
                 
-                self.userManager.remove(self.tasks[indexPath.row], from: self.currentUser, for: .upcoming)
-                self.taskManager.delete(self.tasks[indexPath.row])
+                let doomedTask = self.tasks[indexPath.row]
+                self.tasks.remove(at: indexPath.row)
+                
                 
                 self.tableView.beginUpdates()
-                self.tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
                 action.fulfill(with: .delete)
+                self.userManager.remove(doomedTask, from: self.currentUser, for: .upcoming)
+                self.taskManager.delete(doomedTask)
                 self.tableView.endUpdates()
                 
             })
