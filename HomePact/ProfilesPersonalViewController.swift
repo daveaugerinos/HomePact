@@ -14,7 +14,6 @@ class ProfilesPersonalViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userPhoneNumberLabel: UILabel!
-    var thisUser = User.init(id: "", username: "", timestamp: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
