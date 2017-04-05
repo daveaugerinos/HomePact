@@ -10,7 +10,7 @@ import UIKit
 
 class RootTabBarController: UITabBarController {
     
-    fileprivate let buttonDiameter = CGFloat(50)
+    fileprivate let buttonDiameter = CGFloat(60)
     fileprivate var showActionsActive = false
     
     fileprivate var showActions: UIButton!
@@ -20,12 +20,10 @@ class RootTabBarController: UITabBarController {
     fileprivate var addTaskActiveCenter: CGPoint!
     fileprivate var completeTaskActiveCenter: CGPoint!
     
+    private var rotationAngle: Double = 0
     
-    
-  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     
@@ -82,7 +80,9 @@ class RootTabBarController: UITabBarController {
     fileprivate func setupShowActionsButton() {
         showActions = makeButton(with: buttonDiameter)
         showActions.layer.cornerRadius = buttonDiameter/2
-        showActions.backgroundColor = .black
+        //showActions.backgroundColor = .black
+        showActions.setBackgroundImage(#imageLiteral(resourceName: "Plus_Button_Up"), for: .normal)
+        showActions.setBackgroundImage(#imageLiteral(resourceName: "Plus_Button_Down"), for: .highlighted)
         showActions.addTarget(self, action: #selector(showActionsTapped(sender:)), for: .touchUpInside)
         self.view.addSubview(showActions)
     }
@@ -93,12 +93,12 @@ class RootTabBarController: UITabBarController {
         completeTask = makeButton(with: buttonDiameter)
         
         addTask.layer.cornerRadius = buttonDiameter/2
-        addTask.backgroundColor = .magenta
+        addTask.setBackgroundImage(#imageLiteral(resourceName: "Add Task"), for: .normal)
         addTask.addTarget(self, action: #selector(addTaskTapped(sender:)), for: .touchUpInside)
         addTaskActiveCenter = CGPoint(x: addTask.center.x - 100, y: addTask.center.y - 100)
             
         completeTask.layer.cornerRadius = buttonDiameter/2
-        completeTask.backgroundColor = .blue
+        completeTask.setBackgroundImage(#imageLiteral(resourceName: "Complete Task"), for: .normal)
         completeTask.addTarget(self, action: #selector(completeTaskTapped(sender:)), for: .touchUpInside)
         completeTaskActiveCenter = CGPoint(x: completeTask.center.x + 100, y: completeTask.center.y - 100)
         
@@ -121,19 +121,36 @@ class RootTabBarController: UITabBarController {
     func showActionsTapped(sender: UIButton) {
         
         if showActionsActive == false {
+            
+            rotationAngle = M_PI_4
+            
             UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 self.addTask.center = self.addTaskActiveCenter
                 self.completeTask.center = self.completeTaskActiveCenter
+                
+                self.showActions.setBackgroundImage(#imageLiteral(resourceName: "Plus_Button_Down"), for: .normal)
+                sender.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotationAngle))
+                
             }, completion: nil)
+            
             self.toggleShowActions()
-        }else {
+        
+        } else {
+            
+            rotationAngle = 0
+            
             UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 self.addTask.center = self.showActions.center
                 self.completeTask.center = self.showActions.center
+                
+                self.showActions.setBackgroundImage(#imageLiteral(resourceName: "Plus_Button_Up"), for: .normal)
+
+                sender.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotationAngle))
+                
             }, completion: nil)
+            
             self.toggleShowActions()
-        
-    }
+        }
     }
     
     func addTaskTapped(sender: UIButton)  {
