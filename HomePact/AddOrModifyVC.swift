@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -81,8 +82,31 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     }
     
     @IBAction func completeButtonPressed(_ sender: UIButton) {
-        //save new recurring task  
-        //ViewControllerRouter(self).showUpcoming()
+        
+        guard let taskName = taskNameTextField.text else { return }
+        
+        // Check for home name
+        if(taskName == "") {
+            alert(title: "Task Name Required", message: "Please enter the name of your new task.")
+        }
+            
+        else {
+            var ref: FIRDatabaseReference!
+            ref = FIRDatabase.database().reference()
+            let tasksRef = ref.child("tasks")
+            
+            DispatchQueue.main.async(execute: {
+                let key = FirebaseTaskManager().tasksRef.childByAutoId().key
+                var newTask = Task(id: key, name: taskName, timestamp: Date())
+                
+                // Add details to task....
+                
+                print("TASK: \(newTask)")
+                
+                FirebaseTaskManager().update(newTask)
+                //ViewControllerRouter(self).showUpcoming()
+            })
+        }
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
@@ -207,4 +231,14 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
 //        indexPath.item
     }
     
+    // MARK: - Alert -
+    
+    func alert(title: String, message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true)
+        }
+    }
 }
