@@ -33,32 +33,34 @@ class UpcomingTaskTVC: UITableViewController {
                 return
             }
             self.currentUser = user
+            let key1 = self.taskManager.tasksRef.childByAutoId().key
+            let key2 = self.taskManager.tasksRef.childByAutoId().key
+            
+            var task1 = Task(id: key1, name: "wohooo", timestamp: Date())
+            task1.taskDate = Date()
+            task1.taskImage = #imageLiteral(resourceName: "default_person")
+            task1.recurrenceTime = .none
+            task1.notes = "you have a lot of work"
+            task1.isCompleted = false
+            
+            var task2 = Task(id: key2, name: "yiiihaaa", timestamp: Date())
+            task2.taskDate = Date()
+            task2.taskImage = #imageLiteral(resourceName: "default_person")
+            task2.recurrenceTime = .none
+            task2.notes = "you have a lot of work"
+            task2.isCompleted = false
+            self.taskManager.update(task1)
+            self.taskManager.update(task2)
+            
+            self.userManager.add(task1, to: self.currentUser, for: .upcoming)
+            self.userManager.add(task2, to: self.currentUser, for: .upcoming)
+            
             self.userManager.observeTaskIDs(for: user, in: .upcoming, with: { observedIDs, error  in
                 
                 if error != nil {
                     print("\(error)")
                 }
-                let key1 = self.taskManager.tasksRef.childByAutoId().key
-                let key2 = self.taskManager.tasksRef.childByAutoId().key
-                
-                var task1 = Task(id: key1, name: "wohooo", timestamp: Date())
-                task1.taskDate = Date()
-                task1.taskImage = #imageLiteral(resourceName: "default_person")
-                task1.recurrenceTime = .none
-                task1.notes = "you have a lot of work"
-                task1.isCompleted = false
-                
-                var task2 = Task(id: key2, name: "yiiihaaa", timestamp: Date())
-                task2.taskDate = Date()
-                task2.taskImage = #imageLiteral(resourceName: "default_person")
-                task2.recurrenceTime = .none
-                task2.notes = "you have a lot of work"
-                task2.isCompleted = false
-                self.taskManager.update(task1)
-                self.taskManager.update(task2)
-                
-                self.userManager.add(task1, to: self.currentUser, for: .upcoming)
-                self.userManager.add(task2, to: self.currentUser, for: .upcoming)
+
                 
                 
                 self.taskManager.observeTasks(with: observedIDs, with: { observedTasks, error  in
