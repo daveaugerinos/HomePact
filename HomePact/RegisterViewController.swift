@@ -98,53 +98,53 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         guard let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         
-        // Check for first name
-        if(firstName == "") {
-            alert(title: "First Name Required", message: "Please enter your first name.")
-        }
-        
-        // Check for last name
-        if(lastName == "") {
-            alert(title: "Last Name Required", message: "Please enter your last name.")
-        }
-        
-        // Check for valid email
-        if(email == "") {
-            alert(title: "Valid Email Required", message: "Please enter your email address.")
-        }
-        
         let regex = try? NSRegularExpression(pattern: "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", options: .caseInsensitive)
         let isValidEmail = regex?.firstMatch(in: email, options: [], range: NSMakeRange(0, (email.characters.count))) != nil
-
-        if(!isValidEmail) {
-            alert(title: "Invalid Email Address", message: "Please enter a valid email address.")
-        }
         
-        // Check for valid phone number
-        if(phoneNumber == "") {
-            alert(title: "Phone Number Required", message: "Please enter your phone number.")
-        }
- 
         let type: NSTextCheckingResult.CheckingType = .phoneNumber
         guard let detector = try? NSDataDetector(types: type.rawValue) else { return }
-
+        
         let validPhoneNumber = detector.matches(in: phoneNumber, options: [], range: NSMakeRange(0, (phoneNumber.characters.count))).first?.phoneNumber
-
-        if(validPhoneNumber == nil) {
-            alert(title: "Valid Phone Number Required", message: "Please enter a valid phone number (e.g. 5552228888.")
-        }
-
-        // Check for matching passwords
-        if(passwordTextField.text != reenterPasswordTextField.text) {
-            alert(title: "Passwords Do Not Match", message: "Please ensure your password matches.")
-        }
         
         // Minimum 8 characters, at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character
         let regularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[~$@$#!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"
         let passwordValidation = NSPredicate.init(format: "SELF MATCHES %@", regularExpression)
         let isValid = passwordValidation.evaluate(with: password)
         
-        if(!isValid) {
+        // Check for first name
+        if(firstName == "") {
+            alert(title: "First Name Required", message: "Please enter your first name.")
+        }
+        
+        // Check for last name
+        else if(lastName == "") {
+            alert(title: "Last Name Required", message: "Please enter your last name.")
+        }
+        
+        // Check for valid email
+        else if(email == "") {
+            alert(title: "Valid Email Required", message: "Please enter your email address.")
+        }
+
+        else if(!isValidEmail) {
+            alert(title: "Invalid Email Address", message: "Please enter a valid email address.")
+        }
+        
+        // Check for valid phone number
+        else if(phoneNumber == "") {
+            alert(title: "Phone Number Required", message: "Please enter your phone number.")
+        }
+ 
+        else if(validPhoneNumber == nil) {
+            alert(title: "Valid Phone Number Required", message: "Please enter a valid phone number (e.g. 5552228888.")
+        }
+
+        // Check for matching passwords
+        else if(passwordTextField.text != reenterPasswordTextField.text) {
+            alert(title: "Passwords Do Not Match", message: "Please ensure your password matches.")
+        }
+        
+        else if(!isValid) {
             alert(title: "Invalid Password", message: "Your password must have a minimum of 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.")
         }
         
