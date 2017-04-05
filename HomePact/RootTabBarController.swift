@@ -18,6 +18,7 @@ class RootTabBarController: UITabBarController {
     fileprivate var addTaskActiveCenter: CGPoint!
     fileprivate var completeTaskActiveCenter: CGPoint!
     private var rotationAngle: Double = 0
+    fileprivate var blurView:UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,9 @@ class RootTabBarController: UITabBarController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        animateButtons()
+        if showActionsActive == true {
+            animateButtons()
+        }
     }
     
     fileprivate func createNavigationController(for viewController: PageViewController) -> UINavigationController {
@@ -134,6 +137,7 @@ class RootTabBarController: UITabBarController {
                 self.showActions.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotationAngle))
                 
             }, completion: nil)
+            blurBackgroud()
             
             self.toggleShowActions()
             
@@ -150,11 +154,28 @@ class RootTabBarController: UITabBarController {
                 self.showActions.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotationAngle))
                 
             }, completion: nil)
+            blurBackgroud()
             
             self.toggleShowActions()
         }
     }
     
+    func blurBackgroud() {
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = 0.9
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        if showActionsActive == false {
+            blurView = blurEffectView
+            view.insertSubview(blurView, belowSubview: tabBar)
+        }else{
+            blurView.removeFromSuperview()
+        }
+
+        
+    }
     func addTaskTapped(sender: UIButton)  {
         ViewControllerRouter(self).showAddOrModify()
     }
