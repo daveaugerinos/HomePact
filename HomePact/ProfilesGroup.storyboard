@@ -33,11 +33,11 @@
                                 <rect key="frame" x="62" y="357" width="290" height="306"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userCell" rowHeight="84" id="Nlb-D2-ML0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userCell" rowHeight="84" id="Nlb-D2-ML0" customClass="GroupTableViewCell" customModule="HomePact" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="290" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nlb-D2-ML0" id="sAL-8L-1vd">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="83.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIq-y0-025">
@@ -53,6 +53,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="groupTVCellImageView" destination="qIq-y0-025" id="vFZ-yR-vcn"/>
+                                            <outlet property="groupTVCellUserNameLabel" destination="6e5-T5-gLs" id="Z7V-WH-xj5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -64,14 +68,14 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG3-PM-gyp">
                                 <rect key="frame" x="117" y="671" width="180" height="45"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="8BF-vp-plJ"/>
                                     <constraint firstAttribute="width" constant="180" id="krn-4a-bWN"/>
                                 </constraints>
                                 <state key="normal" title="Leave Group"/>
                                 <connections>
-                                    <action selector="leavButtonPressed:" destination="ypr-TE-LkO" eventType="touchUpInside" id="JBE-ZF-hiM"/>
-                                    <action selector="leaveGroupButtonPressed:" destination="ypr-TE-LkO" eventType="touchUpInside" id="0mq-pI-8x9"/>
+                                    <action selector="leaveGroupButtonPressed:" destination="ypr-TE-LkO" eventType="touchUpInside" id="68Z-gE-PCj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -94,7 +98,6 @@
                         <outlet property="groupImageView" destination="sML-bo-mmP" id="3hE-MI-ef0"/>
                         <outlet property="groupNameLabel" destination="CE2-do-kn3" id="By3-91-JBI"/>
                         <outlet property="groupUsersTableView" destination="ZiF-Vx-ElS" id="re4-BN-N7d"/>
-                        <outlet property="leaveButton" destination="UG3-PM-gyp" id="LrQ-EA-WIU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSD-15-jAa" userLabel="First Responder" sceneMemberID="firstResponder"/>

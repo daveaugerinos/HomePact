@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F069A881E956B230079E18F /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F069A871E956B230079E18F /* GroupTableViewCell.swift */; };
 		3F586BCF1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */; };
 		3F586BD11E89D6BF004AFA62 /* ProfilesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */; };
 		3F586BD31E89D7CC004AFA62 /* ProfilesGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		20A8B61287B2EE17D50D4146 /* Pods-HomePact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomePact.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomePact/Pods-HomePact.release.xcconfig"; sourceTree = "<group>"; };
+		3F069A871E956B230079E18F /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesPersonalViewController.swift; sourceTree = "<group>"; };
 		3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesGroupViewController.swift; sourceTree = "<group>"; };
 		3F586BD21E89D7CC004AFA62 /* ProfilesGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilesGroup.storyboard; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				3FBEA95C1E8C4A3F00556AE8 /* AddOrModifyCVCell.swift */,
 				3F8B4F161E8DADC30019D568 /* UITextField+Underlined.swift */,
 				E1AEDD681E91C98000F5D67D /* UIImage+Base64Encoding.swift */,
+				3F069A871E956B230079E18F /* GroupTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -236,9 +239,9 @@
 				E1D476281E89FD470049E3DE /* PageViewController.swift */,
 				3F586BCE1E89D6B4004AFA62 /* ProfilesPersonalViewController.swift */,
 				3F586BD01E89D6BF004AFA62 /* ProfilesGroupViewController.swift */,
+				A20437BD1E89D4C70046ABAA /* LoginViewController.swift */,
 				3F586BDA1E8A0A90004AFA62 /* AddOrModifyVC.swift */,
 				3F586BDC1E8A0AA9004AFA62 /* CompleteTaskViewController.swift */,
-				A20437BD1E89D4C70046ABAA /* LoginViewController.swift */,
 				A20437BF1E89D53B0046ABAA /* RegisterViewController.swift */,
 				A20437C11E89D54F0046ABAA /* JoinHomeViewController.swift */,
 				A20437C31E89D55B0046ABAA /* MakeHomeViewController.swift */,
@@ -529,6 +532,7 @@
 				E19283B41E8D87A2001BD535 /* ScheduleCoordinator.swift in Sources */,
 				E19283BA1E8DE1FF001BD535 /* FirebaseGroupManager.swift in Sources */,
 				A20437C01E89D53B0046ABAA /* RegisterViewController.swift in Sources */,
+				3F069A881E956B230079E18F /* GroupTableViewCell.swift in Sources */,
 				A20437B41E8966CC0046ABAA /* Task.swift in Sources */,
 				E1AEDD691E91C98000F5D67D /* UIImage+Base64Encoding.swift in Sources */,
 				E1D476311E8A06420049E3DE /* UpcomingTVCell.swift in Sources */,
