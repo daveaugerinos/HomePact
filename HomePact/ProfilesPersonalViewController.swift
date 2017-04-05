@@ -35,6 +35,8 @@ class ProfilesPersonalViewController: UIViewController {
             self.userNameLabel.text = String(format: "\(first) \(last)")
             self.userEmailLabel.text = user.username
             self.userPhoneNumberLabel.text = user.phoneNumber
+            self.roundAppropriateViews()
+
         }
         
     }
@@ -48,6 +50,7 @@ class ProfilesPersonalViewController: UIViewController {
         self.userImageView.layer.borderWidth = 3.0
         self.userImageView.layer.borderColor = UIColor.white.cgColor
         self.userImageView.layer.cornerRadius = userImageView.frame.width/2
+        userImageView.clipsToBounds = true
         
         self.userNameLabel.layer.cornerRadius = 3.0
         self.userEmailLabel.layer.cornerRadius = 3.0

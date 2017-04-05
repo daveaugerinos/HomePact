@@ -64,6 +64,7 @@ class ProfilesGroupViewController: UIViewController, UITableViewDelegate, UITabl
         self.groupImageView.layer.borderWidth = 3.0
         self.groupImageView.layer.borderColor = UIColor.white.cgColor
         self.groupImageView.layer.cornerRadius = groupImageView.frame.width/2
+        groupImageView.clipsToBounds = true
         
         self.groupNameLabel.layer.cornerRadius = 3.0
     }

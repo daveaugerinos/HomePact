@@ -37,7 +37,7 @@
                                         <rect key="frame" x="0.0" y="28" width="290" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nlb-D2-ML0" id="sAL-8L-1vd">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="83"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="83.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIq-y0-025">
@@ -59,6 +59,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ypr-TE-LkO" id="SB1-ic-gEP"/>
+                                    <outlet property="delegate" destination="ypr-TE-LkO" id="lFT-h7-vUr"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="groupNameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CE2-do-kn3">
                                 <rect key="frame" x="107" y="328" width="200" height="21"/>
