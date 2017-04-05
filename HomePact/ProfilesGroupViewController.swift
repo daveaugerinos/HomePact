@@ -19,6 +19,30 @@ class ProfilesGroupViewController: UIViewController {
         super.viewDidLoad()
         
         roundAppropriateViews()
+        self.view.backgroundColor = UIColor.lightGray
+        
+        let fbUM = FirebaseUserManager()
+        let fbGM = FirebaseGroupManager()
+        
+//        fbUM.currentUser { (User) -> (Void) in
+//            //          code
+//        }
+//        
+//        fbUM.observeGroupIDs(for: User) { (<#[String]#>, <#Error?#>) -> (Void) in
+//            //          code
+//        }
+//        
+//        fbGM.group(groupID: <#T##String#>) { (<#Group?#>, <#Error?#>) -> (Void) in
+//            FirebaseUserManager().users
+//        }
+        
+        fbGM.observeUserIDs(for: <#T##Group#>) { (<#[String]#>, <#Error?#>) -> (Void) in
+            <#code#>
+        }
+        
+        fbUM.usersWith(userIDs: <#T##[String]#>) { (<#[User]?#>, <#Error?#>) -> (Void) in
+            <#code#>
+        }
     }
     
     override func didReceiveMemoryWarning() {
