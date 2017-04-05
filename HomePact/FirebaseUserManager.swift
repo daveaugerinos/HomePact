@@ -101,16 +101,13 @@ class FirebaseUserManager:NSObject {
                 closure(appUser)
                 
             })
-    
         
     }
 
     
     func usersWith(userIDs:[String], closure:@escaping ([User]?, Error?) -> (Void)) {
         
-      
-        let query = usersRef.queryOrderedByKey().queryStarting(atValue: userIDs.first).queryEnding(atValue: userIDs.last)
-        query.observeSingleEvent(of:.value, with: { snapshot in
+           usersRef.observe(.value, with: { snapshot in
             var users = [User]()
             var closureError: FBUMError?
             guard let usersDict = snapshot.value as? NSDictionary else {
@@ -118,27 +115,28 @@ class FirebaseUserManager:NSObject {
                 return
             }
             
-            let filteredUsers = usersDict.filter({ (key, _) in
-                return userIDs.contains(key as! String)
-            })
-            
-            for (_, value) in filteredUsers{
-                
-                
-                guard let userInfo = value as? NSDictionary else {
-                    closureError = FBUMError.parse("Error reading user info")
+            for (key, value) in usersDict {
+                guard let key = key as? String else {
                     break
                 }
-                
-                guard let user = self.parseUser(from: userInfo) else {
-                    closureError = FBUMError.parse("Error parsing us info")
-                    break
+                if userIDs.contains(key){
+                    guard let userInfo = value as? NSDictionary else {
+                        closureError = FBUMError.parse("Error reading user infos")
+                        break
+                    }
+                    guard let user = self.parseUser(from: userInfo) else {
+                        closureError = FBUMError.parse("Error parsing task infos")
+                        break
+                    }
+                    users.append(user)
                 }
-                users.append(user)
             }
             
-            closure(users, closureError)
-
+            if closureError != nil{
+                 closure(nil,closureError)
+            }else{
+                closure(users,nil)
+            }
         })
         
     }
@@ -193,9 +191,6 @@ class FirebaseUserManager:NSObject {
         remove( task, from: user, for: condition)
         add( task, to: user, for: anotherCondition)
     }
-    
-    
-    
     
     
     //MARK: OBSERVER METHODS

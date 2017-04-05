@@ -21,7 +21,7 @@ class UpcomingTaskTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(52, 0, 0, 0)
-        
+         
         userManager = FirebaseUserManager()
         taskManager = FirebaseTaskManager()
         groupManager = FirebaseGroupManager()
@@ -110,6 +110,7 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
             let editAction = SwipeAction(style: .default, title: "Edit", handler: { action, indexPath in
                 ViewControllerRouter(self).showAddOrModify()
                 print("yay edit")
+                action.fulfill(with: .reset)
             })
             editAction.image = #imageLiteral(resourceName: "Edit")
             return [editAction]
@@ -118,7 +119,6 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
                 
                 let doomedTask = self.tasks[indexPath.row]
                 self.tasks.remove(at: indexPath.row)
-                
                 
                 self.tableView.beginUpdates()
                 action.fulfill(with: .delete)
@@ -134,8 +134,16 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions{
         var options = SwipeTableOptions()
-        options.transitionStyle = .border
-        options.expansionStyle = SwipeExpansionStyle.destructive
+
+        switch orientation {
+        case .right:
+            options.transitionStyle = .border
+            options.expansionStyle = SwipeExpansionStyle.destructive
+        case .left:
+            options.transitionStyle = .border
+            options.expansionStyle = SwipeExpansionStyle.fill
+        }
+
         
         return options
         
