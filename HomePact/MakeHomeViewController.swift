@@ -30,6 +30,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
         createHomeFeedbackView.layer.isHidden = true
         makeButton.layer.borderColor = UIColor.white.cgColor
         sendInviteButton.layer.borderColor = UIColor.white.cgColor
+        homeImage = UIImage(named: "default_home.jpg")
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods -
@@ -75,7 +76,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func makeButtonTouched(_ sender: UIButton) {
-        homeImage = UIImage(named: "default_home.jpg")
+        
         guard let homeName = homeNameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for home name

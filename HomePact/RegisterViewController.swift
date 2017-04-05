@@ -35,6 +35,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         passwordTextField.isSecureTextEntry = true
         reenterPasswordTextField.isSecureTextEntry = true
         registerButton.layer.borderColor = UIColor.white.cgColor
+        userImage = UIImage(named: "default_person.jpg")
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods -
@@ -91,7 +92,6 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func registerButtonTouched(_ sender: UIButton) {
         
-        userImage = UIImage(named: "default_person.jpg")
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
