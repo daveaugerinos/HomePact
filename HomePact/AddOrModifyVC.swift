@@ -13,15 +13,13 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     @IBOutlet weak fileprivate var taskNameTextField: UITextField!
     @IBOutlet weak fileprivate var dateTextField: UITextField!
     @IBOutlet weak fileprivate var recurrenceTextField: UITextField!
-    
     @IBOutlet weak fileprivate var groupMembersCollectionView: UICollectionView!
-    
     @IBOutlet weak var pickYourImageButton: PickImageButton!
     @IBOutlet weak fileprivate var repeatDetailsView: UIView!
     @IBOutlet weak fileprivate var repeatSlider: UISlider!
     @IBOutlet weak fileprivate var repeatNumberOfTimesLabel: UILabel!
-    
     @IBOutlet weak fileprivate var addMediaImageView: UIImageView!
+    var taskImage: UIImage?
     
     let arrayOfRecurrences = ["Once-off", "Weekly", "Fortnightly", "Monthly", "Quarterly", "Yearly"]
     var arrayOfUsers: [User] = []
@@ -112,24 +110,32 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         recurrenceTextField.resignFirstResponder()
         dateTextField.resignFirstResponder()
         
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library
+        let imagePickerController = UIImagePickerController()
         
+        // Only allow photos to be picked, not taken
+        imagePickerController.sourceType = . photoLibrary
+        
+        // Make sure ViewController is notified when the user picks an image
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     //MARK: UIImagePickerController Delegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
+        // Use the orginal image in dictionary
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         // Set button to display the selected image
         pickYourImageButton.setImage(selectedImage, for: .normal)
-
+        
+        // Get home image for later upload
+        taskImage = selectedImage
+        
         // Dismiss the picker
         dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,13 +23,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="opF-rf-vV3" userLabel="Background Image View">
+                                <rect key="frame" x="0.0" y="52" width="413" height="631"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQa-tB-2al">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="Y2z-Y7-d6R"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="8b1-Tb-CaV">
+                                    <navigationItem title="Add Task" id="8b1-Tb-CaV">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="h4A-cq-9Xa">
                                             <connections>
                                                 <action selector="cancelButtonPressed:" destination="5Af-JC-9PQ" id="aRt-kq-D55"/>
@@ -41,10 +46,10 @@
                                 <rect key="frame" x="0.0" y="64" width="413" height="672"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="onx-he-0FM">
-                                        <rect key="frame" x="20" y="8" width="374" height="609"/>
+                                        <rect key="frame" x="20" y="8" width="374" height="636"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HO-5m-i1r">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.333333333333329" id="Cg0-ma-TyR"/>
                                                 </constraints>
@@ -58,8 +63,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQj-de-ZUz">
-                                                <rect key="frame" x="0.0" y="68" width="36" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When should it be done?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQj-de-ZUz">
+                                                <rect key="frame" x="0.0" y="68" width="190" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.333333333333314" id="E7o-y8-JCV"/>
                                                 </constraints>
@@ -74,7 +79,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who should do it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMz-3U-kWD">
-                                                <rect key="frame" x="0.0" y="137" width="137.66666666666666" height="20"/>
+                                                <rect key="frame" x="0.0" y="137" width="138" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.333333333333357" id="QM8-6X-T2b"/>
                                                 </constraints>
@@ -96,7 +101,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memberCell" id="mgO-J6-S3k" customClass="AddOrModifyCVCell" customModule="HomePact" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="3.6666666666666665" width="89" height="83"/>
+                                                        <rect key="frame" x="0.0" y="4" width="89" height="83"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="89" height="83"/>
@@ -155,19 +160,19 @@
                                                 <rect key="frame" x="0.0" y="334" width="373" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeats how many times?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uW-ff-2NV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="20.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-tR-6vf">
-                                                        <rect key="frame" x="-2" y="28.333333333333314" width="377" height="31"/>
+                                                        <rect key="frame" x="-2" y="29" width="377" height="31"/>
                                                         <connections>
                                                             <action selector="sliderValueChanged:" destination="5Af-JC-9PQ" eventType="valueChanged" id="R8J-Vd-QXm"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="numberOfTimesLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="br1-jY-3lj">
-                                                        <rect key="frame" x="104.33333333333334" y="66.333333333333314" width="165.66666666666666" height="20.333333333333371"/>
+                                                        <rect key="frame" x="104" y="67" width="166" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="166" id="XXM-ki-QD9"/>
                                                         </constraints>
@@ -189,7 +194,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a photo or video?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zv-U6-2bh">
-                                                <rect key="frame" x="0.0" y="443" width="167.66666666666666" height="20"/>
+                                                <rect key="frame" x="0.0" y="443" width="168" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.333333333333314" id="XvC-Ik-17s"/>
                                                 </constraints>
@@ -197,8 +202,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35r-Kw-dB2" customClass="PickImageButton" customModule="HomePact" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="472" width="98" height="98"/>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35r-Kw-dB2" customClass="PickImageButton" customModule="HomePact" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="472" width="125" height="125"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="125" id="3WJ-EN-1nJ"/>
+                                                    <constraint firstAttribute="height" constant="125" id="Dz7-hp-J7f"/>
+                                                    <constraint firstAttribute="width" secondItem="35r-Kw-dB2" secondAttribute="height" multiplier="1:1" id="e15-na-uhn"/>
+                                                </constraints>
                                                 <state key="normal" image="PhotoVideoGlyph"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -216,11 +226,26 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osG-6I-JsC">
-                                                <rect key="frame" x="0.0" y="579" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="606" width="175" height="30"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="175" id="LON-Kj-yy2"/>
                                                     <constraint firstAttribute="height" constant="30" id="yVg-nx-lgu"/>
                                                 </constraints>
-                                                <state key="normal" title="Complete"/>
+                                                <state key="normal" title="Add Task">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                                        <color key="value" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="completeButtonPressed:" destination="5Af-JC-9PQ" eventType="touchUpInside" id="loP-Hi-UQ9"/>
                                                 </connections>
@@ -240,6 +265,8 @@
                                     <constraint firstItem="onx-he-0FM" firstAttribute="leading" secondItem="dit-If-buD" secondAttribute="leadingMargin" constant="12" id="8bv-gr-a4Y"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="onx-he-0FM" secondAttribute="trailing" constant="12" id="FHE-1r-MQJ"/>
                                     <constraint firstAttribute="bottom" secondItem="onx-he-0FM" secondAttribute="bottom" id="iIf-Ev-NUi"/>
+                                    <constraint firstItem="osG-6I-JsC" firstAttribute="centerX" secondItem="dit-If-buD" secondAttribute="centerX" id="jxF-jZ-a2B"/>
+                                    <constraint firstItem="35r-Kw-dB2" firstAttribute="centerX" secondItem="dit-If-buD" secondAttribute="centerX" id="uhj-s4-3o3"/>
                                     <constraint firstItem="onx-he-0FM" firstAttribute="top" secondItem="dit-If-buD" secondAttribute="topMargin" id="yKC-sx-qVr"/>
                                 </constraints>
                             </scrollView>
@@ -248,7 +275,6 @@
                         <constraints>
                             <constraint firstItem="dit-If-buD" firstAttribute="top" secondItem="cQa-tB-2al" secondAttribute="bottom" id="5bv-8s-QRI"/>
                             <constraint firstItem="cQa-tB-2al" firstAttribute="leading" secondItem="heN-vn-h9n" secondAttribute="leading" id="BqH-Bx-yyp"/>
-                            <constraint firstItem="osG-6I-JsC" firstAttribute="centerX" secondItem="cQa-tB-2al" secondAttribute="centerX" id="EQ8-yo-QyD"/>
                             <constraint firstItem="dit-If-buD" firstAttribute="centerX" secondItem="cQa-tB-2al" secondAttribute="centerX" id="P8H-o2-iEK"/>
                             <constraint firstItem="dit-If-buD" firstAttribute="leading" secondItem="cQa-tB-2al" secondAttribute="leading" id="QuY-vi-VWz"/>
                             <constraint firstItem="cQa-tB-2al" firstAttribute="top" secondItem="heN-vn-h9n" secondAttribute="top" id="SAC-oM-vJc"/>
@@ -275,6 +301,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LoginBackground" width="1242" height="2208"/>
         <image name="PhotoVideoGlyph" width="98" height="98"/>
     </resources>
 </document>
