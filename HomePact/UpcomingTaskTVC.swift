@@ -12,58 +12,70 @@ import SwipeCellKit
 class UpcomingTaskTVC: UITableViewController {
 
     let kUpcomingCellIdentifier = "upcomingTaskCell"
+    var userManager:FirebaseUserManager!
+    var groupManager:FirebaseGroupManager!
+    var taskManager:FirebaseTaskManager!
+    var tasks = [Task]()
+    var currentUser:User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(52, 0, 0, 0)
         
-        
+        userManager = FirebaseUserManager()
+        taskManager = FirebaseTaskManager()
+        groupManager = FirebaseGroupManager()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
+        userManager.currentUser { user  in
+            
+            guard let user = user else {
+                print("no user for you")
+                return
+            }
+            self.currentUser = user
+            self.userManager.observeTaskIDs(for: user, in: .upcoming, with: { observedIDs, error  in
+                
+                if error != nil {
+                    print("\(error)")
+                }
+                
+                self.taskManager.observeTasks(with: observedIDs, with: { observedTasks, error  in
+                    if error != nil {
+                        print("\(error)")
+                    }
+                    
+                    self.tasks = observedTasks
+                    self.tableView.reloadData()
+                })
+            })
+        }
     }
-
-
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        
+        return tasks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kUpcomingCellIdentifier, for: indexPath) as! UpcomingTVCell
         cell.delegate = self
-
-        // Configure the cell...
         
+        cell.configureWith(tasks[indexPath.row])
 
         return cell
     }
-//
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
-//
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Delete the row from the data source
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }    
-//    }
-//
-//
 
 }
+
+
 
 extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]?{
@@ -77,18 +89,19 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
             return [editAction]
         case .right:
             let deleteAction = SwipeAction(style: .destructive, title: "Delete", handler: { action, indexPath in
-                print("yay delete")
+                
+                self.tableView.beginUpdates()
+                action.fulfill(with: .delete)
+                self.userManager.remove(self.tasks[indexPath.row], from: self.currentUser, for: .upcoming)
+                self.tableView.endUpdates()
+                
             })
             deleteAction.image = #imageLiteral(resourceName: "DeleteX")
+            
             return [deleteAction]
         }
     }
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions{
-        var options = SwipeTableOptions()
-        options.transitionStyle = .border
-    
-        return options
-    }
+ 
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation){
         
     }

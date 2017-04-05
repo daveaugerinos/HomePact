@@ -65,9 +65,7 @@ class FirebaseTaskManager: NSObject {
      
     
     func observeTasks(with IDs:[String], with closure:@escaping (_ tasks:[Task],_ error:Error?)-> (Void) ){
-        
-        
-       
+    
         tasksRef.observe(.value, with: {snapshot in
         
             let result = self.tasks(from: snapshot, with: IDs)
