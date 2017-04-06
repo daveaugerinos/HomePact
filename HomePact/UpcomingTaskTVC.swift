@@ -85,13 +85,13 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
         switch orientation {
         case .left:
             let editAction = SwipeAction(style: .default, title: "Edit", handler: { action, indexPath in
-                ViewControllerRouter(self).showAddOrModify()
+                ViewControllerRouter(self).presentAddTask()
                 print("yay edit")
                 action.fulfill(with: .reset)
             })
             let completeAction = SwipeAction(style: .default, title: "Complete", handler: { action, indexPath in
                 action.fulfill(with: .reset)
-                ViewControllerRouter(self).showCompleteTask(with: self.upcomingTasks[indexPath.row])
+                ViewControllerRouter(self).presentCompleteTask(with: self.upcomingTasks[indexPath.row])
                 
                 
             })
