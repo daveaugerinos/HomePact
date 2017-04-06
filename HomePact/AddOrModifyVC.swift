@@ -21,6 +21,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     @IBOutlet weak fileprivate var repeatNumberOfTimesLabel: UILabel!
     @IBOutlet weak fileprivate var addMediaImageView: UIImageView!
     var taskImage: UIImage?
+    var taskDate = Date()
     
     let arrayOfRecurrences = ["Once-off", "Weekly", "Fortnightly", "Monthly", "Quarterly", "Yearly"]
     var arrayOfUsers: [User] = []
@@ -102,7 +103,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                 let key = FirebaseTaskManager().tasksRef.childByAutoId().key
                 var newTask = Task(id: key, name: taskName, timestamp: Date())
                 
-                newTask.taskDate = DateFormatter().date(from: self.dateTextField.text!)
+                newTask.taskDate = self.taskDate
                 
                 //encode recurrence to enum
                 switch (self.recurrenceTextField.text!) {
@@ -158,6 +159,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         let selectedDate: String = dateFormatter.string(from: sender.date)
         
         dateTextField.text = selectedDate
+        taskDate = sender.date
     }
     
     func doneButtonPressed(_ sender:UIButton)
