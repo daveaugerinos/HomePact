@@ -53,7 +53,7 @@ class ProfilesPersonalViewController: UIViewController {
         
         do {
             try firebaseAuth?.signOut()
-            ViewControllerRouter(self).showLogin()
+            ViewControllerRouter(self).presentRootLogin()
         } catch let error as NSError {
             if let errorCode = FIRAuthErrorCode(rawValue: (error._code)) {
                 switch errorCode {

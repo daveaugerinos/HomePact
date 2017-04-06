@@ -177,11 +177,11 @@ class RootTabBarController: UITabBarController {
         
     }
     func addTaskTapped(sender: UIButton)  {
-        ViewControllerRouter(self).showAddOrModify()
+        ViewControllerRouter(self).presentAddTask()
     }
     
     func completeTaskTapped(sender: UIButton) {
-        ViewControllerRouter(self).showCompleteTask()
+        ViewControllerRouter(self).presentCompleteTask()
     }
 }
 

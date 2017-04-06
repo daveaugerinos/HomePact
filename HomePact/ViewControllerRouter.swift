@@ -74,6 +74,19 @@ class ViewControllerRouter: NSObject {
         show(completeTask(with: task))
     }
     
+    func presentRootLogin()  {
+        present(rootNav())
+    }
+    
+    func presentAddTask() {
+        present(addOrModifyVC())
+    }
+    func presentCompleteTask() {
+        present(completeTaskVC())
+    }
+    func presentCompleteTask(with task:Task) {
+        present(completeTask(with: task))
+    }
     // MARK: - View Controller initializers -
     
     fileprivate func loginVC() -> LoginViewController {
@@ -140,10 +153,30 @@ class ViewControllerRouter: NSObject {
         return completeTaskVC
         
     }
+    fileprivate func rootNav() -> UINavigationController {
+        return UIStoryboard(name: "Login", bundle: .main).instantiateViewController(withIdentifier: "rootLogin") as! UINavigationController
+    }
     
     // MARK: - Show function -
     
     fileprivate func show(_ vc: UIViewController) {
         controller?.show(vc, sender: controller)
     }
+    
+    //MARK: - Present function -
+    
+    fileprivate func present(_ vc: UIViewController) {
+        
+        controller?.present(vc, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
