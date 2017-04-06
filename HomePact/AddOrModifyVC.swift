@@ -19,7 +19,6 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     @IBOutlet weak fileprivate var repeatDetailsView: UIView!
     @IBOutlet weak fileprivate var repeatSlider: UISlider!
     @IBOutlet weak fileprivate var repeatNumberOfTimesLabel: UILabel!
-    @IBOutlet weak fileprivate var addMediaImageView: UIImageView!
     var taskImage: UIImage?
     var taskDate = Date()
     let arrayOfRecurrences = ["Once-off", "Weekly", "Fortnightly", "Monthly", "Quarterly", "Yearly"]
@@ -45,6 +44,8 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         for i in array {
             i!.underlined()
         }
+        
+        groupMembersCollectionView.backgroundColor = UIColor.clear
         
         recurrenceTextField.text = arrayOfRecurrences[0]
         recurrencePickerView.delegate = self
