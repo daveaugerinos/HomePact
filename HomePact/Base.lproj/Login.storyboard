@@ -131,7 +131,7 @@
                                 <rect key="frame" x="66" y="222" width="213" height="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grq-If-Q65" userLabel="UsernameLineView">
                                 <rect key="frame" x="41" y="211" width="238" height="1"/>
