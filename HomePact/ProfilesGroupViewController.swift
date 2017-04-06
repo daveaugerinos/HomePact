@@ -22,6 +22,8 @@ class ProfilesGroupViewController: UIViewController, UITableViewDelegate, UITabl
         groupNameLabel.layer.cornerRadius = 3.0
         groupNameLabel.text = ""
         leaveButton.layer.borderColor = UIColor.red.cgColor
+        groupUsersTableView.backgroundColor = UIColor.clear
+        groupUsersTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
             self.groupView.image = group?.groupImage
@@ -36,11 +38,6 @@ class ProfilesGroupViewController: UIViewController, UITableViewDelegate, UITabl
                 }
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
@@ -64,6 +61,7 @@ class ProfilesGroupViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! GroupTableViewCell
         let userToDisplay = arrayOfUsers[indexPath.row]
+        cell.backgroundColor = UIColor.clear
         cell.user = userToDisplay
         return cell
     }
