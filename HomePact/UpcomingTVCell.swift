@@ -30,6 +30,7 @@ class UpcomingTVCell: SwipeTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
 
@@ -51,14 +52,20 @@ class UpcomingTVCell: SwipeTableViewCell {
         guard let taskImage = task.taskImage else {
             return
         }
+        guard let userImage = task.assignedTo else {
+            return
+        }
+        guard let userImageTwo = task.nextAssigned else {
+            return
+        }
         
         
         taskNameLabel.text = task.name
         taskDateLabel.text = dateFormatter.string(from: taskDate)
         taskImageContainerView.image = taskImage
         
-        userOneRoundView.image = UIImage(named: "Person_Dark")
-        userTwoRoundView.image = UIImage(named: "Person_Dark")
+        userOneRoundView.image = userImage
+        userTwoRoundView.image = userImageTwo
         userThreeRoundView.image = UIImage(named: "Person_Dark")
 
         
