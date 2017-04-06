@@ -36,34 +36,27 @@ class CompletedTaskTVC: UITableViewController {
             }
             self.currentUser = user
             
-            self.userManager.observeTaskIDs(for: user, in: .completed, with: { taskIDs, error  in
+            self.groupManager.currentUserGroup{group, error in
                 
-                if error != nil {
-                    print("\(error)")
+                guard let group = group else {
+                    return
                 }
-                
-                self.taskManager.observeTasks(with: taskIDs, with:{ observedTasks, error in
+                self.groupManager.observeTaskIDs(for: group, in: .completed, with:{ observedIDs, error in
                     
-                    if error != nil {
-                        print("\(error)")
-                    }
-                    
-                    if self.completedTasks.count == 0{
+                    self.taskManager.observeTasks(with: observedIDs, with: { observedTasks, error  in
+                        
+                        if error != nil {
+                            print("\(error)")
+                        }
                         self.completedTasks = observedTasks
                         self.tableView.reloadData()
-                    }else if self.completedTasks.count < observedTasks.count {
-                        self.completedTasks = observedTasks
-                        self.tableView.reloadData()
-                    }else {
-                        self.completedTasks = observedTasks
-                    }
-
-                
+                        
+                        
+                    })
+                    
                 })
-                
-            })
+            }
         }
-        
         
     }
 
