@@ -10,8 +10,8 @@ import UIKit
 
 class GroupTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var groupTVCellUserNameLabel: UILabel!
-    @IBOutlet weak var groupTVCellImageView: UIImageView!
+    @IBOutlet weak var groupTVCellUserNameLabel: UILabel!    
+    @IBOutlet weak var groupTVCellView: RoundView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,8 +32,6 @@ class GroupTableViewCell: UITableViewCell {
     
     fileprivate func configureCell() {
         groupTVCellUserNameLabel.text = user.firstName
-        groupTVCellImageView.image = user.userImage
+        groupTVCellView.image = user.userImage
     }
-    
-
 }

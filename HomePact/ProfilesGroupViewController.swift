@@ -10,7 +10,7 @@ import UIKit
 
 class ProfilesGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet fileprivate weak var groupImageView: UIImageView!
+    @IBOutlet weak var groupView: RoundView!
     @IBOutlet fileprivate weak var groupNameLabel: UILabel!
     @IBOutlet fileprivate weak var groupUsersTableView: UITableView!
     @IBOutlet fileprivate weak var leaveButton: UIButton!
@@ -19,12 +19,12 @@ class ProfilesGroupViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        roundAppropriateViews()
-        self.view.backgroundColor = UIColor.lightGray
+        groupNameLabel.layer.cornerRadius = 3.0
         groupNameLabel.text = ""
+        leaveButton.layer.borderColor = UIColor.red.cgColor
         
         FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
-            self.groupImageView.image = group?.groupImage
+            self.groupView.image = group?.groupImage
             self.groupNameLabel.text = group?.name
             
             FirebaseGroupManager().observeUserIDs(for: group!) { (arrayOfIDs, error) -> (Void) in
@@ -58,15 +58,6 @@ class ProfilesGroupViewController: UIViewController, UITableViewDelegate, UITabl
             self.dismiss(animated: true, completion: nil)
         })
         self.present(alert, animated: true)
-    }
-
-    func roundAppropriateViews() {
-        self.groupImageView.layer.borderWidth = 3.0
-        self.groupImageView.layer.borderColor = UIColor.white.cgColor
-        self.groupImageView.layer.cornerRadius = groupImageView.frame.width/2
-        groupImageView.clipsToBounds = true
-        
-        self.groupNameLabel.layer.cornerRadius = 3.0
     }
     
     //MARK: TableView Methods
