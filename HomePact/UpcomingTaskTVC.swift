@@ -22,6 +22,7 @@ class UpcomingTaskTVC: UITableViewController {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(52, 0, 0, 0)
         tableView.backgroundView = UIImageView(image: UIImage(named: "LoginBackground"))
+        tableView.backgroundView?.contentMode = .center
         tableView.backgroundView?.alpha = 0.75
         
         userManager = FirebaseUserManager()
