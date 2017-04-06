@@ -41,7 +41,7 @@ class JoinHomeViewController: UIViewController {
         guard let groupName = joinHomeTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for home name
-        if(groupName == "") {
+        if groupName.isEmpty {
             alert(title: "Home Name Required", message: "Please enter the name of the home you which to join.")
         }
         
@@ -50,7 +50,7 @@ class JoinHomeViewController: UIViewController {
         let nameValidation = NSPredicate.init(format: "SELF MATCHES %@", regularExpression)
         let isValidName = nameValidation.evaluate(with: groupName)
         
-        if(!isValidName) {
+        if !isValidName {
             alert(title: "Invalid Home Name", message: "A home name must have minimum of 5 alphabet characters and no spaces.")
         }
         

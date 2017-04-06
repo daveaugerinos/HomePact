@@ -36,7 +36,7 @@ class SendInviteViewController: UIViewController, FIRInviteDelegate {
         guard let email = sendInviteTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for email
-        if(email == "") {
+        if email.isEmpty {
             alert(title: "Email Required", message: "Please enter the email address to send the invite.")
         }
         
