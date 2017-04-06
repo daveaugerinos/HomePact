@@ -46,7 +46,6 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
             i!.underlined()
         }
         
-        
         recurrenceTextField.text = arrayOfRecurrences[0]
         recurrencePickerView.delegate = self
         recurrencePickerView.dataSource = self
@@ -232,23 +231,17 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     //MARK: Collection View Methods
     
     func configureCollectionDataSource() {
-        //TODO: update in future to query db for other group members
         
-        //make three sample users
-//        let userNames = ["Dave", "Ali", "Callum"]
-//
-//        for item in userNames {
-//            
-//            var user = User.init(id: "test01-id", username: "test01-username", timestamp: Date())
-//            user.firstName = item
-//            user.lastName = "lastName"
-//            user.userImage = #imageLiteral(resourceName: "Person_Dark")
-//            arrayOfUsers.append(user)
-//        }
-        
-
-    //    FirebaseGroupManager().observeUserIDs(for: <#T##Group#>, with: <#T##([String], Error?) -> (Void)#>)
-//        get users from userID's (Ali's method)
+        FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
+            FirebaseGroupManager().observeUserIDs(for: group!) { (arrayOfIDs, error) -> (Void) in
+                let arrayOfUserIDs = arrayOfIDs
+                
+                FirebaseUserManager().usersWith(userIDs: arrayOfUserIDs) { (returnedUsers, error) -> (Void) in
+                    self.arrayOfUsers = returnedUsers!
+                    self.groupMembersCollectionView.reloadData()
+                }
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
