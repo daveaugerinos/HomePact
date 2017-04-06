@@ -22,6 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="mkm-bA-Omf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EO4-lD-mBz">
                                 <rect key="frame" x="16" y="104" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -34,8 +37,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a photo or video?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNN-KX-Row">
-                                <rect key="frame" x="16" y="194" width="168" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a photo ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNN-KX-Row">
+                                <rect key="frame" x="16" y="194" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,8 +56,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-Vv-HU4">
-                                <rect key="frame" x="16" y="392" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-Vv-HU4">
+                                <rect key="frame" x="16" y="392" width="288" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -91,10 +94,12 @@
                             <constraint firstItem="phw-gd-8gq" firstAttribute="leading" secondItem="LOw-G7-nDO" secondAttribute="leading" id="2Gy-XR-q7L"/>
                             <constraint firstItem="gIR-Vv-HU4" firstAttribute="top" secondItem="EfG-j1-vME" secondAttribute="bottom" constant="8" id="2po-8r-e9U"/>
                             <constraint firstItem="KFv-1k-h11" firstAttribute="leading" secondItem="LOw-G7-nDO" secondAttribute="leadingMargin" id="3BC-46-8JN"/>
+                            <constraint firstItem="mkm-bA-Omf" firstAttribute="top" secondItem="LOw-G7-nDO" secondAttribute="top" id="3uF-q7-hCw"/>
                             <constraint firstItem="EfG-j1-vME" firstAttribute="top" secondItem="aYs-gF-i3U" secondAttribute="bottom" constant="40" id="8vd-qI-g7I"/>
                             <constraint firstItem="SNN-KX-Row" firstAttribute="top" secondItem="KFv-1k-h11" secondAttribute="bottom" constant="40" id="Cug-Gm-cKC"/>
                             <constraint firstItem="phw-gd-8gq" firstAttribute="top" secondItem="LOw-G7-nDO" secondAttribute="top" id="DFc-bn-hte"/>
                             <constraint firstItem="fLr-7F-WoW" firstAttribute="centerX" secondItem="LOw-G7-nDO" secondAttribute="centerX" id="DxD-km-jHb"/>
+                            <constraint firstItem="qYB-D3-3Tr" firstAttribute="top" secondItem="mkm-bA-Omf" secondAttribute="bottom" id="R5T-9R-yN1"/>
                             <constraint firstItem="KFv-1k-h11" firstAttribute="top" secondItem="EO4-lD-mBz" secondAttribute="bottom" constant="8" id="V8L-1H-C5P"/>
                             <constraint firstItem="fLr-7F-WoW" firstAttribute="width" secondItem="gIR-Vv-HU4" secondAttribute="width" id="ajG-pg-sxP"/>
                             <constraint firstItem="qYB-D3-3Tr" firstAttribute="top" secondItem="fLr-7F-WoW" secondAttribute="bottom" constant="20" id="f97-co-bO8"/>
@@ -102,7 +107,9 @@
                             <constraint firstAttribute="trailing" secondItem="phw-gd-8gq" secondAttribute="trailing" id="hUC-fO-2Bz"/>
                             <constraint firstItem="SNN-KX-Row" firstAttribute="leading" secondItem="LOw-G7-nDO" secondAttribute="leadingMargin" id="if6-mU-hwk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gIR-Vv-HU4" secondAttribute="trailing" id="khU-3i-Iz0"/>
+                            <constraint firstItem="mkm-bA-Omf" firstAttribute="leading" secondItem="LOw-G7-nDO" secondAttribute="leading" id="leZ-oQ-mZE"/>
                             <constraint firstItem="gIR-Vv-HU4" firstAttribute="leading" secondItem="LOw-G7-nDO" secondAttribute="leadingMargin" id="mao-vn-CtT"/>
+                            <constraint firstAttribute="trailing" secondItem="mkm-bA-Omf" secondAttribute="trailing" id="pTq-j0-BaU"/>
                             <constraint firstItem="EO4-lD-mBz" firstAttribute="top" secondItem="phw-gd-8gq" secondAttribute="bottom" constant="40" id="qF1-8v-AYN"/>
                             <constraint firstItem="EO4-lD-mBz" firstAttribute="leading" secondItem="LOw-G7-nDO" secondAttribute="leadingMargin" id="qYZ-zo-aHa"/>
                             <constraint firstItem="aYs-gF-i3U" firstAttribute="centerX" secondItem="LOw-G7-nDO" secondAttribute="centerX" id="x1m-zl-ynh"/>
@@ -117,10 +124,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0h-pI-0C3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77.599999999999994" y="114.69265367316342"/>
+            <point key="canvasLocation" x="76.875" y="113.75"/>
         </scene>
     </scenes>
     <resources>
+        <image name="LoginBackground" width="1242" height="2208"/>
         <image name="PhotoVideoGlyph" width="98" height="98"/>
     </resources>
 </document>

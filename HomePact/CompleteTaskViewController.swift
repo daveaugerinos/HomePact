@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CompleteTaskViewController: UIViewController, UITextFieldDelegate {
+class CompleteTaskViewController: UIViewController {
 
     @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var addMediaImageView: UIImageView!
@@ -21,6 +21,7 @@ class CompleteTaskViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         userManager = FirebaseUserManager()
         groupManager = FirebaseGroupManager()
@@ -64,8 +65,24 @@ class CompleteTaskViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
 
+}
+
+
+extension CompleteTaskViewController: UITextFieldDelegate {
+ 
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
     
-}
+  }
+
+
+
+
+
+
+
