@@ -63,17 +63,17 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         
         // Check for username and password
-        if(email == "") {
+        if email.isEmpty {
             alert(title: "Username Required", message: "Please enter your username (the email address used for this account).")
         }
-        else if(password == "") {
+        else if password.isEmpty {
             alert(title: "Password Required", message: "Please enter your password.")
         }
             
         // Attempt login to server
         else {
             FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
-                if(error != nil) {
+                if error != nil {
                     if let errorCode = FIRAuthErrorCode(rawValue: (error?._code)!) {
                         switch errorCode {
                         case .errorCodeNetworkError:
@@ -106,7 +106,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         
         guard let email = usernameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         
-        if email == "" {
+        if email.isEmpty {
             alert(title: "Reset Password Error", message: "Please enter your email address into username textfield.")
         }
         

@@ -112,30 +112,30 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         let isValid = passwordValidation.evaluate(with: password)
         
         // Check for first name
-        if(firstName == "") {
+        if firstName.isEmpty {
             alert(title: "First Name Required", message: "Please enter your first name.")
         }
         
         // Check for last name
-        else if(lastName == "") {
+        else if lastName.isEmpty {
             alert(title: "Last Name Required", message: "Please enter your last name.")
         }
         
         // Check for valid email
-        else if(email == "") {
+        else if email.isEmpty {
             alert(title: "Valid Email Required", message: "Please enter your email address.")
         }
 
-        else if(!isValidEmail) {
+        else if !isValidEmail {
             alert(title: "Invalid Email Address", message: "Please enter a valid email address.")
         }
         
         // Check for valid phone number
-        else if(phoneNumber == "") {
+        else if phoneNumber.isEmpty {
             alert(title: "Phone Number Required", message: "Please enter your phone number.")
         }
  
-        else if(validPhoneNumber == nil) {
+        else if validPhoneNumber == nil {
             alert(title: "Valid Phone Number Required", message: "Please enter a valid phone number (e.g. 5552228888.")
         }
 
@@ -144,7 +144,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             alert(title: "Passwords Do Not Match", message: "Please ensure your password matches.")
         }
         
-        else if(!isValid) {
+        else if !isValid  {
             alert(title: "Invalid Password", message: "Your password must have a minimum of 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.")
         }
         
@@ -154,7 +154,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 
-                if(error != nil) {
+                if error != nil {
                     self.activityIndicator.stopAnimating()
                     if let errorCode = FIRAuthErrorCode(rawValue: (error?._code)!) {
                         switch errorCode {

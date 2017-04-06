@@ -80,7 +80,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
         guard let homeName = homeNameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased() else { return }
         
         // Check for home name
-        if(homeName == "") {
+        if homeName.isEmpty {
             alert(title: "Home Name Required", message: "Please enter the name of your home.")
         }
         
@@ -89,7 +89,7 @@ class MakeHomeViewController: UIViewController, UIImagePickerControllerDelegate,
         let nameValidation = NSPredicate.init(format: "SELF MATCHES %@", regularExpression)
         let isValidName = nameValidation.evaluate(with: homeName)
         
-        if(!isValidName) {
+        if !isValidName {
             alert(title: "Invalid Home Name", message: "Your home name must have minimum of 5 alphabet characters and no spaces.")
         }
         
