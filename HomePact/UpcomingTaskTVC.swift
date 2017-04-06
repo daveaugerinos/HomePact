@@ -21,7 +21,9 @@ class UpcomingTaskTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(52, 0, 0, 0)
-         
+        tableView.backgroundView = UIImageView(image: UIImage(named: "LoginBackground"))
+        tableView.backgroundView?.alpha = 0.75
+        
         userManager = FirebaseUserManager()
         taskManager = FirebaseTaskManager()
         groupManager = FirebaseGroupManager()
@@ -70,7 +72,7 @@ class UpcomingTaskTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kUpcomingCellIdentifier, for: indexPath) as! UpcomingTVCell
         cell.delegate = self
-        
+        cell.backgroundColor = UIColor(white: 1.0, alpha: 0.55)
         cell.configureWith(upcomingTasks[indexPath.row])
 
         return cell

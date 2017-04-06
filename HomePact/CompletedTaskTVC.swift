@@ -21,7 +21,9 @@ class CompletedTaskTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(52, 0, 0, 0)
-
+        tableView.backgroundView = UIImageView(image: UIImage(named: "LoginBackground"))
+        tableView.backgroundView?.alpha = 0.75
+        
         userManager = FirebaseUserManager()
         taskManager = FirebaseTaskManager()
         groupManager = FirebaseGroupManager()
@@ -80,6 +82,7 @@ class CompletedTaskTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: kCompletedTaskCellIdentifier, for: indexPath) as! CompletedTVCell
         cell.delegate = self
+        cell.backgroundColor = UIColor(white: 1.0, alpha: 0.55)
         cell.configureWith(completedTasks[indexPath.row])
         
         return cell
