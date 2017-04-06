@@ -29,6 +29,5 @@ struct Task {
         self.id = id
         self.name = name
         self.timestamp = timestamp
-        
     }
 }
