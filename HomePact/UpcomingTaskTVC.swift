@@ -26,7 +26,7 @@ class UpcomingTaskTVC: UITableViewController {
         taskManager = FirebaseTaskManager()
         groupManager = FirebaseGroupManager()
         
-        userManager.currentUser { user  in
+        userManager.currentUser { user in
             
             guard let user = user else {
                 print("no user for you")
@@ -45,16 +45,9 @@ class UpcomingTaskTVC: UITableViewController {
                     if error != nil {
                         print("\(error)")
                     }
-                   
-                    if self.upcomingTasks.count == 0{
                         self.upcomingTasks = observedTasks
                         self.tableView.reloadData()
-                    }else if self.upcomingTasks.count < observedTasks.count {
-                        self.upcomingTasks = observedTasks
-                        self.tableView.reloadData()
-                    }else {
-                        self.upcomingTasks = observedTasks
-                    }
+
                 })
             })
         }
@@ -94,8 +87,9 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
                 action.fulfill(with: .reset)
             })
             let completeAction = SwipeAction(style: .default, title: "Complete", handler: { action, indexPath in
-                ViewControllerRouter(self).showCompleteTask()
                 action.fulfill(with: .reset)
+                ViewControllerRouter(self).showCompleteTask(with: self.upcomingTasks[indexPath.row])
+                
                 
             })
             editAction.image = #imageLiteral(resourceName: "Compose Icon")
@@ -138,14 +132,10 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
         return options
         
     }
- 
-    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation){
-        
-    }
-    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?, for orientation: SwipeActionsOrientation){
-        
-    }
- 
-
     
+}
+
+extension UpcomingTaskTVC {
+    
+
 }
