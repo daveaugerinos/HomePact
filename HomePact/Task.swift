@@ -15,6 +15,8 @@ struct Task {
     var taskDate: Date?
     var taskImage: UIImage?
     var notes: String?
+    var assignedTo:UIImage?
+    var nextAssigned:UIImage?
     var recurrenceTime: RecurrenceTime = .none
     var messageIds: [String] = []
     var isCompleted = false

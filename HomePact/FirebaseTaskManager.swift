@@ -51,6 +51,12 @@ class FirebaseTaskManager: NSObject {
         guard let imageString = task.taskImage?.base64Encode() else {
             return
         }
+        guard let assignedTo = task.assignedTo?.base64Encode() else {
+            return
+        }
+        guard let nextAssigned = task.nextAssigned?.base64Encode() else {
+            return
+        }
         let updates = ["uid" : task.id,
                        "name" : task.name,
                        "taskDate" : taskDate,
@@ -58,7 +64,9 @@ class FirebaseTaskManager: NSObject {
                        "notes" : notes,
                        "timestamp" : task.timestamp.timeIntervalSince1970,
                        "isCompleted" : task.isCompleted,
-                       "imageString" : imageString] as NSDictionary
+                       "imageString" : imageString,
+                       "assignedToUserImage" : assignedTo,
+                       "nextAssignedUserImage" : nextAssigned] as NSDictionary
         tasksRef.updateChildValues(["\(task.id)" : updates])
     }
     
@@ -143,7 +151,16 @@ class FirebaseTaskManager: NSObject {
         guard let imageString = dictionary.value(forKey: "imageString") as? String else {
             return nil
         }
+        guard let assignedToImageString = dictionary.value(forKey: "assignedToUserImage") as? String else {
+            return nil
+        }
+        guard let nextAssignedImageString = dictionary.value(forKey: "nextAssignedUserImage") as? String else {
+            return nil
+        }
+        
         let image = imageString.decodeBase64Image()
+        let assignedTo = assignedToImageString.decodeBase64Image()
+        let nextAssigned = nextAssignedImageString.decodeBase64Image()
         
         var task = Task(id: taskID, name: taskName, timestamp: Date(timeIntervalSince1970: timestamp))
         
@@ -152,6 +169,8 @@ class FirebaseTaskManager: NSObject {
         task.notes = notes
         task.isCompleted = isCompleted
         task.taskImage = image
+        task.assignedTo = assignedTo
+        task.nextAssigned = nextAssigned
         
         return task
     }
