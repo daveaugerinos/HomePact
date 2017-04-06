@@ -31,6 +31,9 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         
         prepareViews()
         configureCollectionDataSource()
+        
+        taskImage = UIImage(named: "PhotoVideoGlyph")
+
     }
     
     func prepareViews() {
@@ -93,7 +96,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         else {
             var ref: FIRDatabaseReference!
             ref = FIRDatabase.database().reference()
-            let tasksRef = ref.child("tasks")
+            _ = ref.child("tasks")
             
             DispatchQueue.main.async(execute: {
                 let key = FirebaseTaskManager().tasksRef.childByAutoId().key
@@ -101,8 +104,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                 
                 newTask.taskDate = DateFormatter().date(from: self.dateTextField.text!)
                 
-                //                case none = "none", minute = "minute", hour = "hour", day = "day", week = "week", month = "month", year = "year"
-                
+                //encode recurrence to enum
                 switch (self.recurrenceTextField.text!) {
                 case "Once-off":
                     newTask.recurrenceTime = .none
@@ -121,13 +123,22 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                 }
                 
                 
-                newTask.taskImage = self.addMediaImageView.image
+                newTask.taskImage = self.taskImage
                 newTask.isCompleted = false
                 
                 print("TASK: \(newTask)")
                 
                 FirebaseTaskManager().update(newTask)
-                //ViewControllerRouter(self).showUpcoming()
+                
+                FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
+                    FirebaseGroupManager().add(task: newTask, to: group!, for: .upcoming)
+                }
+                
+                FirebaseUserManager().currentUser({ (user) -> (Void) in
+                    FirebaseUserManager().add(newTask, to: user!, for: .upcoming)
+                })
+                
+                ViewControllerRouter(self).showRootTabBar()
             })
         }
     }
