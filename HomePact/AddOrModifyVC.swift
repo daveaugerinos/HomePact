@@ -132,21 +132,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                 newTask.isCompleted = false
                 
                 print("TASK: \(newTask)")
-                
-                FirebaseTaskManager().update(newTask)
-                
-                //gets current user group
-                FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
-                    //adds task to group
-                    FirebaseGroupManager().add(task: newTask, to: group!, for: .upcoming)
-                    
-                }
-                
-                //gets current user
-                FirebaseUserManager().currentUser({ (user) -> (Void) in
-                    FirebaseUserManager().add(newTask, to: user!, for: .upcoming)
-                })
-                
+         
                 let selectedIndexPaths = self.groupMembersCollectionView.indexPathsForSelectedItems
                 
                 var selectedUsers : [User] = []
@@ -154,9 +140,19 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                     let user = self.arrayOfUsers[ip.row]
                     selectedUsers.append(user)
                 }
+                newTask.assignedTo = selectedUsers[0].userImage
+                newTask.nextAssigned = selectedUsers[1].userImage
+                FirebaseTaskManager().update(newTask)
                 
                 for eachUser in selectedUsers {
+        
                     FirebaseUserManager().add(newTask, to: eachUser, for: .upcoming)
+                }
+                                //gets current user group
+                FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
+                    //adds task to group
+                    FirebaseGroupManager().add(task: newTask, to: group!, for: .upcoming)
+                    
                 }
                 
                 self.dismiss(animated: true, completion: nil)
