@@ -41,7 +41,7 @@ class CompleteTaskViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        let _ = navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func completeButtonPressed(_ sender: UIButton) {
         
@@ -61,7 +61,7 @@ class CompleteTaskViewController: UIViewController, UITextFieldDelegate {
             self.groupManager.move(task: self.taskToComplete, in: group, from: .upcoming, to: .completed)
         }
         
-       let _ = navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {

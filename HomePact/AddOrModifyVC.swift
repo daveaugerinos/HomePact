@@ -81,7 +81,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     
     //MARK: IBActions
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        let _ = navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
     }
     
     @IBAction func completeButtonPressed(_ sender: UIButton) {
@@ -158,7 +158,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                     FirebaseUserManager().add(newTask, to: eachUser, for: .upcoming)
                 }
                 
-                ViewControllerRouter(self).showRootTabBar()
+                self.dismiss(animated: true, completion: nil)
             })
         }
     }
