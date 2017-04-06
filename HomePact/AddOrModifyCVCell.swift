@@ -19,6 +19,13 @@ class AddOrModifyCVCell: UICollectionViewCell {
         }
     }
     
+    override var isSelected: Bool {
+        didSet {
+            self.layer.borderWidth = 3.0
+            self.layer.borderColor = isSelected ? UIColor.blue.cgColor : UIColor.clear.cgColor
+        }
+    }
+    
     fileprivate func configureCell() {
         label.text = user.firstName
         imageView.image = user.userImage

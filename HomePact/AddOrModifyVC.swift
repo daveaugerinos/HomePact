@@ -22,7 +22,6 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     @IBOutlet weak fileprivate var addMediaImageView: UIImageView!
     var taskImage: UIImage?
     var taskDate = Date()
-    
     let arrayOfRecurrences = ["Once-off", "Weekly", "Fortnightly", "Monthly", "Quarterly", "Yearly"]
     var arrayOfUsers: [User] = []
     let recurrencePickerView = UIPickerView()
@@ -30,6 +29,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        groupMembersCollectionView.allowsMultipleSelection = true
         prepareViews()
         configureCollectionDataSource()
         
@@ -88,6 +88,10 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         
         guard let taskName = taskNameTextField.text else { return }
         
+        if ((self.groupMembersCollectionView.indexPathsForSelectedItems) == nil) {
+            alert(title: "Group Members Required", message: "Please select one or more people to do your task.")
+        }
+        
         // Check for home name
         if(taskName == "") {
             alert(title: "Task Name Required", message: "Please enter the name of your new task.")
@@ -130,15 +134,29 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                 
                 FirebaseTaskManager().update(newTask)
                 
+                //gets current user group
                 FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
+                    //adds task to group
                     FirebaseGroupManager().add(task: newTask, to: group!, for: .upcoming)
                     
                 }
                 
+                //gets current user
                 FirebaseUserManager().currentUser({ (user) -> (Void) in
                     FirebaseUserManager().add(newTask, to: user!, for: .upcoming)
-                    
                 })
+                
+                let selectedIndexPaths = self.groupMembersCollectionView.indexPathsForSelectedItems
+                
+                var selectedUsers : [User] = []
+                for ip in selectedIndexPaths! {
+                    let user = self.arrayOfUsers[ip.row]
+                    selectedUsers.append(user)
+                }
+                
+                for eachUser in selectedUsers {
+                    FirebaseUserManager().add(newTask, to: eachUser, for: .upcoming)
+                }
                 
                 ViewControllerRouter(self).showRootTabBar()
             })
@@ -255,11 +273,14 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
         return arrayOfUsers.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        let selectedCell = AddOrModifyCVCell groupMembers
-//        let confirmationView = UIImageView(frame: <#T##CGRect#>)
-//        indexPath.item
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        if let selectedItems = collectionView.indexPathsForSelectedItems {
+            if selectedItems.contains(indexPath) {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                return false
+            }
+        }
+        return true
     }
     
     // MARK: - Alert -

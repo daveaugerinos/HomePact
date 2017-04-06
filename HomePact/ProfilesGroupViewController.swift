@@ -21,7 +21,7 @@ class ProfilesGroupViewController: UIViewController, UITableViewDelegate, UITabl
         
         roundAppropriateViews()
         self.view.backgroundColor = UIColor.lightGray
-        
+        groupNameLabel.text = ""
         
         FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
             self.groupImageView.image = group?.groupImage
