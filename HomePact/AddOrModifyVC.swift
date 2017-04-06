@@ -122,7 +122,7 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                     print("yay enum worked")
                 }
                 
-                
+                newTask.notes = "You have a lot of work to do!"
                 newTask.taskImage = self.taskImage
                 newTask.isCompleted = false
                 
@@ -132,10 +132,12 @@ class AddOrModifyVC: UIViewController, UICollectionViewDataSource, UICollectionV
                 
                 FirebaseGroupManager().currentUserGroup { (group, error) -> (Void) in
                     FirebaseGroupManager().add(task: newTask, to: group!, for: .upcoming)
+                    
                 }
                 
                 FirebaseUserManager().currentUser({ (user) -> (Void) in
                     FirebaseUserManager().add(newTask, to: user!, for: .upcoming)
+                    
                 })
                 
                 ViewControllerRouter(self).showRootTabBar()
