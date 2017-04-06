@@ -36,26 +36,30 @@ class UpcomingTaskTVC: UITableViewController {
                 return
             }
             self.currentUser = user
-                      
-            self.userManager.observeTaskIDs(for: user, in: .upcoming, with: { observedIDs, error  in
+            self.groupManager.currentUserGroup{group, error in
                 
-                if error != nil {
-                    print("\(error)")
+                guard let group = group else {
+                    return
                 }
-
-                self.taskManager.observeTasks(with: observedIDs, with: { observedTasks, error  in
-                   
-                    if error != nil {
-                        print("\(error)")
-                    }
+                self.groupManager.observeTaskIDs(for: group, in: .upcoming, with:{ observedIDs, error in
+                
+                    self.taskManager.observeTasks(with: observedIDs, with: { observedTasks, error  in
+                        
+                        if error != nil {
+                            print("\(error)")
+                        }
                         self.upcomingTasks = observedTasks
                         self.tableView.reloadData()
 
+                
                 })
-            })
+                
+                })
+            }
         }
     }
-    
+            
+                
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
@@ -109,6 +113,10 @@ extension UpcomingTaskTVC: SwipeTableViewCellDelegate{
                 
                 self.tableView.beginUpdates()
                 action.fulfill(with: .delete)
+                
+                self.groupManager.currentUserGroup({ group, error  in
+                    self.groupManager.remove(task: doomedTask, from: group!, for: .upcoming)
+               })
                 self.userManager.remove(doomedTask, from: self.currentUser, for: .upcoming)
                 self.taskManager.delete(doomedTask)
                 self.tableView.endUpdates()
